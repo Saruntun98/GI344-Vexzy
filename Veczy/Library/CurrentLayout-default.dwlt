@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 2560
     height: 1357
   m_ShowMode: 4
-  m_Title: Game
+  m_Title: Scene
   m_RootView: {fileID: 6}
   m_MinSize: {x: 875, y: 542}
   m_MaxSize: {x: 10000, y: 10000}
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_MinSize: {x: 678, y: 492}
   m_MaxSize: {x: 14002, y: 14042}
   vertical: 0
-  controlID: 16
+  controlID: 85
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -68,8 +68,8 @@ MonoBehaviour:
     y: 0
     width: 521
     height: 1307
-  m_MinSize: {x: 275, y: 50}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 276, y: 71}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 15}
   m_Panes:
   - {fileID: 15}
@@ -227,7 +227,7 @@ MonoBehaviour:
   m_MinSize: {x: 402, y: 492}
   m_MaxSize: {x: 10001, y: 14042}
   vertical: 1
-  controlID: 17
+  controlID: 90
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -252,7 +252,7 @@ MonoBehaviour:
   m_MinSize: {x: 402, y: 221}
   m_MaxSize: {x: 8002, y: 4021}
   vertical: 0
-  controlID: 18
+  controlID: 91
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -369,22 +369,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts/Enermy
+    - Assets/Scenes
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scripts/Enermy
+  - Assets/Scenes
   m_LastFoldersGridSize: -1
   m_LastProjectPath: D:\Work\GI344-Veczy\Veczy
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 104a0000
-    m_LastClickedID: 18960
-    m_ExpandedIDs: 00000000fe4900000c4a000000ca9a3b
+    m_SelectedIDs: 604a0000
+    m_LastClickedID: 19040
+    m_ExpandedIDs: 00000000564a00005c4a00005e4a0000624a000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -412,7 +412,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000fe490000
+    m_ExpandedIDs: 00000000564a0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -440,7 +440,7 @@ MonoBehaviour:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 1
-    m_ExpandedInstanceIDs: c623000000000000
+    m_ExpandedInstanceIDs: c62300000000000056c60100
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -533,23 +533,23 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: a2490000
-      m_LastClickedID: 18850
-      m_ExpandedIDs: 1c9cffff10fbfffffe480000524900006e49000080490000
+      m_SelectedIDs: 
+      m_LastClickedID: 0
+      m_ExpandedIDs: f637ebfff038ebff2247ebff8e50ebff2259ebffb697ebff2498ebff3e9febffb69febff1ca4ebff98a7ebff34adebffbeadebff28b7ebff28b8ebffe4bdebff78bfebff14c8f2ffbc60f9ffee60f9ff38faffff50fbffff0a4f03002ea1030086b003003af10300ae0c0400921a0400f62a04003e3704002e5f0400c49204007c980400e0410600624a0600c6580600bc870600
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: 
-        m_OriginalName: 
+        m_Name: Grass_Block
+        m_OriginalName: Grass_Block
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: 0
+        m_UserData: -1359556
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 11
+        m_OriginalEventType: 4
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 4}
       m_SearchString: 
@@ -595,9 +595,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -0.52681017, y: 1.950021, z: -0.07593155}
+    m_Target: {x: -0.9351744, y: -0.45353425, z: 2.2543516}
     speed: 2
-    m_Value: {x: -0.52681017, y: 1.950021, z: -0.07593155}
+    m_Value: {x: -0.9351744, y: -0.45353425, z: 2.2543516}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -623,7 +623,7 @@ MonoBehaviour:
         m_Value: 0
       m_Color: {r: 0.5, g: 0.5, b: 0.5, a: 0.4}
       m_Pivot: {x: 0, y: 0, z: 0}
-      m_Size: {x: 0, y: 0}
+      m_Size: {x: 1, y: 1}
     yGrid:
       m_Fade:
         m_Target: 1
@@ -644,13 +644,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.043696817, y: -0.92695355, z: 0.35554174, w: -0.11266113}
+    m_Target: {x: -0.479669, y: 0.19567317, z: -0.11025917, w: -0.8484074}
     speed: 2
-    m_Value: {x: -0.043691248, y: -0.9268354, z: 0.35549644, w: -0.11264677}
+    m_Value: {x: -0.47959164, y: 0.1956416, z: -0.11024138, w: -0.8482706}
   m_Size:
-    m_Target: 3.1772058
+    m_Target: 12.167404
     speed: 2
-    m_Value: 3.1772058
+    m_Value: 12.167404
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -668,8 +668,8 @@ MonoBehaviour:
     m_FarClip: 10000
     m_DynamicClip: 1
     m_OcclusionCulling: 0
-  m_LastSceneViewRotation: {x: 0.017635508, y: 0.98017883, z: -0.10211679, w: 0.16923851}
-  m_LastSceneViewOrtho: 0
+  m_LastSceneViewRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LastSceneViewOrtho: 1
   m_ReplacementShader: {fileID: 0}
   m_ReplacementString: 
   m_SceneVisActive: 1

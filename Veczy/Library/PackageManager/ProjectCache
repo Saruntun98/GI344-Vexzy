@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637659129107378544
-    m_Hash: 621865786
+      ticks: 637664334632343392
+    m_Hash: 2390709731
   m_LockFileStatus:
     m_FilePath: D:/Work/GI344-Veczy/Veczy/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637659129108138714
-    m_Hash: 1585389058
+      ticks: 637664335084803848
+    m_Hash: 1286988787
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_PackageAssets:
@@ -163,12 +163,12 @@ m_PackageAssets:
         url: git+https://github.com/Unity-Technologies/com.unity.cinemachine.git
         revision: 21f619698ca31d69054e96556e03097e48e43c5d
         path: 
-    - packageId: com.unity.collab-proxy@1.5.7
+    - packageId: com.unity.collab-proxy@1.7.1
       testable: 0
       isDirectDependency: 1
-      version: 1.5.7
+      version: 1.7.1
       source: 1
-      resolvedPath: D:\Work\GI344-Veczy\Veczy\Library\PackageCache\com.unity.collab-proxy@1.5.7
+      resolvedPath: D:\Work\GI344-Veczy\Veczy\Library\PackageCache\com.unity.collab-proxy@1.7.1
       assetPath: Packages/com.unity.collab-proxy
       name: com.unity.collab-proxy
       displayName: Version Control
@@ -220,9 +220,9 @@ m_PackageAssets:
         - 2.1.0-preview.5
         - 2.1.0-preview.6
         compatible:
-        - 1.5.7
-        - 1.6.0
+        - 1.7.1
         - 1.8.0
+        - 1.9.0
         - 2.0.0-preview.6
         - 2.0.0-preview.8
         - 2.0.0-preview.15
@@ -233,7 +233,7 @@ m_PackageAssets:
         - 2.1.0-preview.3
         - 2.1.0-preview.5
         - 2.1.0-preview.6
-        verified: 1.5.7
+        verified: 1.7.1
       dependencies:
       - name: com.unity.nuget.newtonsoft-json
         version: 2.0.0
@@ -241,16 +241,19 @@ m_PackageAssets:
       - name: com.unity.nuget.newtonsoft-json
         version: 2.0.0
       keywords:
-      - vsc
-      - version
-      - control
-      - collab
-      - collaboration
-      - collaborate
-      - teams
-      - team
-      - cloud
       - backup
+      - cloud
+      - collab
+      - collaborate
+      - collaboration
+      - control
+      - plastic
+      - plasticscm
+      - source
+      - team
+      - teams
+      - version
+      - vcs
       registry:
         id: main
         name: 
@@ -263,13 +266,13 @@ m_PackageAssets:
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
-      datePublishedTicks: 637551413290000000
+      datePublishedTicks: 637616921650000000
       documentationUrl: 
       hasRepository: 1
       repository:
         type: git
         url: https://github.cds.internal.unity3d.com/unity/com.unity.cloud.collaborate.git
-        revision: f079d307344f568804d3ea6d781013135e614e45
+        revision: 30ef59f552633de9ff0401db4e73ac89982d4ac0
         path: 
     - packageId: com.unity.ide.rider@2.0.7
       testable: 0
@@ -350,7 +353,7 @@ m_PackageAssets:
         version: 1.1.1
       resolvedDependencies:
       - name: com.unity.test-framework
-        version: 1.1.26
+        version: 1.1.27
       - name: com.unity.ext.nunit
         version: 1.0.6
       - name: com.unity.modules.imgui
@@ -378,12 +381,12 @@ m_PackageAssets:
         url: https://github.cds.internal.unity3d.com/unity/com.unity.ide.rider.git
         revision: abb44f053e9a41d2e00e149e32a19bcec76e98b4
         path: 
-    - packageId: com.unity.ide.visualstudio@2.0.9
+    - packageId: com.unity.ide.visualstudio@2.0.11
       testable: 0
       isDirectDependency: 1
-      version: 2.0.9
+      version: 2.0.11
       source: 1
-      resolvedPath: D:\Work\GI344-Veczy\Veczy\Library\PackageCache\com.unity.ide.visualstudio@2.0.9
+      resolvedPath: D:\Work\GI344-Veczy\Veczy\Library\PackageCache\com.unity.ide.visualstudio@2.0.11
       assetPath: Packages/com.unity.ide.visualstudio
       name: com.unity.ide.visualstudio
       displayName: Visual Studio Editor
@@ -437,7 +440,7 @@ m_PackageAssets:
         version: 1.1.9
       resolvedDependencies:
       - name: com.unity.test-framework
-        version: 1.1.26
+        version: 1.1.27
       - name: com.unity.ext.nunit
         version: 1.0.6
       - name: com.unity.modules.imgui
@@ -457,13 +460,13 @@ m_PackageAssets:
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
-      datePublishedTicks: 637580705480000000
+      datePublishedTicks: 637613656180000000
       documentationUrl: 
       hasRepository: 1
       repository:
         type: git
         url: https://github.cds.internal.unity3d.com/unity/com.unity.ide.visualstudio.git
-        revision: c7cd4c6319806423b3d918b3e9599244e3993d41
+        revision: 680e06d94ffca728223ae2cb14bb919cd354e2c1
         path: 
     - packageId: com.unity.ide.vscode@1.2.3
       testable: 0
@@ -534,12 +537,12 @@ m_PackageAssets:
         url: https://github.cds.internal.unity3d.com/unity/com.unity.ide.vscode.git
         revision: b5ec9b38109e52b1b26597d521e4df75e042ebb9
         path: 
-    - packageId: com.unity.test-framework@1.1.26
+    - packageId: com.unity.test-framework@1.1.27
       testable: 0
       isDirectDependency: 1
-      version: 1.1.26
+      version: 1.1.27
       source: 1
-      resolvedPath: D:\Work\GI344-Veczy\Veczy\Library\PackageCache\com.unity.test-framework@1.1.26
+      resolvedPath: D:\Work\GI344-Veczy\Veczy\Library\PackageCache\com.unity.test-framework@1.1.27
       assetPath: Packages/com.unity.test-framework
       name: com.unity.test-framework
       displayName: Test Framework
@@ -586,7 +589,6 @@ m_PackageAssets:
         - 1.1.27
         - 1.1.29
         compatible:
-        - 1.1.26
         - 1.1.27
         - 1.1.29
         verified: 1.1.29
@@ -619,13 +621,13 @@ m_PackageAssets:
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
-      datePublishedTicks: 637576439750000000
+      datePublishedTicks: 637594751620000000
       documentationUrl: 
       hasRepository: 1
       repository:
         type: git
         url: git+https://github.com/Unity-Technologies/com.unity.test-framework.git
-        revision: ea9d07e64e6d63c4f2fd8b6bc57df0f452ff4fae
+        revision: c2f2cc9b7ea61d42964257363595dff5e8c47c42
         path: 
     - packageId: com.unity.textmeshpro@3.0.6
       testable: 0
@@ -1001,12 +1003,12 @@ m_PackageAssets:
         url: 
         revision: 
         path: 
-    - packageId: com.unity.visualeffectgraph@10.5.1
+    - packageId: com.unity.visualeffectgraph@10.6.0
       testable: 0
       isDirectDependency: 1
-      version: 10.5.1
+      version: 10.6.0
       source: 1
-      resolvedPath: D:\Work\GI344-Veczy\Veczy\Library\PackageCache\com.unity.visualeffectgraph@10.5.1
+      resolvedPath: D:\Work\GI344-Veczy\Veczy\Library\PackageCache\com.unity.visualeffectgraph@10.6.0
       assetPath: Packages/com.unity.visualeffectgraph
       name: com.unity.visualeffectgraph
       displayName: Visual Effect Graph
@@ -1087,20 +1089,18 @@ m_PackageAssets:
         - 10.5.1
         - 10.6.0
         compatible:
-        - 10.5.0
-        - 10.5.1
         - 10.6.0
-        verified: 10.5.1
+        verified: 10.6.0
       dependencies:
       - name: com.unity.shadergraph
-        version: 10.5.1
+        version: 10.6.0
       - name: com.unity.render-pipelines.core
-        version: 10.5.1
+        version: 10.6.0
       resolvedDependencies:
       - name: com.unity.shadergraph
-        version: 10.5.1
+        version: 10.6.0
       - name: com.unity.render-pipelines.core
-        version: 10.5.1
+        version: 10.6.0
       - name: com.unity.ugui
         version: 1.0.0
       - name: com.unity.modules.ui
@@ -1127,13 +1127,13 @@ m_PackageAssets:
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
-      datePublishedTicks: 637605796850000000
+      datePublishedTicks: 637613663020000000
       documentationUrl: 
       hasRepository: 1
       repository:
         type: git
-        url: git+https://github.com/Unity-Technologies/Graphics.git
-        revision: 73f32e8fcc2d0cbf3b73a16a5e30eb5cede41576
+        url: https://github.com/Unity-Technologies/Graphics.git
+        revision: d645e6b498e293626bcb30ec32b652b9f584e9b5
         path: 
     - packageId: com.unity.modules.ai@1.0.0
       testable: 0
@@ -2877,12 +2877,12 @@ m_PackageAssets:
         url: 
         revision: 
         path: 
-    - packageId: com.unity.shadergraph@10.5.1
+    - packageId: com.unity.shadergraph@10.6.0
       testable: 0
       isDirectDependency: 0
-      version: 10.5.1
+      version: 10.6.0
       source: 1
-      resolvedPath: D:\Work\GI344-Veczy\Veczy\Library\PackageCache\com.unity.shadergraph@10.5.1
+      resolvedPath: D:\Work\GI344-Veczy\Veczy\Library\PackageCache\com.unity.shadergraph@10.6.0
       assetPath: Packages/com.unity.shadergraph
       name: com.unity.shadergraph
       displayName: Shader Graph
@@ -2993,18 +2993,16 @@ m_PackageAssets:
         - 10.5.1
         - 10.6.0
         compatible:
-        - 10.5.0
-        - 10.5.1
         - 10.6.0
-        verified: 10.5.1
+        verified: 10.6.0
       dependencies:
       - name: com.unity.render-pipelines.core
-        version: 10.5.1
+        version: 10.6.0
       - name: com.unity.searcher
         version: 4.3.2
       resolvedDependencies:
       - name: com.unity.render-pipelines.core
-        version: 10.5.1
+        version: 10.6.0
       - name: com.unity.ugui
         version: 1.0.0
       - name: com.unity.modules.ui
@@ -3026,20 +3024,20 @@ m_PackageAssets:
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
-      datePublishedTicks: 637605793850000000
+      datePublishedTicks: 637613662270000000
       documentationUrl: 
       hasRepository: 1
       repository:
         type: git
-        url: git+https://github.com/Unity-Technologies/Graphics.git
-        revision: 73f32e8fcc2d0cbf3b73a16a5e30eb5cede41576
+        url: https://github.com/Unity-Technologies/Graphics.git
+        revision: d645e6b498e293626bcb30ec32b652b9f584e9b5
         path: 
-    - packageId: com.unity.render-pipelines.core@10.5.1
+    - packageId: com.unity.render-pipelines.core@10.6.0
       testable: 0
       isDirectDependency: 0
-      version: 10.5.1
+      version: 10.6.0
       source: 1
-      resolvedPath: D:\Work\GI344-Veczy\Veczy\Library\PackageCache\com.unity.render-pipelines.core@10.5.1
+      resolvedPath: D:\Work\GI344-Veczy\Veczy\Library\PackageCache\com.unity.render-pipelines.core@10.6.0
       assetPath: Packages/com.unity.render-pipelines.core
       name: com.unity.render-pipelines.core
       displayName: Core RP Library
@@ -3153,10 +3151,8 @@ m_PackageAssets:
         - 10.5.1
         - 10.6.0
         compatible:
-        - 10.5.0
-        - 10.5.1
         - 10.6.0
-        verified: 10.5.1
+        verified: 10.6.0
       dependencies:
       - name: com.unity.ugui
         version: 1.0.0
@@ -3180,13 +3176,13 @@ m_PackageAssets:
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
-      datePublishedTicks: 637605791650000000
+      datePublishedTicks: 637613656840000000
       documentationUrl: 
       hasRepository: 1
       repository:
         type: git
-        url: git+https://github.com/Unity-Technologies/Graphics.git
-        revision: 73f32e8fcc2d0cbf3b73a16a5e30eb5cede41576
+        url: https://github.com/Unity-Technologies/Graphics.git
+        revision: d645e6b498e293626bcb30ec32b652b9f584e9b5
         path: 
     - packageId: com.unity.ext.nunit@1.0.6
       testable: 0
@@ -3402,4 +3398,4 @@ m_PackageAssets:
   m_LocalPackages:
     m_LocalFileStatus: []
 m_ProjectPath: D:/Work/GI344-Veczy/Veczy/Packages
-m_EditorVersion: 2020.3.13f1 (71691879b7f5)
+m_EditorVersion: 2020.3.17f1 (a4537701e4ab)

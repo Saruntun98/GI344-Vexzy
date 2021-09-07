@@ -10,11 +10,11 @@ public class GameManager : MonoBehaviour
     public static GameManager instance = null;
     [SerializeField] private bool gameOver = false;
     [SerializeField] GameObject player;
-    [SerializeField] GameObject[] spawnPoint;
+    [SerializeField] Transform spawnPointPlayer;
     //มอนสเตอร์
     //[SerializeField] GameObject  sad;
-    [SerializeField] Text leveltext;
-    [SerializeField] Text endGametxt;
+    [SerializeField] Text levelText;
+    [SerializeField] Text endGameText;
     private int currentLevel;
     private int finalLevel = 5;
     private float generateSpawnTime = 1;
@@ -24,11 +24,9 @@ public class GameManager : MonoBehaviour
     private List<EnemyHealth> enemies = new List<EnemyHealth>();
     private List<EnemyHealth> killememies = new List<EnemyHealth>();
 
-    [SerializeField] GameObject arrow;
-
     // Health Power Up
     [SerializeField] GameObject healthPowerUp;
-    [SerializeField] GameObject[] healthspawnPoint;
+    [SerializeField] GameObject[] enemySpawnPoint;
     [SerializeField] int maxPowerUp = 4;
 
     private float powerUpSpawnTime = 3f;
@@ -67,13 +65,6 @@ public class GameManager : MonoBehaviour
             return gameOver;
         }
     }
-    public GameObject Arrow
-    {
-        get
-        {
-            return arrow;
-        }
-    }
 
     public GameObject Player
     {
@@ -108,6 +99,12 @@ public class GameManager : MonoBehaviour
     {
         powerUp++;
     }
+
+    void SpawnPlayer(Transform spawnPosition)
+    {
+        
+    }
+    
     IEnumerator spawn()
     {
         if (currentSpawnTime>generateSpawnTime)
@@ -116,9 +113,10 @@ public class GameManager : MonoBehaviour
             if (enemies.Count<currentLevel)
             {
 
-                int randomNumber = UnityEngine.Random.Range(0,spawnPoint.Length);
-                GameObject spawnLocation = spawnPoint[randomNumber];
-                int randomEnemy = UnityEngine.Random.Range(0, 3);
+                SpawnPlayer(spawnPointPlayer);
+
+                Transform spawnLocation = spawnPointPlayer;
+                int randomEnemy = Random.Range(0, 3);
 
                 if (randomEnemy==0)
                 {
@@ -141,7 +139,7 @@ public class GameManager : MonoBehaviour
                 killememies.Clear();
                 yield return new WaitForSeconds(3f);
                 currentLevel++;
-                leveltext.text = "Level = " + currentLevel;
+                levelText.text = "Level = " + currentLevel;
             }
             if (killememies.Count == finalLevel)
             {
@@ -154,8 +152,8 @@ public class GameManager : MonoBehaviour
 
     IEnumerator endGame(string message)
     {
-        endGametxt.text = message;
-        endGametxt.gameObject.SetActive(true);
+        endGameText.text = message;
+        endGameText.gameObject.SetActive(true);
         yield return new WaitForSeconds(5f);
         SceneManager.LoadScene("MainMenu");
     }
@@ -168,9 +166,9 @@ public class GameManager : MonoBehaviour
             if (powerUp < maxPowerUp)
             {
 
-                int randomNumber = UnityEngine.Random.Range(0, healthspawnPoint.Length);//0 
-                GameObject spawnLocation = healthspawnPoint[randomNumber];
-                newPowerUp = Instantiate(healthPowerUp) as GameObject;
+                int randomNumber = Random.Range(0, enemySpawnPoint.Length);//0 
+                GameObject spawnLocation = enemySpawnPoint[randomNumber];
+                newPowerUp = Instantiate(healthPowerUp);
                 newPowerUp.transform.position = spawnLocation.transform.position;
             }
         }

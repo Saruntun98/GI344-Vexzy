@@ -5,15 +5,15 @@ using UnityEngine;
 public class PlayerStatus : MonoBehaviour
 {
     [SerializeField]
-    private float hp;
+    public float hp;
     [SerializeField] 
-    private float stamina;
+    public float stamina;
     [SerializeField]
-    private bool isCombo;
+    public bool isCombo;
     [SerializeField]
-    private float aDamage;
-    
-    private static PlayerStatus _instance;
+    public float aDamage;
+
+    public static PlayerStatus _instance;
     
     public float maxStamina;
     public float comBoOne;

@@ -23,15 +23,7 @@ public class EggStatus : MonoBehaviour
     {
         Instance = this;
     }
-    
 
-    private void Start()
-    {
-        currentHealth = startHealth;
-        healthBar.SetMaxHealth(startHealth);
-        //HealthCheck();
-    }
-    
     private void Update()
     {
         
@@ -41,6 +33,14 @@ public class EggStatus : MonoBehaviour
             Die();
         }    
     }
+    
+    private void Start()
+    {
+        currentHealth = startHealth;
+        healthBar.SetMaxHealth(startHealth);
+        //HealthCheck();
+    }
+    
     /*void HealthCheck()
     {
         if (currentHealth > startHealth)

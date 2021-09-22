@@ -28,13 +28,16 @@ public class Player : MonoBehaviour
     private GameObject _cameraRig;
     [SerializeField] 
     private bool isCamera;
+    [SerializeField] 
+    private bool isRunning;
+
     public float jumpHeight = 1;
 
     public CharacterController _controller;
 
     private float _directionY;
     private float _currentSpeed;
-
+    private Vector3 moveDirection;
     private bool _canDoubleJump = false;
 
     public float turnSmoothTime = 0.2f;
@@ -46,9 +49,12 @@ public class Player : MonoBehaviour
     float speedSmoothVelocity;
 
     private float velocityY;
-    
+    private float _defaultSpeed;
+    //private float targetSpeed;
     void Awake()
     {
+        _defaultSpeed = _runningSpeed;
+        _currentSpeed = _runningSpeed * 2;
         _instance = this;
     }
     
@@ -60,17 +66,20 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        //NodeSprintCheck();
         TakeAttack();
         CameraIsPressingKey = Input.GetKey(KeyCode.T);
 
         if (_movementMode == MovementMode.Strafe)
         {
             MovementStafe();
+            NodeSprintUsingStamina();
         }
 
         if (_movementMode == MovementMode.Platformer)
         {
             MovementPlatformer();
+            NodeSprintUsingStamina();
         }
         
     }
@@ -119,12 +128,64 @@ public class Player : MonoBehaviour
         return Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0;
     }
 
+    public  void NodeSprintCheck()
+    {
+        if (Input.GetKeyDown(KeyCode.LeftShift) && PlayerStatus._instance.stamina > 10)
+        {
+            isRunning = true;
+        }
+
+        if (Input.GetKeyUp(KeyCode.LeftShift) || PlayerStatus._instance.stamina <= 10)
+        {
+            isRunning = false;
+        }
+    }
+    
+    public void NodeSprintUsingStamina()
+    {
+        if (isRunning && moveDirection != Vector3.zero)
+        {
+            _currentSpeed = _runningSpeed;
+            PlayerStatus._instance.stamina -= (10 * Time.deltaTime);
+
+            //bool running = Input.GetKey(KeyCode.LeftShift);
+            //MovementStafe()
+            //targetSpeed = (running) ? _runningSpeed : _walkSpeed;;
+        }
+        // else if (!isRunning && movement != Vector3.zero)
+        // {
+        //     playerSpeed = defaultSpeed;
+        //     RegenStamina();
+        // }
+        else
+        {
+            _runningSpeed = _defaultSpeed;
+            RegenStamina();
+        }
+    }
+
+    void RegenStamina()
+    {
+        if (!isRunning)
+        {
+            if (PlayerStatus._instance.stamina < PlayerStatus._instance.maxStamina)
+            {
+                PlayerStatus._instance.stamina += (10 * Time.deltaTime);
+            }
+            else
+            {
+                PlayerStatus._instance.stamina = PlayerStatus._instance.maxStamina;
+            }
+        }
+
+    }
+
     private void MovementStafe()
     {
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
 
-        Vector3 moveDirection = new Vector3(horizontalInput, 0, verticalInput);
+        moveDirection = new Vector3(horizontalInput, 0, verticalInput);
 
         if (_controller.isGrounded)
         {
@@ -148,8 +209,10 @@ public class Player : MonoBehaviour
 
         moveDirection = transform.TransformDirection(moveDirection);
 
-        bool running = Input.GetKey(KeyCode.LeftShift);
+        bool running = Input.GetKeyDown(KeyCode.LeftShift);
         float targetSpeed = (running) ? _runningSpeed : _walkSpeed;
+        NodeSprintCheck();
+        
         _currentSpeed = Mathf.SmoothDamp(_currentSpeed, targetSpeed, ref speedSmoothVelocity, speedSmoothTime);
 
         moveDirection.y = _directionY;
@@ -157,7 +220,7 @@ public class Player : MonoBehaviour
         _controller.Move(_currentSpeed * Time.deltaTime * moveDirection);
         _controller.transform.Rotate(Vector3.up * horizontalInput * (200 * Time.deltaTime));
     }
-
+    
     private void MovementPlatformer()
     {
         Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
@@ -171,6 +234,8 @@ public class Player : MonoBehaviour
         }
 
         float targetSpeed = ((running) ? _runningSpeed : _walkSpeed) * inputDir.magnitude;
+        
+        NodeSprintCheck();
         _currentSpeed = Mathf.SmoothDamp(_currentSpeed, targetSpeed, ref speedSmoothVelocity, speedSmoothTime);
 
         velocityY += Time.deltaTime * _gravityPlatformer;

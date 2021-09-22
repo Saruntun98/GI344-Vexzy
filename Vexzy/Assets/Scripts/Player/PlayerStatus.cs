@@ -3,14 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class PlayerStatus : MonoBehaviour
 {
     [SerializeField]
-    public float maxHealth = 150;
+    public int maxHealth = 150;
     [SerializeField]
-    public float curHealth = 150;
+    public int curHealth = 150;
     [SerializeField] 
-    public float stamina;
+    public float stamina = 100;
     [SerializeField]
     public bool isCombo;
     [SerializeField]
@@ -20,6 +21,8 @@ public class PlayerStatus : MonoBehaviour
 
     public static PlayerStatus _instance;
     public static int Rounds;
+    //public HealthBar healthBar;
+    //public Image staminaBar;
     
     private float timer = 0f;
     
@@ -31,21 +34,27 @@ public class PlayerStatus : MonoBehaviour
     void Awake()
     {
         _instance = this;
-        maxStamina = stamina;
+        //maxStamina = stamina;
     }
 
     // Update is called once per frame
     void Update()
     {
         timer += Time.deltaTime;
+        //healthBar.SetHealth(curHealth);
+        //staminaBar.fillAmount = stamina;
         HealthCheck();
-        SprintCheck();
+        //SprintCheck();
         SprintUsingStamina();
     }
 
     private void Start()
     {
         Rounds = 0;
+        curHealth = maxHealth;
+        maxStamina = stamina;
+        //healthBar.SetMaxHealth(maxHealth);
+        //staminaBar.fillAmount = maxStamina;
         //Die();
     }
     void HealthCheck()
@@ -57,8 +66,9 @@ public class PlayerStatus : MonoBehaviour
     }
     void SprintCheck()
     {
+        //Player._instance.();
         // tempSpeed = playerSpeed;
-        if (Input.GetKeyDown(KeyCode.Alpha1) && stamina > 10)
+        /*if (Input.GetKeyDown(KeyCode.Alpha1) && stamina > 10)
         {
             isCombo = true;
         }
@@ -70,11 +80,12 @@ public class PlayerStatus : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Alpha1) || stamina <= 10)
         {
             isCombo = false;
-        }
+        }*/
     }
     void SprintUsingStamina()
     {
-        if (isCombo && comBoOne == aDamage)
+        //Player._instance.NodeSprintUsingStamina();
+        /*if (isCombo && comBoOne == aDamage)
         {
             aDamage = 150;
             stamina -= (10 * Time.deltaTime);
@@ -88,7 +99,7 @@ public class PlayerStatus : MonoBehaviour
         {
             aDamage = 0;
             RegenStamina();
-        }
+        }*/
     }
 
     void RegenStamina()

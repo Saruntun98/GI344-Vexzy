@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class EnemyDestroy : MonoBehaviour
 {
-
     // Start is called before the first frame update
     void Start()
     {
@@ -30,8 +29,9 @@ public class EnemyDestroy : MonoBehaviour
             if (EggStatus.Instance != null)
             {
                 EggStatus.Instance.currentHealth -= 100;
-                //EggStatus._instance.startHealth -= 100;
+                //EggStatus.instance.startHealth -= 100;
             }
+            //EnemyMove.instance.nav.Stop();
             Destroy(gameObject);
         }
         if (other.gameObject.tag == "Player")
@@ -40,6 +40,7 @@ public class EnemyDestroy : MonoBehaviour
             {
                 PlayerStatus._instance.curHealth -= 20;
             }
+            //EnemyMove.instance.nav.Stop();
             Destroy(gameObject);
         }
 

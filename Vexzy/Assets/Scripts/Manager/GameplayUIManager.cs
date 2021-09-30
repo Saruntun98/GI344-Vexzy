@@ -18,14 +18,22 @@ public class GameplayUIManager : MonoBehaviour
     //[SerializeField] Text medkitItemText;
     //[SerializeField] Text keyItemText;
     //[SerializeField] Text checkpointItemText;
-    [SerializeField] HealthBar hpBar;
+    [SerializeField] 
+    HealthBar hpBar;
     //[SerializeField] Image hpBar;
-    [SerializeField] Image staminaBar;
-
+    [SerializeField] 
+    Image staminaBar;
+    [SerializeField] 
+    private Text valueText;
     private float currentHP;
     private float maxHP;
     private float currentStamina;
     private float maxStamina;
+
+	public Slider slider;
+    public Gradient gradient;
+    public Image fill;
+
 
     void Awake()
     {
@@ -43,8 +51,26 @@ public class GameplayUIManager : MonoBehaviour
         StatusBarUpdate();
         hpBar.SetHealth(currentHP);
         //PauseCheck();
+
+        string[] tmp = valueText.text.Split('/');
+        valueText.text = currentHP + " / " + maxHP;
     }
 
+    public void SetMaxHealthPlayer(float health)
+    {
+        slider.maxValue = health;
+        slider.value = health;
+
+        fill.color = gradient.Evaluate(1f);
+    }
+
+    public void SetHealthPlayer(float health)
+    {
+        slider.value = health;
+        
+        fill.color = gradient.Evaluate(slider.normalizedValue);
+    }
+	
     void StatusBarUpdate()
     {
         currentHP = PlayerStatus._instance.curHealth;

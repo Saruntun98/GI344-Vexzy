@@ -12,11 +12,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] private bool gameOver = false;
     [SerializeField] GameObject player;
     [SerializeField] GameObject[] spawnPoint;
-    [SerializeField] GameObject tanker;
-    [SerializeField] GameObject soldier;
-    [SerializeField] GameObject ranger;
-    [SerializeField] Text leveltext;
-    [SerializeField] Text endGametxt;
+    //[SerializeField] GameObject tanker;
+    //[SerializeField] GameObject soldier;
+    //[SerializeField] GameObject ranger;
+    //[SerializeField] Text leveltext;
+    //[SerializeField] Text endGametxt;
     private int currentLevel;
     private int finalLevel = 5;
     private float generateSpawnTime = 1;
@@ -97,7 +97,7 @@ public class GameManager : MonoBehaviour
             else
             {
                 gameOver = true;
-                StartCoroutine(endGame("Game Over!"));
+                //StartCoroutine(endGame("Game Over!"));
             }
         }
     }
@@ -123,9 +123,9 @@ public class GameManager : MonoBehaviour
             if (enemies.Count<currentLevel)
             {
 
-                int randomNumber = UnityEngine.Random.Range(0,spawnPoint.Length);
+                //int randomNumber = UnityEngine.Random.Range(0,spawnPoint.Length);
                 //GameObject spawnLocation = spawnPoint[randomNumber];
-                int randomEnemy = UnityEngine.Random.Range(0, 3);
+                /*int randomEnemy = UnityEngine.Random.Range(0, 3);
 
                 if (randomEnemy==0)
                 {
@@ -138,11 +138,11 @@ public class GameManager : MonoBehaviour
                 if (randomEnemy == 2)
                 {
                     newEnemy = Instantiate(ranger) as GameObject;
-                }
+                }*/
                 //newEnemy.transform.position = spawnLocation.transform.position;
             }
 
-            if (killememies.Count==currentLevel && currentLevel!=finalLevel)
+            /*if (killememies.Count==currentLevel && currentLevel!=finalLevel)
             {
                 enemies.Clear();
                 killememies.Clear();
@@ -153,19 +153,19 @@ public class GameManager : MonoBehaviour
             if (killememies.Count == finalLevel)
             {
                 StartCoroutine(endGame("Victory!"));
-            }
+            }*/
         }
         yield return null;
         StartCoroutine(spawn());
     }
 
-    IEnumerator endGame(string message)
+    /*IEnumerator endGame(string message)
     {
         endGametxt.text = message;
         endGametxt.gameObject.SetActive(true);
         yield return new WaitForSeconds(5f);
         SceneManager.LoadScene("MainMenu");
-    }
+    }*/
 
     IEnumerator powerUpSpawn()
     {

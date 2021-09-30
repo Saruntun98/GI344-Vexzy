@@ -153,12 +153,11 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2620748148079700910}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 56e150b139816534697b66e9c59fa006, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageOverTime: 30
 --- !u!143 &7134051392972413087
 CharacterController:
   m_ObjectHideFlags: 0

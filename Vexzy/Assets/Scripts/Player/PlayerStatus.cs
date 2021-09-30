@@ -15,7 +15,7 @@ public class PlayerStatus : MonoBehaviour
     [SerializeField]
     public bool isCombo;
     [SerializeField]
-    public float aDamage;
+    public float aDamage = 30;
     [SerializeField] 
     public float timeLastHit = 2f;
 
@@ -128,13 +128,14 @@ public class PlayerStatus : MonoBehaviour
             }
         }
     }
+
     private void TakeHit()
     {
         if (curHealth>0)
         {
             //anim.Play("Hurt");
             //blood.Play();
-            curHealth -= 20;
+            curHealth -= 10;
             //audio.PlayOneShot(audio.clip);
             GameManager.instance.HealthCheck();
         }

@@ -8,7 +8,7 @@ public class PlayerDestroy : MonoBehaviour
     {
         if (PlayerStatus._instance.curHealth <= 10 && other.gameObject.tag == "Enemy")
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
             Debug.Log("Player is Dead Destroy");
         }
     }

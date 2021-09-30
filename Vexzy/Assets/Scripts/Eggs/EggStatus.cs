@@ -17,7 +17,7 @@ public class EggStatus : MonoBehaviour
     
     //private GameObject egg;
     private bool _isDead = false;
-    private Collider Collider;
+    private Collider collider;
     
     void Awake()
     {
@@ -28,7 +28,8 @@ public class EggStatus : MonoBehaviour
     {
         
         healthBar.SetHealth(currentHealth);
-        if (currentHealth <= 0 && !_isDead || Collider.gameObject.tag == "Enemy")
+        //if (currentHealth <= 0 && !_isDead || collider.gameObject.tag == "Enemy")
+        if (currentHealth <= 0 && !_isDead)
         {
             Die();
         }    
@@ -53,10 +54,19 @@ public class EggStatus : MonoBehaviour
     void Die ()
     {
         _isDead = true;
+		Debug.Log("Egg Die");
         //GameObject effect = (GameObject)Instantiate(deathEffect, transform.position, Quaternion.identity);
         //Destroy(effect, 5f);
         //WaveSpawner.EnemiesAlive--;
         Destroy(gameObject);
-        Debug.Log("Egg Die");
     }
+	
+	/*private void OnTriggerEnter(Collider other)
+    {
+        if (PlayerStatus._instance.curHealth <= 10 && other.gameObject.tag == "Enemy")
+        {
+            //Destroy(gameObject);
+            Debug.Log("Egg is Dead Destroy");
+        }
+    }*/
 }

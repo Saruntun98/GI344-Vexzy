@@ -4,12 +4,12 @@ using UnityEngine.AI;
 
 public class EnemyHealth : MonoBehaviour
 {
-    [SerializeField] public int startHealth = 30;
+    [SerializeField] public float startHealth = 30;
     [SerializeField] float timeLastHit = 2f;
     private float timer = 0f;
     private NavMeshAgent nav;
     private Animator anim;
-    [SerializeField] public int currentHealth;
+    [SerializeField] public float currentHealth;
     private AudioSource audio;
     private float disappearSpeed = 2f;
     private bool disappearEnemy = false;
@@ -100,8 +100,10 @@ public class EnemyHealth : MonoBehaviour
             //audio.PlayOneShot(audio.clip);
             //anim.Play("Hurt");
             //blood.Play();
-            currentHealth -= 30;
+            //currentHealth -= 30;
+            currentHealth = currentHealth - PlayerStatus._instance.aDamage;
             Debug.Log ("HP Enemy: "+currentHealth);
+            Debug.Log ("Player damage: "+PlayerStatus._instance.aDamage);
         }
         if (currentHealth<=0)
         {

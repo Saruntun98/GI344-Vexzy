@@ -33,8 +33,10 @@ public class Player : MonoBehaviour
 
     public float jumpHeight = 1;
 
+    [SerializeField]
     public CharacterController _controller;
 
+    private Animator animator;
     private float _directionY;
     private float _currentSpeed;
     private Vector3 moveDirection;
@@ -60,14 +62,15 @@ public class Player : MonoBehaviour
     
     void Start()
     {
-        _controller = GetComponent<CharacterController>();
+        animator = GetComponent<Animator>();
+		//animator = transform.GetChild(1).GetChild(0).GetComponent<Animator>();
+        //_controller = GetComponent<CharacterController>();
         Cursor.lockState = CursorLockMode.Locked;
     }
 
     void Update()
     {
         //NodeSprintCheck();
-        TakeAttack();
         CameraIsPressingKey = Input.GetKey(KeyCode.T);
 
         if (_movementMode == MovementMode.Strafe)
@@ -81,7 +84,7 @@ public class Player : MonoBehaviour
             MovementPlatformer();
             NodeSprintUsingStamina();
         }
-        
+        TakeAttack();
     }
     
     private bool isPressingKey;
@@ -116,11 +119,15 @@ public class Player : MonoBehaviour
 
     private void TakeAttack()
     {
-        if (Input.GetMouseButtonDown (0)) {
-            //anim.SetBool ("Attack", true);
+        if (Input.GetMouseButton(0)) 
+        {
+            //animator.SetLayerWeight(animator.GetLayerIndex("");
+            animator.SetTrigger("Attack");
             Debug.Log ("Attack");
-        } else {
-            //anim.SetBool ("Attack", false);
+        }
+        else
+        {
+            Idle();
         }
     }
     private bool IsPlayerMoving()
@@ -219,6 +226,22 @@ public class Player : MonoBehaviour
 
         _controller.Move(_currentSpeed * Time.deltaTime * moveDirection);
         _controller.transform.Rotate(Vector3.up * horizontalInput * (200 * Time.deltaTime));
+        
+        //Idle();
+        //
+        if (moveDirection != Vector3.zero && !Input.GetKey(KeyCode.LeftShift))
+        {
+            Walk();
+        }
+        else if(moveDirection != Vector3.zero && Input.GetKey(KeyCode.LeftShift))
+        {
+            Run();
+        }
+        else if(moveDirection == Vector3.zero)
+        {
+            Idle();
+        }
+        //
     }
     
     private void MovementPlatformer()
@@ -238,6 +261,23 @@ public class Player : MonoBehaviour
         NodeSprintCheck();
         _currentSpeed = Mathf.SmoothDamp(_currentSpeed, targetSpeed, ref speedSmoothVelocity, speedSmoothTime);
 
+        
+        //Idle();
+        //
+        if (inputDir != Vector2.zero && !Input.GetKey(KeyCode.LeftShift))
+        {
+            Walk();
+        }
+        else if(inputDir != Vector2.zero && Input.GetKey(KeyCode.LeftShift))
+        {
+            Run();
+        }
+        else if(inputDir == Vector2.zero)
+        {
+            Idle();
+        }
+        //
+        
         velocityY += Time.deltaTime * _gravityPlatformer;
         Vector3 velocity = transform.forward * _currentSpeed + Vector3.up * velocityY;
 
@@ -256,6 +296,29 @@ public class Player : MonoBehaviour
                 float jumpVelocity = Mathf.Sqrt(-2 * _gravityPlatformer * jumpHeight);
                 velocityY = jumpVelocity;
             }
+        }
+    }
+    
+    private void Idle()
+    {
+        animator.SetBool("Run", false);
+        animator.SetBool("Idel", true);
+        //animator.SetFloat("Speed" ,0,0.1f, Time.deltaTime);
+        //animator.SetFloat("Speed" ,0f,0.1f, Time.deltaTime);
+    }
+    private void Walk()
+    {
+        //animator.SetFloat("Speed" ,0.7f,0.1f, Time.deltaTime);
+        animator.SetBool("Run", false);
+    }
+    private void Run()
+    {
+        //_currentSpeed = _runningSpeed * 2;
+        //animator.SetFloat("Speed" ,1,0.1f, Time.deltaTime);
+        if (moveDirection != Vector3.zero)
+        {
+            // animator.SetBool("Reverse", true);
+            animator.SetBool("Run", true);
         }
     }
 }

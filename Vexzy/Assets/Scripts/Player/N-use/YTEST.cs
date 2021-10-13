@@ -58,7 +58,7 @@ public class YTEST : MonoBehaviour
         //animator = GetComponent<Animator>();
         animator = GetComponentInChildren<Animator>();
 		//animator = transform.GetChild(1).GetChild(0).GetComponent<Animator>();
-        //_controller = GetComponent<CharacterController>();
+        _controller = GetComponent<CharacterController>();
         Cursor.lockState = CursorLockMode.Locked;
     }
 
@@ -102,12 +102,16 @@ public class YTEST : MonoBehaviour
     }
 
     private void TakeAttack()
-    {
-        if (Input.GetMouseButtonDown (0)) {
-            //anim.SetBool ("Attack", true);
+    {      
+        if (Input.GetMouseButton(0)) 
+        {
+            //animator.SetLayerWeight(animator.GetLayerIndex("");
+            animator.SetTrigger("Attack");
             Debug.Log ("Attack");
-        } else {
-            //anim.SetBool ("Attack", false);
+        }
+        else
+        {
+            Idle();
         }
     }
     private bool IsPlayerMoving()
@@ -225,6 +229,12 @@ public class YTEST : MonoBehaviour
         _controller.Move(_currentSpeed * Time.deltaTime * moveDirection);
         _controller.transform.Rotate(Vector3.up * horizontalInput * (200 * Time.deltaTime));
         //Idle();
+
+    if (moveDirection != Vector3.zero)
+        {
+            // animator.SetBool("Reverse", true);
+            animator.SetBool("Run", true);
+        }
     }
     /*void SetAnim()
     {

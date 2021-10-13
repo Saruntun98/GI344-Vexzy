@@ -10,8 +10,11 @@ public class Player : MonoBehaviour
         Strafe
     }
 
+   
     [SerializeField]
     private MovementMode _movementMode = MovementMode.Strafe;
+    [SerializeField]
+    private float _defaultSpeed;
     [SerializeField]
     private float _walkSpeed = 3f;
     [SerializeField]
@@ -31,6 +34,11 @@ public class Player : MonoBehaviour
     [SerializeField] 
     private bool isRunning;
 
+    [SerializeField] 
+    private bool jump;
+    //[SerializeField] 
+    //private int jumpBool; 
+
     public float jumpHeight = 1;
 
     [SerializeField]
@@ -42,6 +50,7 @@ public class Player : MonoBehaviour
     private Vector3 moveDirection;
     private bool _canDoubleJump = false;
 
+
     public float turnSmoothTime = 0.2f;
     float turnSmoothVelocity;
 
@@ -51,17 +60,18 @@ public class Player : MonoBehaviour
     float speedSmoothVelocity;
 
     private float velocityY;
-    private float _defaultSpeed;
     //private float targetSpeed;
+
     void Awake()
     {
-        _defaultSpeed = _runningSpeed;
+        _defaultSpeed = _walkSpeed;
         _currentSpeed = _runningSpeed * 2;
         _instance = this;
     }
     
     void Start()
     {
+        //jumpBool = Animator.StringToHash("Jump");
         animator = GetComponent<Animator>();
 		//animator = transform.GetChild(1).GetChild(0).GetComponent<Animator>();
         //_controller = GetComponent<CharacterController>();
@@ -70,6 +80,12 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+		if (jump && Input.GetKeyUp(KeyCode.Space))
+		{
+			jump = false;
+            animator.SetBool("Jump", false);
+		}
+
         //NodeSprintCheck();
         CameraIsPressingKey = Input.GetKey(KeyCode.T);
 
@@ -119,15 +135,10 @@ public class Player : MonoBehaviour
 
     private void TakeAttack()
     {
-        if (Input.GetMouseButton(0)) 
+        if(Input.GetKeyDown(KeyCode.Mouse0)) //if (Input.GetMouseButton(0)) 
         {
-            //animator.SetLayerWeight(animator.GetLayerIndex("");
-            animator.SetTrigger("Attack");
+            StartCoroutine(Attack());
             Debug.Log ("Attack");
-        }
-        else
-        {
-            Idle();
         }
     }
     private bool IsPlayerMoving()
@@ -166,7 +177,7 @@ public class Player : MonoBehaviour
         // }
         else
         {
-            _runningSpeed = _defaultSpeed;
+            _defaultSpeed = _walkSpeed;
             RegenStamina();
         }
     }
@@ -198,10 +209,32 @@ public class Player : MonoBehaviour
         {
             _canDoubleJump = true;
 
-            if (Input.GetButtonDown("Jump"))
-            {
-                _directionY = _jumpSpeed;
-            }
+        //Animator Fix
+         if (moveDirection != Vector3.zero && !Input.GetKey(KeyCode.LeftShift))
+         {
+            Walk();
+         }
+         else if (moveDirection != Vector3.zero && Input.GetKey(KeyCode.LeftShift))
+         {
+            Run();
+         }
+         else if (moveDirection == Vector3.zero)
+         {
+            Idle();
+         }
+         
+         moveDirection *= _defaultSpeed;
+
+         if (Input.GetKeyDown(KeyCode.Space))
+         {
+            Jump();
+         }
+
+        if (Input.GetButtonDown("Jump"))
+        {
+           _directionY = _jumpSpeed;
+        }
+        //Animator Fix
         } 
         else
         {
@@ -226,22 +259,6 @@ public class Player : MonoBehaviour
 
         _controller.Move(_currentSpeed * Time.deltaTime * moveDirection);
         _controller.transform.Rotate(Vector3.up * horizontalInput * (200 * Time.deltaTime));
-        
-        //Idle();
-        //
-        if (moveDirection != Vector3.zero && !Input.GetKey(KeyCode.LeftShift))
-        {
-            Walk();
-        }
-        else if(moveDirection != Vector3.zero && Input.GetKey(KeyCode.LeftShift))
-        {
-            Run();
-        }
-        else if(moveDirection == Vector3.zero)
-        {
-            Idle();
-        }
-        //
     }
     
     private void MovementPlatformer()
@@ -262,21 +279,6 @@ public class Player : MonoBehaviour
         _currentSpeed = Mathf.SmoothDamp(_currentSpeed, targetSpeed, ref speedSmoothVelocity, speedSmoothTime);
 
         
-        //Idle();
-        //
-        if (inputDir != Vector2.zero && !Input.GetKey(KeyCode.LeftShift))
-        {
-            Walk();
-        }
-        else if(inputDir != Vector2.zero && Input.GetKey(KeyCode.LeftShift))
-        {
-            Run();
-        }
-        else if(inputDir == Vector2.zero)
-        {
-            Idle();
-        }
-        //
         
         velocityY += Time.deltaTime * _gravityPlatformer;
         Vector3 velocity = transform.forward * _currentSpeed + Vector3.up * velocityY;
@@ -298,27 +300,45 @@ public class Player : MonoBehaviour
             }
         }
     }
-    
-    private void Idle()
+
+
+//Animator
+   private void Idle()
+   {
+      animator.SetFloat("Speed", 0, 0.1f, Time.deltaTime);
+   }
+   
+   private void Walk()
+   {
+      _defaultSpeed = _walkSpeed;
+      animator.SetFloat("Speed", 0.3f, 0.1f, Time.deltaTime);
+   }
+
+   private void Run()
+   {
+      _defaultSpeed = _runningSpeed;
+      animator.SetFloat("Speed", 1, 0.1f, Time.deltaTime);
+   }
+
+   private void Jump()
+   {
+      animator.SetBool("Jump", true);
+      jump = true;
+      //velocity.y = Mathf.Sqrt(jumpHeight * -2 * _gravity);   
+   }
+
+    public void Die ()
     {
-        animator.SetBool("Run", false);
-        animator.SetBool("Idel", true);
-        //animator.SetFloat("Speed" ,0,0.1f, Time.deltaTime);
-        //animator.SetFloat("Speed" ,0f,0.1f, Time.deltaTime);
+        animator.SetTrigger("PlayerDie");
+        //_controller.enabled = false;
     }
-    private void Walk()
-    {
-        //animator.SetFloat("Speed" ,0.7f,0.1f, Time.deltaTime);
-        animator.SetBool("Run", false);
-    }
-    private void Run()
-    {
-        //_currentSpeed = _runningSpeed * 2;
-        //animator.SetFloat("Speed" ,1,0.1f, Time.deltaTime);
-        if (moveDirection != Vector3.zero)
-        {
-            // animator.SetBool("Reverse", true);
-            animator.SetBool("Run", true);
-        }
-    }
+
+   private IEnumerator Attack()
+   {
+      animator.SetLayerWeight(animator.GetLayerIndex("Attack Layer"), 1);
+      animator.SetTrigger("Attack");
+      
+      yield return new WaitForSeconds(9);
+      animator.SetLayerWeight(animator.GetLayerIndex("Attack Layer"), 0);
+   }
 }

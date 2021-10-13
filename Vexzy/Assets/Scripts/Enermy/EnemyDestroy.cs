@@ -47,10 +47,11 @@ public class EnemyDestroy : MonoBehaviour
         /*if (other.gameObject.name == "Weapon") {
             if (EnemyHealth._instance != null)
             {
-                EnemyHealth._instance.currentHealth -= 30;
+                EnemyHealth._instance.currentHealth -= PlayerStatus._instance.aDamage;
                 Debug.Log ("HP Enemy: "+EnemyHealth._instance.currentHealth);
+                Debug.Log ("Player damage: "+PlayerStatus._instance.aDamage);               
             }
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }*/
     }
 }

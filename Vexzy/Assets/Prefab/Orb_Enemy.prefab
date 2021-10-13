@@ -4886,8 +4886,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lookRadius: 10
-  targetPlayer: {fileID: 0}
-  targetEgg: {fileID: 0}
+  targetPlayer: {fileID: 1403087316620321763, guid: 86b0410a0114791418bb5e85eb0dea5a, type: 3}
+  targetEgg: {fileID: 8874621721432095338, guid: 01f50637ac566064c83f4f58a478020b, type: 3}
 --- !u!195 &1348674391393348241
 NavMeshAgent:
   m_ObjectHideFlags: 0

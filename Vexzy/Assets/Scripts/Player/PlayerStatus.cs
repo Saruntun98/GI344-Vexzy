@@ -7,9 +7,9 @@ using UnityEngine;
 public class PlayerStatus : MonoBehaviour
 {
     [SerializeField]
-    public int maxHealth = 150;
+    public float maxHealth = 150;
     [SerializeField]
-    public int curHealth = 150;
+    public float curHealth = 150;
     [SerializeField] 
     public float stamina = 100;
     [SerializeField]
@@ -31,6 +31,13 @@ public class PlayerStatus : MonoBehaviour
     public float comBoTwo;
     public float comBoThree;
 
+    public bool isOnGate = false;
+    //public bool IsDead{ get{ return curHealth == 0;} }
+
+    [SerializeField] 
+    private bool IsDead;
+
+
     void Awake()
     {
         _instance = this;
@@ -46,6 +53,24 @@ public class PlayerStatus : MonoBehaviour
         HealthCheck();
         //SprintCheck();
         SprintUsingStamina();
+
+        if (curHealth <= 0) {
+            IsDead = true;
+        } 
+        else {
+            IsDead = false;
+        }
+        if (IsDead == true) {
+            Die();
+        }
+    }
+
+    public bool CheckIsDead
+    {
+        get
+        {
+            return IsDead;
+        }
     }
 
     private void Start()
@@ -53,6 +78,7 @@ public class PlayerStatus : MonoBehaviour
         Rounds = 0;
         curHealth = maxHealth;
         maxStamina = stamina;
+        IsDead = false;
         //healthBar.SetMaxHealth(maxHealth);
         //staminaBar.fillAmount = maxStamina;
         //Die();
@@ -121,8 +147,9 @@ public class PlayerStatus : MonoBehaviour
     {
         if (!GameManager.instance.GameOver && timer>=timeLastHit)
         {
-            if (other.tag == "weapon")
+            if (other.gameObject.name == "weaponA")
             {
+                Debug.Log("hit");
                 TakeHit();
                 timer = 0;
             }
@@ -131,24 +158,29 @@ public class PlayerStatus : MonoBehaviour
 
     private void TakeHit()
     {
-        if (curHealth>0)
+        if (curHealth > 0)
         {
+            Debug.Log("hit in Take hit");
             //anim.Play("Hurt");
             //blood.Play();
             curHealth -= 10;
             //audio.PlayOneShot(audio.clip);
             GameManager.instance.HealthCheck();
         }
-        if (curHealth<=0)
+        if (curHealth <= 0)
         {
-            Die();
-        }
+            IsDead = true; 
+             Die();
+        }        
     }
+
     void Die ()
     {
         GameManager.instance.HealthCheck();
+        Debug.Log("Die");
         //blood.Play();
-        //anim.SetTrigger("HeroDie");
+        //Player._instance.animator.SetBool("PlayerDie", false);
+        Player._instance.Die();
         Player._instance._controller.enabled = false;
     }
 }

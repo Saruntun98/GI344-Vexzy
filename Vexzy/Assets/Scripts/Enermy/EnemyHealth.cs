@@ -52,7 +52,7 @@ public class EnemyHealth : MonoBehaviour
             transform.Translate(-Vector3.up * disappearSpeed * Time.deltaTime);
         }
         
-        if (currentHealth <= 0) {
+        /*if (currentHealth <= 0) {
             dead = true;
         } 
         else {
@@ -60,7 +60,7 @@ public class EnemyHealth : MonoBehaviour
         }
         if (dead == true) {
             death();
-        }
+        }*/
     }
     public bool IsAlive
     {
@@ -78,14 +78,22 @@ public class EnemyHealth : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (timer>=timeLastHit && !GameManager.instance.GameOver)
+        
+        if (other.gameObject.name == "weapon") 
+        {
+            currentHealth = currentHealth -= PlayerStatus._instance.aDamage;
+            Debug.Log ("HP Enemy: "+currentHealth);
+            Debug.Log ("Player damage: "+PlayerStatus._instance.aDamage);               
+            TakeHit();
+        }      
+        /*if (timer>=timeLastHit && !GameManager.instance.GameOver)
         {
             if (other.gameObject.name=="Weapon")
             {
                 TakeHit();
                 timer = 0;
             }
-        }
+        }*/
         /*if (other.gameObject.name == "Weapon") {
             startHealth = startHealth -= 30;
             Debug.Log ("HP: "+startHealth);

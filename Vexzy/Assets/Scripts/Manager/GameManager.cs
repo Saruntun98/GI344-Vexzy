@@ -9,9 +9,12 @@ public class GameManager : MonoBehaviour
 {
     // Start is called before the first frame update
     public static GameManager instance = null;
+
+    [SerializeField] List<GameObject> playerList = new List<GameObject>();
+    
     [SerializeField] private bool gameOver = false;
     [SerializeField] GameObject player;
-    [SerializeField] GameObject[] spawnPoint;
+    //[SerializeField] GameObject[] spawnPoint;
     //[SerializeField] GameObject tanker;
     //[SerializeField] GameObject soldier;
     //[SerializeField] GameObject ranger;
@@ -33,10 +36,15 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject[] healthspawnPoint;
     [SerializeField] int maxPowerUp = 4;
 
+    [SerializeField] public Transform spawnPointPlayer;
+
     private float powerUpSpawnTime = 3f;
     private float currentPowerUpSpawnTime = 0f;
     private int powerUp = 0;
     private GameObject newPowerUp;
+
+    public int keyItemCount;
+    public int currentKeyItem;
 
     private void Awake()
     {
@@ -52,12 +60,18 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        SpawnPlayer(spawnPointPlayer);
         StartCoroutine(spawn());
         StartCoroutine(powerUpSpawn());
         currentLevel = 1;
+        var keyCout = GameObject.FindGameObjectsWithTag("Key");
+        keyItemCount = keyCout.Length;
     }
     private void Update()
     {
+        HealthCheck();
+        KeyItemCheck();
+        Cheat();
         currentSpawnTime += Time.deltaTime;
         currentPowerUpSpawnTime += Time.deltaTime;
     }
@@ -76,6 +90,53 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    void SpawnPlayer(Transform spawnPosition)
+    {
+        if (!isPlayerExist)
+        {
+
+            Instantiate(player, spawnPosition.position, Quaternion.identity);     
+            isPlayerExist = true;
+            
+        }
+    }
+
+    void KeyItemCheck()
+    {
+        // player.GetComponent
+        if (player != null)
+        {
+            if (currentKeyItem >= keyItemCount)
+            {
+                if (player.GetComponentInChildren<PlayerStatus>().isOnGate)
+                {
+                    Debug.Log(true);
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                }
+            }
+        }
+    }
+
+    void Cheat()
+    {
+        if (Input.GetKeyDown(KeyCode.F1))
+        {
+            currentKeyItem += 1;
+        }
+
+        if (Input.GetKeyDown(KeyCode.F2))
+        {
+            PlayerStatus._instance.maxHealth = 10000000;
+            PlayerStatus._instance.curHealth = PlayerStatus._instance.maxHealth;
+        }
+
+        if (Input.GetKeyDown(KeyCode.F3))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+    }
+
+
     public GameObject Player
     {
         get
@@ -87,10 +148,11 @@ public class GameManager : MonoBehaviour
     {
         if (player != null)
         {
+            //if (player.GetComponentInChildren<PlayerStatus>().curHealth <= 0)
             if (player.GetComponentInChildren<PlayerStatus>().curHealth <= 0)
             {
                 Debug.Log("Player is Dead GG");
-                Destroy(player);
+                //Destroy(player);
                 isPlayerExist = false;
                 gameOver = false;
             }
@@ -164,7 +226,7 @@ public class GameManager : MonoBehaviour
         endGametxt.text = message;
         endGametxt.gameObject.SetActive(true);
         yield return new WaitForSeconds(5f);
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("StartGame");
     }*/
 
     IEnumerator powerUpSpawn()

@@ -335,10 +335,11 @@ public class Player : MonoBehaviour
 
    private IEnumerator Attack()
    {
-      animator.SetLayerWeight(animator.GetLayerIndex("Attack Layer"), 1);
-      animator.SetTrigger("Attack");
+     /* animator.SetLayerWeight(animator.GetLayerIndex("Attack Layer"), 1);
+      //animator.SetTrigger("Attack");
       
       yield return new WaitForSeconds(9);
-      animator.SetLayerWeight(animator.GetLayerIndex("Attack Layer"), 0);
+      animator.SetLayerWeight(animator.GetLayerIndex("Attack Layer"), 0);*/
+      yield break;
    }
 }

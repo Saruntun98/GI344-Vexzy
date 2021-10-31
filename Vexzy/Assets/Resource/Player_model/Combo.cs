@@ -59,7 +59,7 @@ public class Combo : MonoBehaviour
             comboStep = 1;
             return;
         }
-        if (comboStep == 0)
+        if (comboStep != 0)
         {
             if (comboPossible)
             {

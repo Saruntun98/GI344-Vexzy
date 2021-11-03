@@ -8,15 +8,16 @@ public class GameplayUIManager : MonoBehaviour
 {
     public static GameplayUIManager instance;
 
-    //[SerializeField] GameObject pauseMenu;
-    //[SerializeField] Button resumeButton;
-    //[SerializeField] Button quitButton;
+    [SerializeField] GameObject pauseMenu;
+    [SerializeField] GameObject gameOver;
+    [SerializeField] Button resumeButton;
+    [SerializeField] Button quitButton;
 
     //[SerializeField] GameObject medkitItem;
-    //[SerializeField] GameObject keyItem;
+    [SerializeField] GameObject keyItem;
     //[SerializeField] GameObject checkpointItem;
     //[SerializeField] Text medkitItemText;
-    //[SerializeField] Text keyItemText;
+    [SerializeField] Text keyItemText;
     //[SerializeField] Text checkpointItemText;
     [SerializeField] 
     HealthBar hpBar;
@@ -40,17 +41,20 @@ public class GameplayUIManager : MonoBehaviour
         instance = this;
         
 
-        //resumeButton.onClick.AddListener(Resume);
-        //quitButton.onClick.AddListener(Quit);
+        resumeButton.onClick.AddListener(Resume);
+        quitButton.onClick.AddListener(Quit);
     }
 
     // Update is called once per frame
     void Update()
     {
-        //ItemCountCheck();
+        ItemCountCheck();
         StatusBarUpdate();
+        PauseCheck();
+        GameOver();
+        timingWorld.instance.IsTime();
+
         hpBar.SetHealth(currentHP);
-        //PauseCheck();
 
         string[] tmp = valueText.text.Split('/');
         valueText.text = currentHP + " / " + maxHP;
@@ -73,27 +77,17 @@ public class GameplayUIManager : MonoBehaviour
 	
     void StatusBarUpdate()
     {
-        currentHP = PlayerStatus._instance.curHealth;
-        currentStamina = PlayerStatus._instance.stamina;
-        maxHP = PlayerStatus._instance.maxHealth;
-        maxStamina = PlayerStatus._instance.maxStamina;
+        currentHP = PlayerStatus.instance.curHealth;
+        currentStamina = PlayerStatus.instance.stamina;
+        maxHP = PlayerStatus.instance.maxHealth;
+        maxStamina = PlayerStatus.instance.maxStamina;
 
         hpBar.SetMaxHealth(maxHP);
         //hpBar.fillAmount = currentHP / maxHP;
         staminaBar.fillAmount = currentStamina / maxStamina;
     }
-
-    /*void PauseCheck()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Time.timeScale = 0;
-            pauseMenu.SetActive(true);
-            Cursor.lockState = CursorLockMode.None;
-        }
-    }/*
     
-    /*void ItemCountCheck()
+    void ItemCountCheck()
     {
         // if (PlayerStatus.instance.keyItem < 1)
         //     keyItem.SetActive(false);
@@ -103,30 +97,49 @@ public class GameplayUIManager : MonoBehaviour
         keyItemText.text = $"{GameManager.instance.currentKeyItem}/{GameManager.instance.keyItemCount}";
         // }
 
-        if (PlayerStatus.instance.medKit < 1)
+        /*if (PlayerStatus.instance.medKit < 1)
             medkitItem.SetActive(false);
         else
         {
             medkitItem.SetActive(true);
             medkitItemText.text = $"{PlayerStatus.instance.medKit}";
-        }
+        }*/
 
-        if (!PlayerStatus.instance.checkPointItem && !PlayerStatus.instance.isCheckpoint)
+        /*if (!PlayerStatus.instance.checkPointItem && !PlayerStatus.instance.isCheckpoint)
             checkpointItem.SetActive(false);
         else
         {
             checkpointItem.SetActive(true);
             checkpointItemText.text = $"Deploy";
-        }
+        }*/
 
-        if (PlayerStatus.instance.isCheckpoint)
+        /*if (PlayerStatus.instance.isCheckpoint)
         {
             checkpointItem.SetActive(true);
             checkpointItemText.text = $"Checkpoint";
-        }
-    }*/
+        }*/
+    }
 
-    /*void Resume()
+
+    void PauseCheck()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Time.timeScale = 0;
+            pauseMenu.SetActive(true);
+            Cursor.lockState = CursorLockMode.None;
+        }
+    }
+    public void GameOver()
+    {
+        if (GameManager.instance.GameOver)
+        {
+            //Time.timeScale = 0;
+            gameOver.SetActive(true);
+            Cursor.lockState = CursorLockMode.None;
+        }
+    }
+    void Resume()
     {
         Time.timeScale = 1;
         pauseMenu.SetActive(false);
@@ -137,5 +150,5 @@ public class GameplayUIManager : MonoBehaviour
     {
         // Application.Quit();
         SceneManager.LoadScene(0);
-    }*/
+    }
 }

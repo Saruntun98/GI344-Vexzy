@@ -5,15 +5,17 @@ using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+
 public class GameManager : MonoBehaviour
 {
     // Start is called before the first frame update
-    public static GameManager instance = null;
+    public static GameManager instance;
 
-    [SerializeField] List<GameObject> playerList = new List<GameObject>();
+    //[SerializeField] List<GameObject> playerList = new List<GameObject>();
     
-    [SerializeField] private bool gameOver = false;
+    [SerializeField] public bool gameOver = false;
     [SerializeField] GameObject player;
+    //private GameObject player;
     //[SerializeField] GameObject[] spawnPoint;
     //[SerializeField] GameObject tanker;
     //[SerializeField] GameObject soldier;
@@ -24,7 +26,7 @@ public class GameManager : MonoBehaviour
     private int finalLevel = 5;
     private float generateSpawnTime = 1;
     private float currentSpawnTime = 0;
-    private GameObject newEnemy;
+    //private GameObject newEnemy;
     private bool isPlayerExist = false;
     private List<EnemyHealth> enemies = new List<EnemyHealth>();
     private List<EnemyHealth> killememies = new List<EnemyHealth>();
@@ -48,24 +50,28 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        if (instance==null)
+        /*if (instance==null)
         {
             instance = this;
         }
         else if(instance!=this)
         {
             Destroy(gameObject);
-        }
+        }*/
+        instance = this;
+        Time.timeScale = 1;
     }
 
     private void Start()
     {
         SpawnPlayer(spawnPointPlayer);
+
+        var keyCout = GameObject.FindGameObjectsWithTag("Key");
+        keyItemCount = keyCout.Length;
+
         StartCoroutine(spawn());
         StartCoroutine(powerUpSpawn());
         currentLevel = 1;
-        var keyCout = GameObject.FindGameObjectsWithTag("Key");
-        keyItemCount = keyCout.Length;
     }
     private void Update()
     {
@@ -94,8 +100,10 @@ public class GameManager : MonoBehaviour
     {
         if (!isPlayerExist)
         {
-
-            Instantiate(player, spawnPosition.position, Quaternion.identity);     
+            
+            //player = (GameObject)Instantiate(playerList[0], spawnPosition.position, Quaternion.identity);
+            //Instantiate(player, spawnPosition.position, Quaternion.identity);   
+            player = Instantiate(player, spawnPosition.position, Quaternion.identity);       
             isPlayerExist = true;
             
         }
@@ -108,6 +116,7 @@ public class GameManager : MonoBehaviour
         {
             if (currentKeyItem >= keyItemCount)
             {
+                //if (player.GetComponentInChildren<PlayerStatus>().isOnGate)
                 if (player.GetComponentInChildren<PlayerStatus>().isOnGate)
                 {
                     Debug.Log(true);
@@ -126,8 +135,8 @@ public class GameManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.F2))
         {
-            PlayerStatus._instance.maxHealth = 10000000;
-            PlayerStatus._instance.curHealth = PlayerStatus._instance.maxHealth;
+            PlayerStatus.instance.maxHealth = 10000000;
+            PlayerStatus.instance.curHealth = PlayerStatus.instance.maxHealth;
         }
 
         if (Input.GetKeyDown(KeyCode.F3))
@@ -146,21 +155,21 @@ public class GameManager : MonoBehaviour
     }
     public void HealthCheck()
     {
-        if (player != null)
+        //player.GetComponentInChildren<PlayerStatus>().curHealth <= 0
+        //if (PlayerStatus.instance.curHealth > 0)
+        if (player.GetComponentInChildren<PlayerStatus>().curHealth > 0 && EggStatus.Instance.currentHealth > 0)
         {
-            //if (player.GetComponentInChildren<PlayerStatus>().curHealth <= 0)
-            if (player.GetComponentInChildren<PlayerStatus>().curHealth <= 0)
-            {
-                Debug.Log("Player is Dead GG");
-                //Destroy(player);
-                isPlayerExist = false;
-                gameOver = false;
-            }
-            else
-            {
-                gameOver = true;
-                //StartCoroutine(endGame("Game Over!"));
-            }
+            gameOver = false;
+        }
+        /*if (EggStatus.Instance.currentHealth > 0)
+        {
+            gameOver = false;
+        }*/
+        else
+        {
+            gameOver = true;
+            Debug.Log("gameOver");
+            //StartCoroutine(endGame("Game Over!"));
         }
     }
     

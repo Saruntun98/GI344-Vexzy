@@ -17,17 +17,16 @@ public class EnemyMove : MonoBehaviour
     void Start()
     {
      //   nav.updatePosition = true;
-        targetPlayer = Player._instance.player.transform;
+        targetPlayer = Player.instance.player.transform;
         targetEgg = EggStatus.Instance.eggPosition.transform;
         nav = GetComponent<NavMeshAgent>();
     }
-    
+
     void Update()
     {
-        //nav.SetDestination(targetPlayer.position);
         nav.SetDestination(targetEgg.position);
-        
-        
+         
+
         float distance = Vector3.Distance(targetPlayer.position, transform.position);
  
         if (distance <= lookRadius)
@@ -35,6 +34,7 @@ public class EnemyMove : MonoBehaviour
             nav.SetDestination(targetPlayer.position);
         }
     }
+    
     
     void OnDrawGizmosSelected ()
     {

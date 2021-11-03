@@ -34,7 +34,7 @@ public class ShootingAiTut : MonoBehaviour
 
     private void Awake()
     {
-        player = GameObject.Find("Player Set").transform;
+        player = GameObject.Find("Player(Clone)").transform;
         agent = GetComponent<NavMeshAgent>();
     }
     private void Update()

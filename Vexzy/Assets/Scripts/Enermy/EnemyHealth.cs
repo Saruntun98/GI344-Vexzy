@@ -19,15 +19,15 @@ public class EnemyHealth : MonoBehaviour
     private ParticleSystem blood;
     private Transform target;
     
-    public static EnemyHealth _instance;
-    public bool dead = false;
+    public static EnemyHealth instance;
+    //public bool dead = false;
     public int damage = 50;
     public float explosionRadius = 0f;
     public GameObject impactEffect;
     
     void Awake()
     {
-        _instance = this;
+        instance = this;
     }
     void Start()
     {
@@ -81,9 +81,9 @@ public class EnemyHealth : MonoBehaviour
         
         if (other.gameObject.name == "weapon") 
         {
-            currentHealth = currentHealth -= PlayerStatus._instance.aDamage;
+            currentHealth = currentHealth -= PlayerStatus.instance.aDamage;
             Debug.Log ("HP Enemy: "+currentHealth);
-            Debug.Log ("Player damage: "+PlayerStatus._instance.aDamage);               
+            Debug.Log ("Player damage: "+PlayerStatus.instance.aDamage);               
             TakeHit();
         }      
         /*if (timer>=timeLastHit && !GameManager.instance.GameOver)
@@ -109,9 +109,9 @@ public class EnemyHealth : MonoBehaviour
             //anim.Play("Hurt");
             //blood.Play();
             //currentHealth -= 30;
-            currentHealth = currentHealth - PlayerStatus._instance.aDamage;
+            currentHealth = currentHealth - PlayerStatus.instance.aDamage;
             Debug.Log ("HP Enemy: "+currentHealth);
-            Debug.Log ("Player damage: "+PlayerStatus._instance.aDamage);
+            Debug.Log ("Player damage: "+PlayerStatus.instance.aDamage);
         }
         if (currentHealth<=0)
         {

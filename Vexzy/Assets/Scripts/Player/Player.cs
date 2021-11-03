@@ -39,6 +39,9 @@ public class Player : MonoBehaviour
     //[SerializeField] 
     //private int jumpBool; 
 
+    [SerializeField] 
+    private bool isDead = false;
+
     public float jumpHeight = 1;
 
     [SerializeField]
@@ -54,7 +57,7 @@ public class Player : MonoBehaviour
     public float turnSmoothTime = 0.2f;
     float turnSmoothVelocity;
 
-    public static Player _instance;
+    public static Player instance;
     public float speedSmoothTime = 0.1f;
     public Transform player;
     float speedSmoothVelocity;
@@ -64,9 +67,9 @@ public class Player : MonoBehaviour
 
     void Awake()
     {
+        instance = this;
         _defaultSpeed = _walkSpeed;
         _currentSpeed = _runningSpeed * 2;
-        _instance = this;
     }
     
     void Start()
@@ -80,6 +83,8 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+
+        NodeSprintUsingStamina();
 		if (jump && Input.GetKeyUp(KeyCode.Space))
 		{
 			jump = false;
@@ -89,18 +94,35 @@ public class Player : MonoBehaviour
         //NodeSprintCheck();
         CameraIsPressingKey = Input.GetKey(KeyCode.T);
 
+
+        if(!isDead)
+        {
         if (_movementMode == MovementMode.Strafe)
         {
             MovementStafe();
-            NodeSprintUsingStamina();
+            //NodeSprintUsingStamina();
         }
 
         if (_movementMode == MovementMode.Platformer)
         {
             MovementPlatformer();
-            NodeSprintUsingStamina();
+            //NodeSprintUsingStamina();
         }
-        TakeAttack();
+            TakeAttack();                
+        }
+
+        /*if (_movementMode == MovementMode.Strafe)
+        {
+            MovementStafe();
+            //NodeSprintUsingStamina();
+        }
+
+        if (_movementMode == MovementMode.Platformer)
+        {
+            MovementPlatformer();
+            //NodeSprintUsingStamina();
+        }
+        TakeAttack();*/
     }
     
     private bool isPressingKey;
@@ -138,6 +160,7 @@ public class Player : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Mouse0)) //if (Input.GetMouseButton(0)) 
         {
             StartCoroutine(Attack());
+            //Attack();            
             Debug.Log ("Attack");
         }
     }
@@ -148,12 +171,12 @@ public class Player : MonoBehaviour
 
     public  void NodeSprintCheck()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift) && PlayerStatus._instance.stamina > 10)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && PlayerStatus.instance.stamina > 10)
         {
             isRunning = true;
         }
 
-        if (Input.GetKeyUp(KeyCode.LeftShift) || PlayerStatus._instance.stamina <= 10)
+        if (Input.GetKeyUp(KeyCode.LeftShift) || PlayerStatus.instance.stamina <= 10)
         {
             isRunning = false;
         }
@@ -164,7 +187,7 @@ public class Player : MonoBehaviour
         if (isRunning && moveDirection != Vector3.zero)
         {
             _currentSpeed = _runningSpeed;
-            PlayerStatus._instance.stamina -= (10 * Time.deltaTime);
+            PlayerStatus.instance.stamina -= (10 * Time.deltaTime);
 
             //bool running = Input.GetKey(KeyCode.LeftShift);
             //MovementStafe()
@@ -186,13 +209,13 @@ public class Player : MonoBehaviour
     {
         if (!isRunning)
         {
-            if (PlayerStatus._instance.stamina < PlayerStatus._instance.maxStamina)
+            if (PlayerStatus.instance.stamina < PlayerStatus.instance.maxStamina)
             {
-                PlayerStatus._instance.stamina += (10 * Time.deltaTime);
+                PlayerStatus.instance.stamina += (10 * Time.deltaTime);
             }
             else
             {
-                PlayerStatus._instance.stamina = PlayerStatus._instance.maxStamina;
+                PlayerStatus.instance.stamina = PlayerStatus.instance.maxStamina;
             }
         }
 
@@ -200,6 +223,7 @@ public class Player : MonoBehaviour
 
     private void MovementStafe()
     {
+
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
 
@@ -259,6 +283,7 @@ public class Player : MonoBehaviour
 
         _controller.Move(_currentSpeed * Time.deltaTime * moveDirection);
         _controller.transform.Rotate(Vector3.up * horizontalInput * (200 * Time.deltaTime));
+
     }
     
     private void MovementPlatformer()
@@ -311,7 +336,7 @@ public class Player : MonoBehaviour
    private void Walk()
    {
       _defaultSpeed = _walkSpeed;
-      animator.SetFloat("Speed", 0.3f, 0.1f, Time.deltaTime);
+      animator.SetFloat("Speed", 0.2f, 0.1f, Time.deltaTime);
    }
 
    private void Run()
@@ -330,15 +355,24 @@ public class Player : MonoBehaviour
     public void Die ()
     {
         animator.SetTrigger("PlayerDie");
+        isDead = true;
         //_controller.enabled = false;
     }
 
-   private IEnumerator Attack()
+   /*private void Attack()
    {
       animator.SetLayerWeight(animator.GetLayerIndex("Attack Layer"), 1);
       animator.SetTrigger("Attack");
       
-      yield return new WaitForSeconds(9);
       animator.SetLayerWeight(animator.GetLayerIndex("Attack Layer"), 0);
+   }*/
+
+   private IEnumerator Attack()
+   {
+      //animator.SetLayerWeight(animator.GetLayerIndex("Attack Layer"), 1);
+      animator.SetTrigger("Attack");
+      
+      yield return new WaitForSeconds(4);
+      //animator.SetLayerWeight(animator.GetLayerIndex("Attack Layer"), 0);
    }
 }

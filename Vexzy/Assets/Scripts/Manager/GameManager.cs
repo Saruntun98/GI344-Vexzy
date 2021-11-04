@@ -31,7 +31,9 @@ public class GameManager : MonoBehaviour
     private List<EnemyHealth> enemies = new List<EnemyHealth>();
     private List<EnemyHealth> killememies = new List<EnemyHealth>();
 
-    [SerializeField] GameObject arrow;
+    //[SerializeField] 
+    //timingWorld TimingWorld;
+   // [SerializeField] GameObject arrow;
 
     // Health Power Up
     [SerializeField] GameObject healthPowerUp;
@@ -47,6 +49,7 @@ public class GameManager : MonoBehaviour
 
     public int keyItemCount;
     public int currentKeyItem;
+    public string NameScenes;
 
     private void Awake()
     {
@@ -75,7 +78,7 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
-        HealthCheck();
+        RuleCheck();
         KeyItemCheck();
         Cheat();
         currentSpawnTime += Time.deltaTime;
@@ -88,13 +91,13 @@ public class GameManager : MonoBehaviour
             return gameOver;
         }
     }
-    public GameObject Arrow
+    /*public GameObject Arrow
     {
         get
         {
             return arrow;
         }
-    }
+    }*/
 
     void SpawnPlayer(Transform spawnPosition)
     {
@@ -120,7 +123,8 @@ public class GameManager : MonoBehaviour
                 if (player.GetComponentInChildren<PlayerStatus>().isOnGate)
                 {
                     Debug.Log(true);
-                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                    SceneManager.LoadScene(NameScenes);
+                    //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
                 }
             }
         }
@@ -153,24 +157,31 @@ public class GameManager : MonoBehaviour
             return player;
         }
     }
-    public void HealthCheck()
+    public void RuleCheck()
     {
         //player.GetComponentInChildren<PlayerStatus>().curHealth <= 0
         //if (PlayerStatus.instance.curHealth > 0)
-        if (player.GetComponentInChildren<PlayerStatus>().curHealth > 0 && EggStatus.Instance.currentHealth > 0)
+        if (player.GetComponentInChildren<PlayerStatus>().curHealth <= 0)
         {
-            gameOver = false;
+            gameOver = true;
+            Debug.Log("GameOver 01");
         }
-        /*if (EggStatus.Instance.currentHealth > 0)
+        if (EggStatus.Instance.currentHealth <= 0) //EggStatus.Instance.currentHealth > 0 (player.GetComponentInChildren<PlayerStatus>().curHealth > 0) timungWorld.instance.timeRemaining < 0
         {
-            gameOver = false;
-        }*/
-        else
+            gameOver = true;
+            Debug.Log("gameOver 02");
+        }
+        if (timingWorld.instance.timeRemaining <= 0) //timingWorld.instance.timeRemaining < 0
+        {
+            gameOver = true;
+            Debug.Log("gameOver 03");
+        }
+        /*else
         {
             gameOver = true;
             Debug.Log("gameOver");
             //StartCoroutine(endGame("Game Over!"));
-        }
+        }*/
     }
     
     public void RegisterEnemy(EnemyHealth enemy)

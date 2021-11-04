@@ -29,6 +29,8 @@ public class Player : MonoBehaviour
     private float _doubleJumpMultiplier = 0.5f;
     [SerializeField]
     private GameObject _cameraRig;
+    [SerializeField]
+    private BoxCollider[] swordCollider;
     [SerializeField] 
     private bool isCamera;
     [SerializeField] 
@@ -75,6 +77,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         //jumpBool = Animator.StringToHash("Jump");
+        swordCollider = GetComponentsInChildren<BoxCollider>();
         animator = GetComponent<Animator>();
 		//animator = transform.GetChild(1).GetChild(0).GetComponent<Animator>();
         //_controller = GetComponent<CharacterController>();
@@ -160,7 +163,8 @@ public class Player : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Mouse0)) //if (Input.GetMouseButton(0)) 
         {
             StartCoroutine(Attack());
-            //Attack();            
+            //Attack(); 
+            //BeginAttack();           
             Debug.Log ("Attack");
         }
     }
@@ -371,8 +375,24 @@ public class Player : MonoBehaviour
    {
       //animator.SetLayerWeight(animator.GetLayerIndex("Attack Layer"), 1);
       animator.SetTrigger("Attack");
-      
-      yield return new WaitForSeconds(4);
+      BeginAttack();
+      yield return new WaitForSeconds(3);
+      EndAttack();
       //animator.SetLayerWeight(animator.GetLayerIndex("Attack Layer"), 0);
    }
+
+    public void BeginAttack()
+    {
+        foreach (var weapon in swordCollider)
+        {
+            weapon.enabled = true;
+        }
+    }
+    public void EndAttack()
+    {
+        foreach (var weapon in swordCollider)
+        {
+            weapon.enabled = false;
+        }
+    }
 }

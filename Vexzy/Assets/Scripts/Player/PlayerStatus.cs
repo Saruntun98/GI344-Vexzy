@@ -165,7 +165,7 @@ public class PlayerStatus : MonoBehaviour
             //blood.Play();
             curHealth -= 10;
             //audio.PlayOneShot(audio.clip);
-            GameManager.instance.HealthCheck();
+            //GameManager.instance.HealthCheck();
         }
         if (curHealth <= 0)
         {
@@ -176,7 +176,7 @@ public class PlayerStatus : MonoBehaviour
 
     void Die ()
     {
-        GameManager.instance.HealthCheck();
+        //GameManager.instance.RuleCheck();
         Debug.Log("Die");
         //blood.Play();
         //Player._instance.animator.SetBool("PlayerDie", false);

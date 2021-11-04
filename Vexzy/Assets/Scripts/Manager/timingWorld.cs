@@ -32,6 +32,7 @@ public class timingWorld : MonoBehaviour
             }
             else
             {
+                //GameManager.instance.RuleCheck();
                 Debug.Log("Time has run out!");
                 timeRemaining = 0;
                 timerIsRunning = false;
@@ -41,7 +42,7 @@ public class timingWorld : MonoBehaviour
 
     void DisplayTime(float timeToDisplay)
     {
-        //timeToDisplay += 1;
+        timeToDisplay += 1;
 
         float minutes = Mathf.FloorToInt(timeToDisplay / 60); 
         float seconds = Mathf.FloorToInt(timeToDisplay % 60);

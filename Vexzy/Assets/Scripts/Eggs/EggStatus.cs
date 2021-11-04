@@ -54,6 +54,7 @@ public class EggStatus : MonoBehaviour
     
     void Die ()
     {
+        //GameManager.instance.RuleCheck();
         _isDead = true;
 		Debug.Log("Egg Die");
         //GameObject effect = (GameObject)Instantiate(deathEffect, transform.position, Quaternion.identity);

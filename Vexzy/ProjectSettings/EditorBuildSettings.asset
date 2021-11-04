@@ -14,4 +14,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ASASD.unity
     guid: d98ef566944d18c4589045c89bb9d294
+  - enabled: 1
+    path: Assets/Scenes/Crazy mode 01.unity
+    guid: 46d2e14029e44fc4d8a777d0461a6e33
+  - enabled: 1
+    path: Assets/Scenes/Crazy mode 02.unity
+    guid: d6562614040bf9044a76891e297e12cc
+  - enabled: 1
+    path: Assets/Scenes/AA.unity
+    guid: 4404715fffe18ac4a9af92305c89390e
   m_configObjects: {}

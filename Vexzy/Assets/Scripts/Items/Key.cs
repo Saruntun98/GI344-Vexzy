@@ -14,7 +14,7 @@ public class Key : MonoBehaviour
 
     private void Update()
     {
-        eggChecked();
+        gameChecked();
     }
     
     private void OnTriggerEnter(Collider other)
@@ -31,11 +31,16 @@ public class Key : MonoBehaviour
         }
     }
 
-    public void eggChecked()
+    public void gameChecked()
     {
-        if (EggStatus.Instance.currentHealth < 0)
+        //  GameManager.instance.RuleCheck();
+        if (EggStatus.Instance.currentHealth > 0 && timingWorld.instance.timeRemaining > 0)
         {
-            Debug.Log("Egg die del Keys");
+            Debug.Log("Keys online");
+        }
+        else
+        {
+            Debug.Log("Egg die and time lost... del Keys");
             Destroy(gameObject);
         }
     }

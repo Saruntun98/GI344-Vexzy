@@ -60,15 +60,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        if (spawnPointPlayer != null)
-        {
-            SpawnPlayer(spawnPointPlayer);
-        }
-        else
-        {
-            Debug.LogWarning("GameManager.cs : spawnPointPlayer is null");
-        }
-        
+        SpawnPlayer(spawnPointPlayer);
         StartCoroutine(spawn());
         StartCoroutine(powerUpSpawn());
         currentLevel = 1;

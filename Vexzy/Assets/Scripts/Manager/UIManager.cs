@@ -11,9 +11,8 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] GameObject introMenu;
     [SerializeField] GameObject mainMenu;
-   // [SerializeField] GameObject player;
-    [SerializeField] Button ModeOneButton;
-    [SerializeField] Button ModeTwoButton;
+    [SerializeField] GameObject player;
+    [SerializeField] Button startButton;
     [SerializeField] Button tutorialButton;  
     [SerializeField] Button settingButton;        
 
@@ -22,8 +21,7 @@ public class UIManager : MonoBehaviour
         instance = this;
 
 
-        ModeOneButton.onClick.AddListener(PlayButton);
-        ModeTwoButton.onClick.AddListener(CrazyButton);
+        startButton.onClick.AddListener(PlayButton);
     }
 
     void Update()
@@ -38,11 +36,9 @@ public class UIManager : MonoBehaviour
 
     void PlayButton()
     {
+        //if (!string.IsNullOrEmpty(playerSelectName))
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-    }
-    void CrazyButton()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 3);
+        // GameManager.instance.playerName = playerSelectName;
     }
 
     public void Quit()

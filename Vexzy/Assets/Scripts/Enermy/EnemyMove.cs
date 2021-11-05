@@ -25,14 +25,21 @@ public class EnemyMove : MonoBehaviour
     void Update()
     {
         //nav.SetDestination(targetPlayer.position);
-        nav.SetDestination(targetEgg.position);
-        
-        
-        float distance = Vector3.Distance(targetPlayer.position, transform.position);
- 
-        if (distance <= lookRadius)
+        if (targetEgg != null)
         {
-            nav.SetDestination(targetPlayer.position);
+            nav.SetDestination(targetEgg.position);
+
+
+            float distance = Vector3.Distance(targetPlayer.position, transform.position);
+
+            if (distance <= lookRadius)
+            {
+                nav.SetDestination(targetPlayer.position);
+            }
+        }
+        else
+        {
+            // Find Egg
         }
     }
     

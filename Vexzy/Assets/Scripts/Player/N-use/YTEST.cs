@@ -38,7 +38,7 @@ public class YTEST : MonoBehaviour
     public float turnSmoothTime = 0.2f;
     float turnSmoothVelocity;
 
-    public static YTEST instance;
+    public static YTEST _instance;
     public float speedSmoothTime = 0.1f;
     public Transform player;
     float speedSmoothVelocity;
@@ -50,7 +50,7 @@ public class YTEST : MonoBehaviour
     {
         _defaultSpeed = _runningSpeed;
         _currentSpeed = _runningSpeed * 2;
-        instance = this;
+        _instance = this;
     }
     
     void Start()
@@ -121,13 +121,13 @@ public class YTEST : MonoBehaviour
 
     public  void NodeSprintCheck()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift) && PlayerStatus.instance.stamina > 10)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && PlayerStatus._instance.stamina > 10)
         {
             isRunning = true;
             //Run();
         }
 
-        if (Input.GetKeyUp(KeyCode.LeftShift) || PlayerStatus.instance.stamina <= 10)
+        if (Input.GetKeyUp(KeyCode.LeftShift) || PlayerStatus._instance.stamina <= 10)
         {
             isRunning = false;
             //Idle();
@@ -139,7 +139,7 @@ public class YTEST : MonoBehaviour
         if (isRunning && moveDirection != Vector3.zero)
         {
             _currentSpeed = _runningSpeed;
-            PlayerStatus.instance.stamina -= (10 * Time.deltaTime);
+            PlayerStatus._instance.stamina -= (10 * Time.deltaTime);
 
             //bool running = Input.GetKey(KeyCode.LeftShift);
             //MovementStafe()
@@ -161,13 +161,13 @@ public class YTEST : MonoBehaviour
     {
         if (!isRunning)
         {
-            if (PlayerStatus.instance.stamina < PlayerStatus.instance.maxStamina)
+            if (PlayerStatus._instance.stamina < PlayerStatus._instance.maxStamina)
             {
-                PlayerStatus.instance.stamina += (10 * Time.deltaTime);
+                PlayerStatus._instance.stamina += (10 * Time.deltaTime);
             }
             else
             {
-                PlayerStatus.instance.stamina = PlayerStatus.instance.maxStamina;
+                PlayerStatus._instance.stamina = PlayerStatus._instance.maxStamina;
             }
         }
 

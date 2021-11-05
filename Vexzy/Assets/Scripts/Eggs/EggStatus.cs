@@ -8,13 +8,12 @@ public class EggStatus : MonoBehaviour
 {
     [SerializeField]
     public int startHealth = 100;
-    [SerializeField]
-    public int currentHealth;
+
     public static EggStatus Instance;
     public GameObject deathEffect;
     public Transform eggPosition;
     public HealthBar healthBar; 
-
+    public int currentHealth;
     
     //private GameObject egg;
     private bool _isDead = false;
@@ -54,15 +53,12 @@ public class EggStatus : MonoBehaviour
     
     void Die ()
     {
-        //GameManager.instance.RuleCheck();
         _isDead = true;
 		Debug.Log("Egg Die");
         //GameObject effect = (GameObject)Instantiate(deathEffect, transform.position, Quaternion.identity);
         //Destroy(effect, 5f);
         //WaveSpawner.EnemiesAlive--;
-
-        //Key.Instance.eggChecked();
-        //Destroy(gameObject);
+        Destroy(gameObject);
     }
 	
 	/*private void OnTriggerEnter(Collider other)

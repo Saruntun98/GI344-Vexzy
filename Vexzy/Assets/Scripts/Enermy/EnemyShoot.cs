@@ -19,7 +19,7 @@ public class EnemyShoot : MonoBehaviour
     void Start()
     {
         
-        target = Player.instance.player.transform;
+        target = Player._instance.player.transform;
         //target = GameObject.FindGameObjectWithTag("Player").transform;
         //target = gameObject.tag == "Player"
     }

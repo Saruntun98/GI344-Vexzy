@@ -6,7 +6,7 @@ public class PlayerDestroy : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        if (PlayerStatus.instance.curHealth <= 10 && other.gameObject.tag == "Enemy")
+        if (PlayerStatus._instance.curHealth <= 10 && other.gameObject.tag == "Enemy")
         {
             //Destroy(gameObject);
             Debug.Log("Player is Dead Destroy");

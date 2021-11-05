@@ -14,12 +14,12 @@ public class EggStatus : MonoBehaviour
     public GameObject deathEffect;
     public Transform eggPosition;
     public HealthBar healthBar; 
-
     
-    //private GameObject egg;
     private bool _isDead = false;
-    private Collider collider;
+    //private Collider collider;
     
+    public spawnPet Pat;
+
     void Awake()
     {
         Instance = this;
@@ -65,12 +65,15 @@ public class EggStatus : MonoBehaviour
         //Destroy(gameObject);
     }
 	
-	/*private void OnTriggerEnter(Collider other)
+	private void OnTriggerEnter(Collider other)
     {
-        if (PlayerStatus._instance.curHealth <= 10 && other.gameObject.tag == "Enemy")
+        if (other.gameObject.tag == "Player")
         {
-            //Destroy(gameObject);
-            Debug.Log("Egg is Dead Destroy");
+            Destroy(gameObject);
+            Debug.Log("Pet spawn");
+            //spawnPet.Instance.petSpawn.Spawn();
+            Pat.Spawn();
+            //Instantiate(petSpawn, transform.position, Quaternion.identity);
         }
-    }*/
+    }
 }

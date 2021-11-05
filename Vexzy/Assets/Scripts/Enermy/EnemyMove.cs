@@ -31,23 +31,26 @@ public class EnemyMove : MonoBehaviour
 		if (distance <= lookRadius)
 		{
 			// Move towards the player
-			nav.SetDestination(targetPlayer.position);
-			if (distance <= nav.stoppingDistance)
+			if(nav.enabled)
 			{
+				nav.SetDestination(targetPlayer.position);
+				if (distance <= nav.stoppingDistance)
+				{
 				// Attack
 				//combatManager.Attack(Player.instance.playerStats);
-				FaceTarget();
+					FaceTarget();
+				}
 			}
 		}
         /*else if (enemyHealth.IsAlive)
         {
             nav.enabled = false;
         }*/
-        else
+        /*else
         {
-            //nav.enabled = false;
-            //anim.Play("Idle");
-        }
+            nav.enabled = false;
+            anim.Play("Idle");
+        }*/
 	}
 
 	// Point towards the player

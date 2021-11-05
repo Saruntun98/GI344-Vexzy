@@ -203,7 +203,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lookRadius: 10
-  targetPlayer: {fileID: 2573082657047765972, guid: 3b3a23678760ea644bd4026b89377bf7, type: 3}
+  targetPlayer: {fileID: 3547755318476313075, guid: 4de0ca8d7b3e430448faf2b7df49e233, type: 3}
   targetEgg: {fileID: 8874621721432095338, guid: 01f50637ac566064c83f4f58a478020b, type: 3}
 --- !u!195 &7402165207676423143
 NavMeshAgent:

@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class EnemyDestroy : MonoBehaviour
 {
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,29 +30,26 @@ public class EnemyDestroy : MonoBehaviour
             if (EggStatus.Instance != null)
             {
                 EggStatus.Instance.currentHealth -= 100;
-                //EggStatus.instance.startHealth -= 100;
+                //EggStatus._instance.startHealth -= 100;
             }
-            //EnemyMove.instance.nav.Stop();
             Destroy(gameObject);
         }
         if (other.gameObject.tag == "Player")
         {
-            if (PlayerStatus._instance != null)
+            if (PlayerStatus.instance != null)
             {
-                PlayerStatus._instance.curHealth -= 20;
+                PlayerStatus.instance.curHealth -= 20;
             }
-            //EnemyMove.instance.nav.Stop();
             Destroy(gameObject);
         }
 
         /*if (other.gameObject.name == "Weapon") {
             if (EnemyHealth._instance != null)
             {
-                EnemyHealth._instance.currentHealth -= PlayerStatus._instance.aDamage;
+                EnemyHealth._instance.currentHealth -= 30;
                 Debug.Log ("HP Enemy: "+EnemyHealth._instance.currentHealth);
-                Debug.Log ("Player damage: "+PlayerStatus._instance.aDamage);               
             }
-            //Destroy(gameObject);
+            Destroy(gameObject);
         }*/
     }
 }

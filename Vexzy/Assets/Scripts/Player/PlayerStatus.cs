@@ -19,7 +19,7 @@ public class PlayerStatus : MonoBehaviour
     [SerializeField] 
     public float timeLastHit = 2f;
 
-    public static PlayerStatus _instance;
+    public static PlayerStatus instance;
     public static int Rounds;
     //public HealthBar healthBar;
     //public Image staminaBar;
@@ -40,7 +40,7 @@ public class PlayerStatus : MonoBehaviour
 
     void Awake()
     {
-        _instance = this;
+        instance = this;
         //maxStamina = stamina;
     }
 
@@ -165,7 +165,7 @@ public class PlayerStatus : MonoBehaviour
             //blood.Play();
             curHealth -= 10;
             //audio.PlayOneShot(audio.clip);
-            GameManager.instance.HealthCheck();
+            //GameManager.instance.HealthCheck();
         }
         if (curHealth <= 0)
         {
@@ -176,11 +176,11 @@ public class PlayerStatus : MonoBehaviour
 
     void Die ()
     {
-        GameManager.instance.HealthCheck();
+        //GameManager.instance.RuleCheck();
         Debug.Log("Die");
         //blood.Play();
         //Player._instance.animator.SetBool("PlayerDie", false);
-        Player._instance.Die();
-        Player._instance._controller.enabled = false;
+        Player.instance.Die();
+        Player.instance._controller.enabled = false;
     }
 }

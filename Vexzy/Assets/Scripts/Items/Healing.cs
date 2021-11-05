@@ -8,9 +8,9 @@ public class Healing : MonoBehaviour
     {        
         if (other.gameObject.tag == "Player")
         {
-            if (PlayerStatus._instance != null)
+            if (PlayerStatus.instance != null)
             {
-                PlayerStatus._instance.curHealth += 25;
+                PlayerStatus.instance.curHealth += 25;
             }
             Destroy(gameObject);
         }

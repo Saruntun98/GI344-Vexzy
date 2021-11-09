@@ -15,6 +15,10 @@ public class EnemyDestroy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(EggStatus.Instance.currentHealth < 0)
+        {
+            Destroy(gameObject);
+        }
         
     }
 

@@ -15,7 +15,7 @@ public class EggStatus : MonoBehaviour
     public Transform eggPosition;
     public HealthBar healthBar; 
     
-    private bool _isDead = false;
+    public bool _isDead = false;
     //private Collider collider;
     
     public spawnPet Pat;
@@ -70,7 +70,10 @@ public class EggStatus : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             Destroy(gameObject);
+            Die();
+            
             Debug.Log("Pet spawn");
+            //Destroy(gameObject);
             //spawnPet.Instance.petSpawn.Spawn();
             Pat.Spawn();
             //Instantiate(petSpawn, transform.position, Quaternion.identity);

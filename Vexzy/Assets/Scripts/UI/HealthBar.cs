@@ -11,7 +11,6 @@ public class HealthBar : MonoBehaviour
     public Image fill;
     public Transform cam;
     
-
     public void SetMaxHealth(float health)
     {
         slider.maxValue = health;

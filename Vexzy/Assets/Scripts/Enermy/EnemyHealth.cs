@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class EnemyHealth : MonoBehaviour
 {
     [SerializeField] public float startHealth = 30;
-    [SerializeField] float timeLastHit = 2f;
+    //[SerializeField] float timeLastHit = 2f;
     private float timer = 0f;
     private NavMeshAgent nav;
     private Animator anim;
@@ -18,7 +18,7 @@ public class EnemyHealth : MonoBehaviour
     private Rigidbody rigidbody;
     private CapsuleCollider capsuleCollider;
     private ParticleSystem blood;
-    private Transform target;
+    //private Transform target;
     
     public static EnemyHealth instance;
     //public bool dead = false;
@@ -78,22 +78,31 @@ public class EnemyHealth : MonoBehaviour
             currentHealth = startHealth;
         }
     }
+
     private void OnTriggerEnter(Collider other)
     {
         
-        if (other.gameObject.name == "weapon") 
+        if (other.gameObject.name == "bullet(Clone)")  
+        {
+            currentHealth = currentHealth -= Bullet.instance.aDamage;
+            Debug.Log ("Bullet damage: "+Bullet.instance.aDamage);  
+            Debug.Log ("HP Enemy: "+currentHealth);             
+            TakeHit();
+        }
+
+        if (other.gameObject.name == "weapon")  
         {
             currentHealth = currentHealth -= PlayerStatus.instance.aDamage;
-            Debug.Log ("HP Enemy: "+currentHealth);
-            Debug.Log ("Player damage: "+PlayerStatus.instance.aDamage);               
+            Debug.Log ("Player damage: "+PlayerStatus.instance.aDamage);  
+            Debug.Log ("HP Enemy: "+currentHealth);             
             TakeHit();
-        }      
+        }                
         /*if (timer>=timeLastHit && !GameManager.instance.GameOver)
         {
             if (other.gameObject.name=="Weapon")
             {
                 TakeHit();
-                timer = 0;
+                timer = 0;  //weapon(Clone)
             }
         }*/
         /*if (other.gameObject.name == "Weapon") {
@@ -111,13 +120,19 @@ public class EnemyHealth : MonoBehaviour
             //anim.Play("Hurt");
             //blood.Play();
             //currentHealth -= 30;
-            currentHealth = currentHealth - PlayerStatus.instance.aDamage;
-            Debug.Log ("HP Enemy: "+currentHealth);
-            Debug.Log ("Player damage: "+PlayerStatus.instance.aDamage);
+            //currentHealth = currentHealth - PlayerStatus.instance.aDamage;
+            //currentHealth = currentHealth -= Bullet.instance.aDamage;
+            //currentHealth = currentHealth -= PlayerStatus.instance.aDamage;
+            
+            //Debug.Log ("HP Enemy: "+currentHealth);
+            //Debug.Log ("Player damage: "+PlayerStatus.instance.aDamage);
+
+            //Debug.Log ("HP Enemy: "+currentHealth);
         }
         if (currentHealth<=0)
         {
             isAlive = false;
+            Debug.Log ("Bot die");  
             killEnemy();
         }
     }
@@ -133,6 +148,7 @@ public class EnemyHealth : MonoBehaviour
         StartCoroutine(RemoveEnemy());
     }
 
+    
     IEnumerator RemoveEnemy()
     {
         yield return new WaitForSeconds(4f);

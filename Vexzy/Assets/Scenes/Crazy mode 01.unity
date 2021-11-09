@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000000, guid: d095ea8fe3ae4a54da9661506b51e591, type: 2}
+  m_LightingDataAsset: {fileID: 112000000, guid: 5fa190af22a250648965d56d91e44a0f, type: 2}
   m_LightingSettings: {fileID: 4890085278179872738, guid: 395b5ac6738a7c247b7b69c98180e432, type: 2}
 --- !u!196 &4
 NavMeshSettings:
@@ -39401,7 +39401,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startHealth: 30
-  timeLastHit: 2
   currentHealth: 0
   isAlive: 0
   damage: 50

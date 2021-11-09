@@ -8,6 +8,7 @@ public class EnemyMove : MonoBehaviour
     public Transform targetEgg;
     
     private NavMeshAgent nav;
+
 	//private EnemyHealth enemyHealth;
     
      void Awake()
@@ -17,6 +18,18 @@ public class EnemyMove : MonoBehaviour
 
 	void Start()
 	{
+		//targetPlayer = Player.instance.player.transform;
+        //targetEgg = EggStatus.Instance.eggPosition.transform;
+		if(EggStatus.Instance.currentHealth != 0)
+		{
+			targetEgg = EggStatus.Instance.eggPosition.transform;
+		}
+		else
+		{
+			EggStatus.Instance._isDead = true;
+			targetPlayer = Player.instance.player.transform;
+		}
+
 		targetPlayer = Player.instance.player.transform;
 		nav = GetComponent<NavMeshAgent>();
 		//combatManager = GetComponent<CharacterCombat>();
@@ -24,33 +37,55 @@ public class EnemyMove : MonoBehaviour
 
 	void Update ()
 	{
-		// Get the distance to the player
 		float distance = Vector3.Distance(targetPlayer.position, transform.position);
+		if(nav.enabled && EggStatus.Instance.currentHealth != 0)
+		{
+        nav.SetDestination(targetEgg.position);
+
+			if(!EggStatus.Instance._isDead)
+			{
+
+			
+		// Get the distance to the player
 
 		// If inside the radius
-		if (distance <= lookRadius)
+				if (distance <= lookRadius)
+				{
+					// Move towards the player
+					if(nav.enabled)
+					{
+						nav.SetDestination(targetPlayer.position);
+						if (distance <= nav.stoppingDistance)
+						{
+						// Attack
+						//combatManager.Attack(Player.instance.playerStats);
+							FaceTarget();
+						}
+					}
+				}
+			}
+			else
+			{
+				if(nav.enabled)
+				{
+					nav.SetDestination(targetPlayer.position);
+				}
+			}
+
+		}
+		/*else if(eggStatus._isDead = true) 
 		{
-			// Move towards the player
+			nav.enabled = false;
+		}*/
+        else
+        {
 			if(nav.enabled)
 			{
 				nav.SetDestination(targetPlayer.position);
-				if (distance <= nav.stoppingDistance)
-				{
-				// Attack
-				//combatManager.Attack(Player.instance.playerStats);
-					FaceTarget();
-				}
 			}
-		}
-        /*else if (enemyHealth.IsAlive)
-        {
-            nav.enabled = false;
-        }*/
-        /*else
-        {
-            nav.enabled = false;
-            anim.Play("Idle");
-        }*/
+            //nav.enabled = false;
+            //anim.Play("Idle");
+        }
 	}
 
 	// Point towards the player

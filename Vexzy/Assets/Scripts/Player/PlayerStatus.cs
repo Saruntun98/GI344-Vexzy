@@ -27,9 +27,6 @@ public class PlayerStatus : MonoBehaviour
     private float timer = 0f;
     
     public float maxStamina;
-    public float comBoOne;
-    public float comBoTwo;
-    public float comBoThree;
 
     public bool isOnGate = false;
     //public bool IsDead{ get{ return curHealth == 0;} }

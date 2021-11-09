@@ -4866,7 +4866,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startHealth: 30
-  timeLastHit: 2
   currentHealth: 0
   isAlive: 0
   damage: 50
@@ -4885,6 +4884,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lookRadius: 10
+  targetEgg: {fileID: 0}
 --- !u!195 &1348674391393348241
 NavMeshAgent:
   m_ObjectHideFlags: 0

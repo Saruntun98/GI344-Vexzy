@@ -29,8 +29,6 @@ public class Player : MonoBehaviour
     private float _doubleJumpMultiplier = 0.5f;
     [SerializeField]
     private GameObject _cameraRig;
-    [SerializeField]
-    private BoxCollider[] swordCollider;
     [SerializeField] 
     private bool isCamera;
     [SerializeField] 
@@ -67,6 +65,9 @@ public class Player : MonoBehaviour
     private float velocityY;
     //private float targetSpeed;
 
+    private bool _inputLocked;
+    private float inputlockingTime = 0.1111f;
+
     void Awake()
     {
         instance = this;
@@ -77,7 +78,6 @@ public class Player : MonoBehaviour
     void Start()
     {
         //jumpBool = Animator.StringToHash("Jump");
-        swordCollider = GetComponentsInChildren<BoxCollider>();
         animator = GetComponent<Animator>();
 		//animator = transform.GetChild(1).GetChild(0).GetComponent<Animator>();
         //_controller = GetComponent<CharacterController>();
@@ -91,7 +91,9 @@ public class Player : MonoBehaviour
 		if (jump && Input.GetKeyUp(KeyCode.Space))
 		{
 			jump = false;
+            Idle();
             animator.SetBool("Jump", false);
+            //animator.SetTrigger("Jump", false);
 		}
 
         //NodeSprintCheck();
@@ -111,8 +113,10 @@ public class Player : MonoBehaviour
             MovementPlatformer();
             //NodeSprintUsingStamina();
         }
-            TakeAttack();                
+            Combo.instance.TakeAttack();
         }
+
+
 
         /*if (_movementMode == MovementMode.Strafe)
         {
@@ -158,7 +162,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void TakeAttack()
+    /*private void TakeAttack()
     {
         if(Input.GetKeyDown(KeyCode.Mouse0)) //if (Input.GetMouseButton(0)) 
         {
@@ -167,7 +171,7 @@ public class Player : MonoBehaviour
             //BeginAttack();           
             Debug.Log ("Attack");
         }
-    }
+    }*/
     private bool IsPlayerMoving()
     {
         return Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0;
@@ -225,6 +229,13 @@ public class Player : MonoBehaviour
 
     }
 
+    IEnumerator DelayJump()
+    {
+        yield return new WaitForSeconds(0.25f);
+        animator.SetBool("Jump", false);
+        jump = false;
+    }
+
     private void MovementStafe()
     {
 
@@ -253,14 +264,16 @@ public class Player : MonoBehaviour
          
          moveDirection *= _defaultSpeed;
 
-         if (Input.GetKeyDown(KeyCode.Space))
+         if (Input.GetKeyDown(KeyCode.Space)) //Input.GetKeyDown(KeyCode.Space
          {
             Jump();
+            StartCoroutine(DelayJump());
          }
 
         if (Input.GetButtonDown("Jump"))
         {
            _directionY = _jumpSpeed;
+           StartCoroutine(DelayJump());
         }
         //Animator Fix
         } 
@@ -270,6 +283,7 @@ public class Player : MonoBehaviour
             {
                 _directionY = _jumpSpeed * _doubleJumpMultiplier;
                 _canDoubleJump = false;
+                StartCoroutine(DelayJump());
             }
         }
 
@@ -326,6 +340,7 @@ public class Player : MonoBehaviour
             {
                 float jumpVelocity = Mathf.Sqrt(-2 * _gravityPlatformer * jumpHeight);
                 velocityY = jumpVelocity;
+                StartCoroutine(DelayJump());
             }
         }
     }
@@ -352,6 +367,7 @@ public class Player : MonoBehaviour
    private void Jump()
    {
       animator.SetBool("Jump", true);
+      //animator.SetTrigger("Jump");
       jump = true;
       //velocity.y = Mathf.Sqrt(jumpHeight * -2 * _gravity);   
    }
@@ -371,28 +387,14 @@ public class Player : MonoBehaviour
       animator.SetLayerWeight(animator.GetLayerIndex("Attack Layer"), 0);
    }*/
 
-   private IEnumerator Attack()
+   /*private IEnumerator Attack()
    {
       //animator.SetLayerWeight(animator.GetLayerIndex("Attack Layer"), 1);
       animator.SetTrigger("Attack");
-      BeginAttack();
+      //BeginAttack();
       yield return new WaitForSeconds(3);
-      EndAttack();
+      //EndAttack();
       //animator.SetLayerWeight(animator.GetLayerIndex("Attack Layer"), 0);
-   }
+   }*/
 
-    public void BeginAttack()
-    {
-        foreach (var weapon in swordCollider)
-        {
-            weapon.enabled = true;
-        }
-    }
-    public void EndAttack()
-    {
-        foreach (var weapon in swordCollider)
-        {
-            weapon.enabled = false;
-        }
-    }
 }

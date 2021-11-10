@@ -372,12 +372,13 @@ public class Player : MonoBehaviour
       //velocity.y = Mathf.Sqrt(jumpHeight * -2 * _gravity);   
    }
 
-    public void Die ()
+    public void Die()
     {
         animator.SetTrigger("PlayerDie");
         isDead = true;
         //_controller.enabled = false;
     }
+
 
    /*private void Attack()
    {

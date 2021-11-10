@@ -1980,7 +1980,7 @@ GameObject:
   - component: {fileID: 3942498877176149534}
   - component: {fileID: 3942498877176149532}
   - component: {fileID: 3942498877176149533}
-  - component: {fileID: -6099648327049547840}
+  - component: {fileID: 2387566827094759000}
   m_Layer: 12
   m_Name: Player
   m_TagString: Player
@@ -2062,9 +2062,6 @@ MonoBehaviour:
   aDamage: 100
   timeLastHit: 2
   maxStamina: 0
-  comBoOne: 0
-  comBoTwo: 0
-  comBoThree: 0
   isOnGate: 0
   IsDead: 0
 --- !u!114 &3942498877176149533
@@ -2088,8 +2085,6 @@ MonoBehaviour:
   _jumpSpeed: 3.5
   _doubleJumpMultiplier: 0.8
   _cameraRig: {fileID: 0}
-  swordCollider:
-  - {fileID: 3942498876566137254}
   isCamera: 0
   isRunning: 0
   jump: 0
@@ -2099,7 +2094,7 @@ MonoBehaviour:
   turnSmoothTime: 0.2
   speedSmoothTime: 0.1
   player: {fileID: 3547755318476313075}
---- !u!114 &-6099648327049547840
+--- !u!114 &2387566827094759000
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

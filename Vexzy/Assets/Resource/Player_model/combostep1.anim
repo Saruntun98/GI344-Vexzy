@@ -22675,7 +22675,7 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.33333334
+  - time: 0.5416667
     functionName: NextAtk
     data: 
     objectReferenceParameter: {fileID: 0}

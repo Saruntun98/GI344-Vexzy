@@ -5,7 +5,7 @@ using UnityEngine;
 public class Combo : MonoBehaviour
 {
     Animator playerAnim;
-
+    [SerializeField] private BoxCollider[] swordCollider;
     public bool comboPossible;
     public int comboStep;
     bool inputSmash;
@@ -80,13 +80,12 @@ public class Combo : MonoBehaviour
             inputSmash = true;
         }
     }*/
-    public static Combo instance;
-    [SerializeField] private BoxCollider[] swordCollider;
-    void Update()
-    {
-        
-    }
 
+    public static Combo instance;
+    void Awake()
+    {
+        instance = this;
+    }
     public void TakeAttack()
     {
         if (Input.GetMouseButtonDown(0))
@@ -94,6 +93,13 @@ public class Combo : MonoBehaviour
             NormalAttack();
             BeginAttack();
         }
+    }
+
+    void Update()
+    {
+        /*if (Input.GetMouseButtonDown(1))
+            SmashAttack();*/
+        
     }
     public void BeginAttack()
     {
@@ -108,9 +114,5 @@ public class Combo : MonoBehaviour
         {
             weapon.enabled = false;
         }
-    }
-    void Awake()
-    {
-        instance = this;
     }
 }

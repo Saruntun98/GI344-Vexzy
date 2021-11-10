@@ -1,4 +1,4 @@
-using System;
+//using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,59 +8,63 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public static GameManager instance;
+    //Wave Enemy
+    public enum SpawnState { SPAWNING, WAITING, COUNTING, FINISHED};
+    [System.Serializable]
+    public class WaveEnemy
+    {
+        public string name;
+        public Transform enemy;
+        public int count;
+        public float rate;
+    }
 
-    //[SerializeField] List<GameObject> playerList = new List<GameObject>();
-    
+    //Game Over
     [SerializeField] public bool gameOver = false;
     [SerializeField] GameObject player;
-    //private GameObject player;
-    //[SerializeField] GameObject[] spawnPoint;
-    //[SerializeField] GameObject tanker;
-    //[SerializeField] GameObject soldier;
-    //[SerializeField] GameObject ranger;
-    //[SerializeField] Text leveltext;
-    //[SerializeField] Text endGametxt;
-    private int currentLevel;
-    private int finalLevel = 5;
-    private float generateSpawnTime = 1;
+    [SerializeField] public Transform spawnPointPlayer;  
+    public string NameScenes;
+    // Key
+    public int keyItemCount;
+    public int currentKeyItem;
+    
+    public bool isEnemyWave = false;
+    public WaveEnemy[] waves;
+    private int nextWave = 0;
+
+    public Transform[] spawnPointsEnemy;
+
+    public float timeBetweenWaves = 5f;
+    public float waveCountdown;
+
+    private float searchCountdown = 1f;
+
+    public SpawnState state = SpawnState.COUNTING;
+
+
+
+    // Nanager
+    public static GameManager instance;
+    //private float generateSpawnTime = 1;
     private float currentSpawnTime = 0;
     //private GameObject newEnemy;
     private bool isPlayerExist = false;
     private List<EnemyHealth> enemies = new List<EnemyHealth>();
     private List<EnemyHealth> killememies = new List<EnemyHealth>();
 
-    //[SerializeField] 
-    //timingWorld TimingWorld;
-   // [SerializeField] GameObject arrow;
 
-    // Health Power Up
-    [SerializeField] GameObject healthPowerUp;
-    [SerializeField] GameObject[] healthspawnPoint;
-    [SerializeField] int maxPowerUp = 4;
-
-    [SerializeField] public Transform spawnPointPlayer;
-
-    private float powerUpSpawnTime = 3f;
-    private float currentPowerUpSpawnTime = 0f;
-    private int powerUp = 0;
+    // Enemy Up time
+    public bool isEnemyTime = false;
+    [SerializeField] GameObject enemyUp;
+    [SerializeField] int maxEnemy = 4;
+    [SerializeField] private float powerUpSpawnTime = 3f; 
+    [SerializeField] GameObject[] enemySpawnPointX2;  
+    private float currentSpawnTimeEnemy = 0f;
+    private int enemyCurrent = 0;
     private GameObject newPowerUp;
-
-    public int keyItemCount;
-    public int currentKeyItem;
-    public string NameScenes;
 
     private void Awake()
     {
-        /*if (instance==null)
-        {
-            instance = this;
-        }
-        else if(instance!=this)
-        {
-            Destroy(gameObject);
-        }*/
         instance = this;
         Time.timeScale = 1;
     }
@@ -72,17 +76,47 @@ public class GameManager : MonoBehaviour
         var keyCout = GameObject.FindGameObjectsWithTag("Key");
         keyItemCount = keyCout.Length;
 
-        StartCoroutine(spawn());
-        StartCoroutine(powerUpSpawn());
-        currentLevel = 1;
+        //StartCoroutine(EnemyUpSpawnX2());
+        /*if(isEnemyWave)
+        {
+            EnemyV1();
+        }
+        EnemyV2();*/
+        //Wave
+        /*if(spawnPointsEnemy.Length == 0)
+        {
+            Debug.LogError("No spwan points enemy.");
+        }
+        waveCountdown = timeBetweenWaves;*/
     }
     private void Update()
     {
         RuleCheck();
         KeyItemCheck();
         Cheat();
-        currentSpawnTime += Time.deltaTime;
-        currentPowerUpSpawnTime += Time.deltaTime;
+
+        //enemyv1
+        if(isEnemyWave)
+        {
+            EnemyV1();
+        }
+
+        //enemyv1
+        if(isEnemyTime)
+        {
+            EnemyV2();
+            currentSpawnTime += Time.deltaTime;
+            currentSpawnTimeEnemy += Time.deltaTime;
+
+            if(spawnPointsEnemy.Length == 0)
+            {
+                Debug.LogError("No spwan points enemy.");
+            }
+            waveCountdown = timeBetweenWaves;
+        }
+
+        //currentSpawnTime += Time.deltaTime;
+        //currentSpawnTimeEnemy += Time.deltaTime;
     }
     public bool GameOver
     {
@@ -91,30 +125,49 @@ public class GameManager : MonoBehaviour
             return gameOver;
         }
     }
-    /*public GameObject Arrow
+    void WeveCompleted()
     {
-        get
+        Debug.Log("Wave Completed!");
+
+        state = SpawnState.COUNTING;
+        waveCountdown = timeBetweenWaves;
+
+        if(nextWave +1 > waves.Length -1)
         {
-            return arrow;
+            state=SpawnState.FINISHED;
+            Debug.Log("All Waves Completed!");
         }
-    }*/
+        else
+        {
+            nextWave++;
+        }
+            //nextWave++;
+    }
+
+    bool EnemyIsAlive()
+    {
+        searchCountdown -= Time.deltaTime;
+        if(searchCountdown <= 0f)
+        {
+            searchCountdown = 1f;
+            if (GameObject.FindGameObjectWithTag("Enemy") == null)
+            {
+                 return false;
+             }
+        }
+        return true;
+    }
 
     void SpawnPlayer(Transform spawnPosition)
     {
         if (!isPlayerExist)
-        {
-            
-            //player = (GameObject)Instantiate(playerList[0], spawnPosition.position, Quaternion.identity);
-            //Instantiate(player, spawnPosition.position, Quaternion.identity);   
+        {  
             player = Instantiate(player, spawnPosition.position, Quaternion.identity);       
             isPlayerExist = true;
-            
         }
     }
-
     void KeyItemCheck()
     {
-        // player.GetComponent
         if (player != null)
         {
             if (currentKeyItem >= keyItemCount)
@@ -129,7 +182,6 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-
     void Cheat()
     {
         if (Input.GetKeyDown(KeyCode.F1))
@@ -148,15 +200,6 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
-
-
-    public GameObject Player
-    {
-        get
-        {
-            return player;
-        }
-    }
     public void RuleCheck()
     {
         //player.GetComponentInChildren<PlayerStatus>().curHealth <= 0
@@ -164,16 +207,19 @@ public class GameManager : MonoBehaviour
         if (player.GetComponentInChildren<PlayerStatus>().curHealth <= 0)
         {
             gameOver = true;
+            state=SpawnState.FINISHED;
             Debug.Log("GameOver 01");
         }
         if (EggStatus.Instance.currentHealth <= 0) //EggStatus.Instance.currentHealth > 0 (player.GetComponentInChildren<PlayerStatus>().curHealth > 0) timungWorld.instance.timeRemaining < 0
         {
             gameOver = true;
+            state=SpawnState.FINISHED;
             Debug.Log("gameOver 02");
         }
         if (timingWorld.instance.timeRemaining <= 0) //timingWorld.instance.timeRemaining < 0
         {
             gameOver = true;
+            state=SpawnState.FINISHED;
             Debug.Log("gameOver 03");
         }
         /*else
@@ -195,75 +241,100 @@ public class GameManager : MonoBehaviour
 
     public void RegisterPowerUp()
     {
-        powerUp++;
+        enemyCurrent++;
     }
-    IEnumerator spawn()
+    IEnumerator SpawnWave (WaveEnemy _wave)
     {
-        if (currentSpawnTime>generateSpawnTime)
+        Debug.Log("Spawning Wave: "+ _wave.name);
+        state = SpawnState.SPAWNING;
+
+        for(int i = 0; i < _wave.count; i++)
         {
-            currentSpawnTime = 0;
-            if (enemies.Count<currentLevel)
-            {
-
-                //int randomNumber = UnityEngine.Random.Range(0,spawnPoint.Length);
-                //GameObject spawnLocation = spawnPoint[randomNumber];
-                /*int randomEnemy = UnityEngine.Random.Range(0, 3);
-
-                if (randomEnemy==0)
-                {
-                    newEnemy = Instantiate(soldier) as GameObject;
-                }
-                if (randomEnemy == 1)
-                {
-                    newEnemy = Instantiate(tanker) as GameObject;
-                }
-                if (randomEnemy == 2)
-                {
-                    newEnemy = Instantiate(ranger) as GameObject;
-                }*/
-                //newEnemy.transform.position = spawnLocation.transform.position;
-            }
-
-            /*if (killememies.Count==currentLevel && currentLevel!=finalLevel)
-            {
-                enemies.Clear();
-                killememies.Clear();
-                yield return new WaitForSeconds(3f);
-                currentLevel++;
-                leveltext.text = "Level = " + currentLevel;
-            }
-            if (killememies.Count == finalLevel)
-            {
-                StartCoroutine(endGame("Victory!"));
-            }*/
+            SpawnEnemy(_wave.enemy);
+            yield return new WaitForSeconds(1f/_wave.rate);
         }
-        yield return null;
-        StartCoroutine(spawn());
+
+        state = SpawnState.WAITING;
+
+        yield break;
     }
 
+    void SpawnEnemy (Transform _enemy)
+    {
+        Debug.Log("Spawning Enemy: "+ _enemy.name);
+
+
+        Transform _sp = spawnPointsEnemy[Random.Range (0, spawnPointsEnemy.Length)];
+        Instantiate(_enemy, _sp.position, _sp.rotation);
+    }
     /*IEnumerator endGame(string message)
     {
-        endGametxt.text = message;
-        endGametxt.gameObject.SetActive(true);
+        //endGametxt.text = message;
+        //endGametxt.gameObject.SetActive(true);
         yield return new WaitForSeconds(5f);
         SceneManager.LoadScene("StartGame");
     }*/
-
-    IEnumerator powerUpSpawn()
+    private void EnemyV1()
     {
-        if (currentPowerUpSpawnTime > powerUpSpawnTime)
+        //Wave
+        if(state == SpawnState.FINISHED)
         {
-            currentPowerUpSpawnTime = 0;
-            if (powerUp < maxPowerUp)
+            return;
+        }
+        if(state == SpawnState.WAITING)
+        {
+            //check enemy alive
+            if(!EnemyIsAlive())
+            {
+               WeveCompleted();
+            }
+            else
+            {
+                return;
+            }
+        }
+
+        if (waveCountdown <= 0)
+        {
+            if(state != SpawnState.SPAWNING)
+            {
+                StartCoroutine(SpawnWave(waves[nextWave]));
+            }
+        }
+        else
+        {
+            waveCountdown -= Time.deltaTime;
+        }    
+    }
+    private void EnemyV2()
+    {
+        if(isEnemyTime)
+        {
+            if(isEnemyWave == false)
+            {
+                StartCoroutine(EnemyUpSpawnX2());
+            }
+            else
             {
 
-                int randomNumber = UnityEngine.Random.Range(0, healthspawnPoint.Length);//0 
-                GameObject spawnLocation = healthspawnPoint[randomNumber];
-                newPowerUp = Instantiate(healthPowerUp) as GameObject;
+            }
+        }        
+    }
+    IEnumerator EnemyUpSpawnX2()
+    {
+        if (currentSpawnTimeEnemy > powerUpSpawnTime)
+        {
+            currentSpawnTimeEnemy = 0;
+            if (enemyCurrent < maxEnemy)
+            {
+
+                int randomNumber = UnityEngine.Random.Range(0, enemySpawnPointX2.Length);//0 
+                GameObject spawnLocation = enemySpawnPointX2[randomNumber];
+                newPowerUp = Instantiate(enemyUp) as GameObject;
                 newPowerUp.transform.position = spawnLocation.transform.position;
             }
         }
         yield return null;
-        StartCoroutine(powerUpSpawn());
+        StartCoroutine(EnemyUpSpawnX2());
     }
 }

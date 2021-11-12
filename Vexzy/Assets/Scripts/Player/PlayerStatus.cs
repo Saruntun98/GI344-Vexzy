@@ -151,6 +151,12 @@ public class PlayerStatus : MonoBehaviour
                 timer = 0;
             }
         }
+        /*if(other.gameObject.name == "Checker")
+        {
+            //interactingCanvasUi.gameObject.SetActive(true);
+            EggStatus.Instance.BeginEgg(); //Use real is enermy die and win
+            Debug.Log("55+");
+        }*/  
     }
 
     private void TakeHit()

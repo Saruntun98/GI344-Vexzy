@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637692381546942442
-    m_Hash: 4247758528
+      ticks: 637721502378801806
+    m_Hash: 552796766
   m_LockFileStatus:
     m_FilePath: D:/Work/GI344-Vexzy/Vexzy/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637692381547562982
-    m_Hash: 968042568
+      ticks: 637721502378801806
+    m_Hash: 4020626834
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_PackageAssets:

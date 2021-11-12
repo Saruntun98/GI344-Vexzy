@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
 
     //Game Over
     [SerializeField] public bool gameOver = false;
+    [SerializeField] public bool gameWiner = false;
     [SerializeField] GameObject player;
     [SerializeField] public Transform spawnPointPlayer;  
     public string NameScenes;
@@ -86,8 +87,8 @@ public class GameManager : MonoBehaviour
         /*if(spawnPointsEnemy.Length == 0)
         {
             Debug.LogError("No spwan points enemy.");
-        }
-        waveCountdown = timeBetweenWaves;*/
+        }*/
+        waveCountdown = timeBetweenWaves;
     }
     private void Update()
     {
@@ -107,18 +108,25 @@ public class GameManager : MonoBehaviour
             EnemyV2();
             currentSpawnTime += Time.deltaTime;
             currentSpawnTimeEnemy += Time.deltaTime;
-
-            if(spawnPointsEnemy.Length == 0)
+            
+            if(spawnPointsEnemy.Length == 0 && isEnemyTime == true)
             {
                 Debug.LogError("No spwan points enemy.");
             }
-            waveCountdown = timeBetweenWaves;
+            //waveCountdown = timeBetweenWaves;
         }
 
         //currentSpawnTime += Time.deltaTime;
         //currentSpawnTimeEnemy += Time.deltaTime;
     }
     public bool GameOver
+    {
+        get
+        {
+            return gameOver;
+        }
+    }
+    public bool GameWiner
     {
         get
         {
@@ -135,7 +143,9 @@ public class GameManager : MonoBehaviour
         if(nextWave +1 > waves.Length -1)
         {
             state=SpawnState.FINISHED;
+            gameWiner = true;
             Debug.Log("All Waves Completed!");
+            CheckWiner();
         }
         else
         {
@@ -172,13 +182,30 @@ public class GameManager : MonoBehaviour
         {
             if (currentKeyItem >= keyItemCount)
             {
-                //if (player.GetComponentInChildren<PlayerStatus>().isOnGate)
+                //if (player.GetComponentInChildren<PlayerStatus>().isOnGate)  isSpawned = true
                 if (player.GetComponentInChildren<PlayerStatus>().isOnGate)
+                {
+                    //Debug.Log(true);
+                    //SceneManager.LoadScene(NameScenes);
+                    //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+
+                    if(spawnPet.Instance.isSpawned == true)
+                    {
+                        Debug.Log("true Warpppppppppppppppppppppppppp");
+                        SceneManager.LoadScene(NameScenes); 
+                    }
+                    else
+                    {
+                        Debug.Log("No Warpppppppppppppppppppppppppp");
+                    }
+
+                }
+                /*if (player.GetComponentInChildren<PlayerStatus>().isOnGate)
                 {
                     Debug.Log(true);
                     SceneManager.LoadScene(NameScenes);
                     //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-                }
+                }*/
             }
         }
     }
@@ -208,12 +235,14 @@ public class GameManager : MonoBehaviour
         {
             gameOver = true;
             state=SpawnState.FINISHED;
+            timingWorld.instance.timerIsRunning = false;
             Debug.Log("GameOver 01");
         }
         if (EggStatus.Instance.currentHealth <= 0) //EggStatus.Instance.currentHealth > 0 (player.GetComponentInChildren<PlayerStatus>().curHealth > 0) timungWorld.instance.timeRemaining < 0
         {
             gameOver = true;
             state=SpawnState.FINISHED;
+            timingWorld.instance.timerIsRunning = false;
             Debug.Log("gameOver 02");
         }
         if (timingWorld.instance.timeRemaining <= 0) //timingWorld.instance.timeRemaining < 0
@@ -228,6 +257,16 @@ public class GameManager : MonoBehaviour
             Debug.Log("gameOver");
             //StartCoroutine(endGame("Game Over!"));
         }*/
+    }
+
+    public void CheckWiner()
+    {
+        if(gameWiner)
+        {
+            Debug.Log("Win");
+            //interactingCanvasUi.gameObject.SetActive(true);
+            EggStatus.Instance.BeginEgg(); //Use real is enermy die and win 
+        }        
     }
     
     public void RegisterEnemy(EnemyHealth enemy)
@@ -314,10 +353,10 @@ public class GameManager : MonoBehaviour
             {
                 StartCoroutine(EnemyUpSpawnX2());
             }
-            else
+            /*else
             {
 
-            }
+            }*/
         }        
     }
     IEnumerator EnemyUpSpawnX2()

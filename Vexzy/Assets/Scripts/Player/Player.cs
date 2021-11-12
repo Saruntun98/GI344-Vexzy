@@ -10,7 +10,8 @@ public class Player : MonoBehaviour
         Strafe
     }
 
-   
+    /*[SerializeField] 
+    public bool isFoundEgg = false;*/
     [SerializeField]
     private MovementMode _movementMode = MovementMode.Strafe;
     [SerializeField]
@@ -115,9 +116,7 @@ public class Player : MonoBehaviour
         }
             Combo.instance.TakeAttack();
         }
-
-
-
+        //CheckSpawnPet();
         /*if (_movementMode == MovementMode.Strafe)
         {
             MovementStafe();
@@ -132,6 +131,24 @@ public class Player : MonoBehaviour
         TakeAttack();*/
     }
     
+    /*public void CheckSpawnPet()
+    {
+        if(Input.GetKeyDown(KeyCode.F))
+        {
+            if(EggStatus.Instance.isFoundEgg)
+            {
+                if(spawnPet.Instance.isSpawned == false)
+                {
+                    spawnPet.Instance.Spawn();
+                }
+                else
+                {
+                    spawnPet.Instance.Despawned();
+                }
+            }
+        }
+    }*/
+
     private bool isPressingKey;
     private bool CameraIsPressingKey
     {
@@ -398,4 +415,19 @@ public class Player : MonoBehaviour
       //animator.SetLayerWeight(animator.GetLayerIndex("Attack Layer"), 0);
    }*/
 
+    /*void OnTriggerStay(Collider other)
+    {
+        if(other.CompareTag("Eggs"))
+        {
+            isFoundEgg = true;
+        }
+    }*/
+
+    /*void OnTriggerExit(Collider other)
+    {
+        if(other.CompareTag("Eggs"))
+        {
+            isFoundEgg = false;
+        }
+    }*/
 }

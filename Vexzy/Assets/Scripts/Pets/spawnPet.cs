@@ -6,8 +6,9 @@ public class spawnPet : MonoBehaviour
 {
     public GameObject[] pet;
     public EggStatus egg;
-
+    public bool isSpawned = false;
     public static spawnPet Instance;  
+    [SerializeField] private Canvas interactingCanvasUi;
     int randomPet;
 
     void Awake()
@@ -19,6 +20,11 @@ public class spawnPet : MonoBehaviour
     {
        randomPet = Random.Range(0, pet.Length);
        Instantiate(pet[randomPet], egg.eggPosition.position, egg.eggPosition.rotation);
+       isSpawned = true;
     }
 
+    public void Despawned()
+    {
+        isSpawned = false;
+    }
 }

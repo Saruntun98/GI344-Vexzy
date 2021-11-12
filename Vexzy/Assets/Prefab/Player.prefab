@@ -247,7 +247,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1127719167854639284}
-  m_LocalRotation: {x: 0.25589535, y: -0.0012300697, z: 0.00018008819, w: 0.9667038}
+  m_LocalRotation: {x: 0.25589535, y: -0.0011590901, z: 0.00016969697, w: 0.96670383}
   m_LocalPosition: {x: 0, y: 0.08707382, z: -0.09341895}
   m_LocalScale: {x: 0.01, y: 0.010000001, z: 0.010000001}
   m_Children: []
@@ -1285,7 +1285,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3942498877635351066}
-  m_LocalRotation: {x: 0.25115022, y: -0.000000008327442, z: 0.0000000021606927, w: 0.96794814}
+  m_LocalRotation: {x: 0.25115022, y: 0.000000008327442, z: -0.0000000021606927, w: 0.96794814}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1485,7 +1485,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3942498877931456371}
-  m_LocalRotation: {x: 0.19997178, y: -0.0018054283, z: 0.00036847798, w: 0.9797999}
+  m_LocalRotation: {x: 0.1999718, y: -0.001701247, z: 0.00034721513, w: 0.9798001}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1981,6 +1981,7 @@ GameObject:
   - component: {fileID: 3942498877176149532}
   - component: {fileID: 3942498877176149533}
   - component: {fileID: 2387566827094759000}
+  - component: {fileID: 2433912729486728072}
   m_Layer: 12
   m_Name: Player
   m_TagString: Player
@@ -2106,8 +2107,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf9d9dacd4a7d69449f246affdfa7b88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  swordCollider: []
   comboPossible: 0
   comboStep: 0
+--- !u!135 &2433912729486728072
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4213108684462017353}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.04
+  m_Center: {x: 0, y: 0.02, z: 0}
 --- !u!1 &4569607928813780562
 GameObject:
   m_ObjectHideFlags: 0

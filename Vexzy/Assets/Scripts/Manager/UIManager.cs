@@ -42,7 +42,7 @@ public class UIManager : MonoBehaviour
     }
     void CrazyButton()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 3);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
     }
 
     public void Quit()

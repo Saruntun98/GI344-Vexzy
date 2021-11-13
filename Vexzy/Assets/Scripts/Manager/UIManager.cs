@@ -23,7 +23,9 @@ public class UIManager : MonoBehaviour
 
 
         ModeOneButton.onClick.AddListener(PlayButton);
-        ModeTwoButton.onClick.AddListener(CrazyButton);
+        ModeTwoButton.onClick.AddListener(LoobButton);
+        tutorialButton.onClick.AddListener(TutorialButton);
+
     }
 
     void Update()
@@ -40,11 +42,14 @@ public class UIManager : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
-    void CrazyButton()
+    void TutorialButton()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
     }
-
+    void LoobButton()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 3);
+    }
     public void Quit()
     {
         Application.Quit();

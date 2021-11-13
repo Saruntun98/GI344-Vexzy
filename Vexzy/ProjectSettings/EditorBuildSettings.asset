@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/map01.unity
     guid: e2b8e44293b3ae948826992aa4e944d1
   - enabled: 1
+    path: Assets/Scenes/Tutorial.unity
+    guid: 75a1b4b256947b441a95586707857f11
+  - enabled: 1
     path: Assets/Scenes/LoopGame1.unity
     guid: 5c26280e138773f4fbf8d27ede6f31bc
   - enabled: 1

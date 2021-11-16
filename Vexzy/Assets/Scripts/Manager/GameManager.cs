@@ -22,6 +22,10 @@ public class GameManager : MonoBehaviour
     //Game Over
     [SerializeField] public bool gameOver = false;
     [SerializeField] public bool gameWiner = false;
+    [SerializeField] public bool gameRound = false;
+    [SerializeField] int piller1;
+    [SerializeField] int piller2;
+    [SerializeField] public int piller3;
     [SerializeField] GameObject player;
     [SerializeField] public Transform spawnPointPlayer;  
     public string NameScenes;
@@ -56,7 +60,9 @@ public class GameManager : MonoBehaviour
 
     // Enemy Up time
     public bool isEnemyTime = false;
-    [SerializeField] GameObject enemyUp;
+    [SerializeField] GameObject enemyType1;
+    [SerializeField] GameObject enemyType2;
+    [SerializeField] GameObject enemyType3;
     [SerializeField] int maxEnemy = 4;
     [SerializeField] private float powerUpSpawnTime = 3f; 
     [SerializeField] GameObject[] enemySpawnPointX2;  
@@ -115,7 +121,10 @@ public class GameManager : MonoBehaviour
             }
             //waveCountdown = timeBetweenWaves;
         }
-
+        if(gameRound)
+        {
+            thisGameRoud();
+        }
         //currentSpawnTime += Time.deltaTime;
         //currentSpawnTimeEnemy += Time.deltaTime;
     }
@@ -198,7 +207,6 @@ public class GameManager : MonoBehaviour
                     {
                         Debug.Log("No Warpppppppppppppppppppppppppp");
                     }
-
                 }
                 /*if (player.GetComponentInChildren<PlayerStatus>().isOnGate)
                 {
@@ -206,6 +214,20 @@ public class GameManager : MonoBehaviour
                     SceneManager.LoadScene(NameScenes);
                     //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
                 }*/
+            }
+            if (currentKeyItem == piller1)
+            {
+                EmissionControl.instance.materialPillerType1.EnableKeyword ("_EMISSION");              
+            }
+            if (currentKeyItem == piller2)
+            {
+                EmissionControl.instance.materialPillerType2.EnableKeyword ("_EMISSION");                
+            }
+            if (currentKeyItem == piller3)
+            {
+                EmissionControl.instance.materialPillerType3.EnableKeyword ("_EMISSION");
+                gameWiner = true;
+                isEnemyTime = false;
             }
         }
     }
@@ -233,6 +255,7 @@ public class GameManager : MonoBehaviour
         //if (PlayerStatus.instance.curHealth > 0)
         if (player.GetComponentInChildren<PlayerStatus>().curHealth <= 0)
         {
+            isEnemyTime = false;
             gameOver = true;
             state=SpawnState.FINISHED;
             timingWorld.instance.timerIsRunning = false;
@@ -240,6 +263,7 @@ public class GameManager : MonoBehaviour
         }
         if (EggStatus.Instance.currentHealth <= 0) //EggStatus.Instance.currentHealth > 0 (player.GetComponentInChildren<PlayerStatus>().curHealth > 0) timungWorld.instance.timeRemaining < 0
         {
+            isEnemyTime = false;
             gameOver = true;
             state=SpawnState.FINISHED;
             timingWorld.instance.timerIsRunning = false;
@@ -247,6 +271,7 @@ public class GameManager : MonoBehaviour
         }
         if (timingWorld.instance.timeRemaining <= 0) //timingWorld.instance.timeRemaining < 0
         {
+            isEnemyTime = false;
             gameOver = true;
             state=SpawnState.FINISHED;
             Debug.Log("gameOver 03");
@@ -359,6 +384,14 @@ public class GameManager : MonoBehaviour
             }*/
         }        
     }
+    private void thisGameRoud()
+    {
+        if(currentKeyItem >= keyItemCount)
+        {
+            Debug.Log("Win");
+            isEnemyTime = false;
+        }        
+    }
     IEnumerator EnemyUpSpawnX2()
     {
         if (currentSpawnTimeEnemy > powerUpSpawnTime)
@@ -369,7 +402,20 @@ public class GameManager : MonoBehaviour
 
                 int randomNumber = UnityEngine.Random.Range(0, enemySpawnPointX2.Length);//0 
                 GameObject spawnLocation = enemySpawnPointX2[randomNumber];
-                newPowerUp = Instantiate(enemyUp) as GameObject;
+                int randomEnemy = UnityEngine.Random.Range(0, 3);
+                //newPowerUp = Instantiate(enemyUp) as GameObject;
+                if (randomEnemy==0)
+                {
+                    newPowerUp = Instantiate(enemyType1) as GameObject;
+                }
+                if (randomEnemy == 1)
+                {
+                    newPowerUp = Instantiate(enemyType2) as GameObject;
+                }
+                if (randomEnemy == 2)
+                {
+                    newPowerUp = Instantiate(enemyType3) as GameObject;
+                }
                 newPowerUp.transform.position = spawnLocation.transform.position;
             }
         }

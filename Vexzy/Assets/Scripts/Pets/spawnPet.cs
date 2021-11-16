@@ -8,7 +8,7 @@ public class spawnPet : MonoBehaviour
     public EggStatus egg;
     public bool isSpawned = false;
     public static spawnPet Instance;  
-    [SerializeField] private Canvas interactingCanvasUi;
+    //[SerializeField] private Canvas interactingCanvasUi;
     int randomPet;
 
     void Awake()

@@ -17,9 +17,11 @@ public class GameManagerTEST : MonoBehaviour
     [SerializeField] GameObject ranger;
     [SerializeField] Text leveltext;
     [SerializeField] Text endGametxt;
-    public int currentLevel;
-    public int finalLevel = 5;
-    public float generateSpawnTime = 1;
+    
+    [SerializeField]private int currentLevel;
+    
+    [SerializeField]private int finalLevel = 5;
+    private float generateSpawnTime = 1;
     private float currentSpawnTime = 0;
     private GameObject newEnemy;
 
@@ -33,7 +35,7 @@ public class GameManagerTEST : MonoBehaviour
     [SerializeField] GameObject[] healthspawnPoint;
     [SerializeField] int maxPowerUp = 4;
 
-    public float powerUpSpawnTime = 3f;
+    private float powerUpSpawnTime = 3f;
     private float currentPowerUpSpawnTime = 0f;
     private int powerUp = 0;
     private GameObject newPowerUp;

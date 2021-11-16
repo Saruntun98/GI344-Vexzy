@@ -15,11 +15,20 @@ public class EnemyDestroy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(EggStatus.Instance.currentHealth < 0)
+        if(EggStatus.Instance.currentHealth <= 0)
         {
             Destroy(gameObject);
         }
         
+        if(PlayerStatus.instance.curHealth <= 0)
+        {
+            Destroy(gameObject);
+        }
+
+        if (GameManager.instance.currentKeyItem == GameManager.instance.piller3)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void OnTriggerEnter(Collider other)

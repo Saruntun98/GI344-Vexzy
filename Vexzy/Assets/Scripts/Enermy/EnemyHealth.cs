@@ -139,6 +139,7 @@ public class EnemyHealth : MonoBehaviour
 
     private void killEnemy()
     {
+        //GameManager.instance.killedEnemy(this);
         GameManager.instance.killedEnemy(this);
         //capsuleCollider.enabled = false;
         nav.enabled = false;

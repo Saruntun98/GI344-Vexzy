@@ -11,6 +11,8 @@ public class PlayerStatus : MonoBehaviour
     [SerializeField]
     public float curHealth = 150;
     [SerializeField] 
+    public float maxStamina;
+    [SerializeField] 
     public float stamina = 100;
     [SerializeField]
     public bool isCombo;
@@ -25,8 +27,6 @@ public class PlayerStatus : MonoBehaviour
     //public Image staminaBar;
     
     private float timer = 0f;
-    
-    public float maxStamina;
 
     public bool isOnGate = false;
     //public bool IsDead{ get{ return curHealth == 0;} }
@@ -38,7 +38,7 @@ public class PlayerStatus : MonoBehaviour
     void Awake()
     {
         instance = this;
-        //maxStamina = stamina;
+        maxStamina = stamina;
     }
 
     // Update is called once per frame

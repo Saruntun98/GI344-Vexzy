@@ -59,6 +59,7 @@ public class Combo : MonoBehaviour
         {
             playerAnim.Play("combostep1");
             comboStep = 1;
+            //SoundManagerPlayer.PlaySound("combostep1");
             return;
         }
         

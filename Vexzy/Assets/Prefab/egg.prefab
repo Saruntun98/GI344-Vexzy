@@ -199,7 +199,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5792359001723229581}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 2.82
@@ -634,10 +634,10 @@ MonoBehaviour:
   currentHealth: 0
   deathEffect: {fileID: 0}
   eggPosition: {fileID: 8874621721432095338}
-  healthBar: {fileID: 0}
+  healthBar: {fileID: 6036715529334500444}
   onEgg: []
   isFoundEgg: 0
-  showText: {fileID: 0}
+  showText: {fileID: 3020086184968966432}
   _isDead: 0
   Pat: {fileID: 4058916762601449331}
 --- !u!114 &4058916762601449331
@@ -658,7 +658,6 @@ MonoBehaviour:
   - {fileID: 516180074444915750, guid: e96a900cc4cb6964b9c421a0c37590ff, type: 3}
   egg: {fileID: 266030480181589705}
   isSpawned: 0
-  interactingCanvasUi: {fileID: 0}
 --- !u!65 &7935069977737133420
 BoxCollider:
   m_ObjectHideFlags: 0

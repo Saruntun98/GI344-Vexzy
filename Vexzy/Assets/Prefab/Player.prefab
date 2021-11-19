@@ -247,7 +247,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1127719167854639284}
-  m_LocalRotation: {x: 0.3785444, y: -0.0009136359, z: 0.00018647217, w: 0.9255827}
+  m_LocalRotation: {x: 0.3785443, y: -0.00085668586, z: 0.00017483697, w: 0.92558277}
   m_LocalPosition: {x: 0, y: 0.110527016, z: -0.081095904}
   m_LocalScale: {x: 0.01, y: 0.010000001, z: 0.010000001}
   m_Children: []
@@ -1212,7 +1212,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3942498876636151183}
-  m_LocalRotation: {x: 0.4519035, y: 0.000000030698484, z: -0.000000015551244, w: 0.8920669}
+  m_LocalRotation: {x: 0.4519035, y: 0.000000030980917, z: -0.000000015694322, w: 0.8920669}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1286,7 +1286,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3942498877635351066}
-  m_LocalRotation: {x: 0.35476932, y: 0.000000011541564, z: -0.000000004379459, w: 0.9349539}
+  m_LocalRotation: {x: 0.35476926, y: -0.000000007605005, z: 0.0000000028857299, w: 0.9349539}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1486,7 +1486,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3942498877931456371}
-  m_LocalRotation: {x: 0.29083338, y: -0.0018898572, z: 0.0005744667, w: 0.95677173}
+  m_LocalRotation: {x: 0.29083344, y: -0.001772125, z: 0.00053867925, w: 0.9567719}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1983,6 +1983,7 @@ GameObject:
   - component: {fileID: 3942498877176149533}
   - component: {fileID: 2387566827094759000}
   - component: {fileID: 2433912729486728072}
+  - component: {fileID: 8038491132613231638}
   m_Layer: 12
   m_Name: Player
   m_TagString: Player
@@ -2059,11 +2060,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 150
   curHealth: 150
+  maxStamina: 0
   stamina: 100
   isCombo: 0
   aDamage: 100
   timeLastHit: 2
-  maxStamina: 0
   isOnGate: 0
   IsDead: 0
 --- !u!114 &3942498877176149533
@@ -2085,13 +2086,13 @@ MonoBehaviour:
   _gravity: 9.81
   _gravityPlatformer: -12
   _jumpSpeed: 3.5
+  jumpHeight: 1
   _doubleJumpMultiplier: 0.8
   _cameraRig: {fileID: 0}
   isCamera: 0
   isRunning: 0
   jump: 0
   isDead: 0
-  jumpHeight: 1
   _controller: {fileID: 3942498877176149507}
   turnSmoothTime: 0.2
   speedSmoothTime: 0.1
@@ -2124,6 +2125,14 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.04
   m_Center: {x: 0, y: 0.02, z: 0}
+--- !u!81 &8038491132613231638
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4213108684462017353}
+  m_Enabled: 1
 --- !u!1 &4569607928813780562
 GameObject:
   m_ObjectHideFlags: 0

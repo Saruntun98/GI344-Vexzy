@@ -9,14 +9,17 @@ public class HealthBar : MonoBehaviour
     public Slider slider;
     public Gradient gradient;
     public Image fill;
-    public Transform cam;
+    public GameObject cam;
     //[SerializeField] private Canvas interactingCanvasUi;
     public static HealthBar Instance;
     void Awake()
     {
         Instance = this;
     }
-
+    void Start()
+    {
+        cam = GameObject.Find("Main Camera");
+    }
     public void SetMaxHealth(float health)
     {
         slider.maxValue = health;
@@ -34,7 +37,9 @@ public class HealthBar : MonoBehaviour
 
     private void LateUpdate()
     {
-        transform.LookAt(transform.position + cam.forward);
+        //transform.LookAt(transform.position + cam.forward);
+        //transform.LookAt(Camera.main.transform);   
+        transform.LookAt(cam.transform);     
     }
     /*private void OnTriggerStay(Collider other)
     {

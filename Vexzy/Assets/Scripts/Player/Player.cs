@@ -27,6 +27,8 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float _jumpSpeed = 3.5f;
     [SerializeField]
+    public float jumpHeight = 1;
+    [SerializeField]
     private float _doubleJumpMultiplier = 0.5f;
     [SerializeField]
     private GameObject _cameraRig;
@@ -42,8 +44,6 @@ public class Player : MonoBehaviour
 
     [SerializeField] 
     private bool isDead = false;
-
-    public float jumpHeight = 1;
 
     [SerializeField]
     public CharacterController _controller;
@@ -83,6 +83,7 @@ public class Player : MonoBehaviour
 		//animator = transform.GetChild(1).GetChild(0).GetComponent<Animator>();
         //_controller = GetComponent<CharacterController>();
         Cursor.lockState = CursorLockMode.Locked;
+        _cameraRig = GameObject.Find("Main Camera");
     }
 
     void Update()
@@ -213,7 +214,8 @@ public class Player : MonoBehaviour
         {
             _currentSpeed = _runningSpeed;
             PlayerStatus.instance.stamina -= (10 * Time.deltaTime);
-
+            //SoundManagerPlayer.PlaySound("Speed");
+            //SoundManagerPlayer.instance.Run();
             //bool running = Input.GetKey(KeyCode.LeftShift);
             //MovementStafe()
             //targetSpeed = (running) ? _runningSpeed : _walkSpeed;;
@@ -260,6 +262,8 @@ public class Player : MonoBehaviour
         float verticalInput = Input.GetAxis("Vertical");
 
         moveDirection = new Vector3(horizontalInput, 0, verticalInput);
+        _directionY -= _gravity * Time.deltaTime;
+        moveDirection = transform.TransformDirection(moveDirection);
 
         if (_controller.isGrounded)
         {
@@ -284,12 +288,14 @@ public class Player : MonoBehaviour
          if (Input.GetKeyDown(KeyCode.Space)) //Input.GetKeyDown(KeyCode.Space
          {
             Jump();
+            SoundManagerPlayer.PlaySound("Jump");
             StartCoroutine(DelayJump());
          }
 
         if (Input.GetButtonDown("Jump"))
         {
            _directionY = _jumpSpeed;
+           Jump();
            StartCoroutine(DelayJump());
         }
         //Animator Fix
@@ -300,16 +306,13 @@ public class Player : MonoBehaviour
             {
                 _directionY = _jumpSpeed * _doubleJumpMultiplier;
                 _canDoubleJump = false;
+                SoundManagerPlayer.PlaySound("Jump");
                 StartCoroutine(DelayJump());
             }
         }
 
-        _directionY -= _gravity * Time.deltaTime;
-
-        moveDirection = transform.TransformDirection(moveDirection);
-
-        bool running = Input.GetKeyDown(KeyCode.LeftShift);
-        float targetSpeed = (running) ? _runningSpeed : _walkSpeed;
+        //bool running = Input.GetKeyDown(KeyCode.LeftShift);
+        float targetSpeed = (isRunning) ? _runningSpeed : _walkSpeed;
         NodeSprintCheck();
         
         _currentSpeed = Mathf.SmoothDamp(_currentSpeed, targetSpeed, ref speedSmoothVelocity, speedSmoothTime);
@@ -333,7 +336,8 @@ public class Player : MonoBehaviour
             transform.eulerAngles = Vector3.up * Mathf.SmoothDampAngle(transform.eulerAngles.y, targetRotation, ref turnSmoothVelocity, turnSmoothTime);
         }
 
-        float targetSpeed = ((running) ? _runningSpeed : _walkSpeed) * inputDir.magnitude;
+        //float targetSpeed = ((running) ? _runningSpeed : _walkSpeed) * inputDir.magnitude;
+        float targetSpeed = ((isRunning) ? _runningSpeed : _walkSpeed) * inputDir.magnitude;
         
         NodeSprintCheck();
         _currentSpeed = Mathf.SmoothDamp(_currentSpeed, targetSpeed, ref speedSmoothVelocity, speedSmoothTime);

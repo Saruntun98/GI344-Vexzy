@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class GameplayUIManager : MonoBehaviour
 {
@@ -36,6 +37,8 @@ public class GameplayUIManager : MonoBehaviour
     public Gradient gradient;
     public Image fill;
 
+    [SerializeField] 
+    public TextMeshProUGUI gameStatus;
 
     void Awake()
     {
@@ -121,7 +124,6 @@ public class GameplayUIManager : MonoBehaviour
             checkpointItemText.text = $"Checkpoint";
         }*/
     }
-
 
     void PauseCheck()
     {

@@ -121,10 +121,6 @@ public class GameManager : MonoBehaviour
             }
             //waveCountdown = timeBetweenWaves;
         }
-        if(gameRound)
-        {
-            thisGameRoud();
-        }
         //currentSpawnTime += Time.deltaTime;
         //currentSpawnTimeEnemy += Time.deltaTime;
     }
@@ -145,7 +141,7 @@ public class GameManager : MonoBehaviour
     void WeveCompleted()
     {
         Debug.Log("Wave Completed!");
-
+        StartCoroutine(StatusShow("Wave Completed!"));
         state = SpawnState.COUNTING;
         waveCountdown = timeBetweenWaves;
 
@@ -154,6 +150,7 @@ public class GameManager : MonoBehaviour
             state=SpawnState.FINISHED;
             gameWiner = true;
             Debug.Log("All Waves Completed!");
+            StartCoroutine(StatusShow("All Waves Completed!"));
             CheckWiner();
         }
         else
@@ -215,19 +212,22 @@ public class GameManager : MonoBehaviour
                     //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
                 }*/
             }
-            if (currentKeyItem == piller1)
+            if(gameRound)
             {
-                EmissionControl.instance.materialPillerType1.EnableKeyword ("_EMISSION");              
-            }
-            if (currentKeyItem == piller2)
-            {
-                EmissionControl.instance.materialPillerType2.EnableKeyword ("_EMISSION");                
-            }
-            if (currentKeyItem == piller3)
-            {
-                EmissionControl.instance.materialPillerType3.EnableKeyword ("_EMISSION");
-                gameWiner = true;
-                isEnemyTime = false;
+                if (currentKeyItem == piller1)
+                {
+                    EmissionControl.instance.materialPillerType1.EnableKeyword ("_EMISSION");              
+                }
+                if (currentKeyItem == piller2)
+                {
+                    EmissionControl.instance.materialPillerType2.EnableKeyword ("_EMISSION");                
+                }
+                if (currentKeyItem == piller3)
+                {
+                    EmissionControl.instance.materialPillerType3.EnableKeyword ("_EMISSION");
+                    gameWiner = true;
+                    //isEnemyTime = false;
+                }                
             }
         }
     }
@@ -284,11 +284,19 @@ public class GameManager : MonoBehaviour
         }*/
     }
 
+    public IEnumerator StatusShow(string message)
+    {
+        GameplayUIManager.instance.gameStatus.text = message;
+        GameplayUIManager.instance.gameStatus.gameObject.SetActive(true);
+        yield return new WaitForSeconds(5f);
+        GameplayUIManager.instance.gameStatus.gameObject.SetActive(false);
+    }
     public void CheckWiner()
     {
         if(gameWiner)
         {
             Debug.Log("Win");
+            StartCoroutine(StatusShow("You Won!!"));
             //interactingCanvasUi.gameObject.SetActive(true);
             EggStatus.Instance.BeginEgg(); //Use real is enermy die and win 
         }        
@@ -378,6 +386,9 @@ public class GameManager : MonoBehaviour
             {
                 StartCoroutine(EnemyUpSpawnX2());
             }
+
+            thisGameRoud();
+
             /*else
             {
 
@@ -388,8 +399,10 @@ public class GameManager : MonoBehaviour
     {
         if(currentKeyItem >= keyItemCount)
         {
-            Debug.Log("Win");
+            Debug.Log("Win V2");
+            StartCoroutine(StatusShow("Winer!!"));
             isEnemyTime = false;
+            EggStatus.Instance.BeginEgg();
         }        
     }
     IEnumerator EnemyUpSpawnX2()

@@ -25,9 +25,12 @@ public class EnemyDestroy : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if (GameManager.instance.currentKeyItem == GameManager.instance.piller3)
+        if(GameManager.instance.gameRound)
         {
-            Destroy(gameObject);
+            if (GameManager.instance.currentKeyItem == GameManager.instance.piller3)
+            {
+                Destroy(gameObject);
+            }            
         }
     }
 

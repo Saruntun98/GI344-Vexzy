@@ -10444,6 +10444,10 @@ PrefabInstance:
       value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 266030480181589705, guid: 01f50637ac566064c83f4f58a478020b, type: 3}
+      propertyPath: healthBar
+      value: 
+      objectReference: {fileID: 1749611686}
+    - target: {fileID: 266030480181589705, guid: 01f50637ac566064c83f4f58a478020b, type: 3}
       propertyPath: eggPosition
       value: 
       objectReference: {fileID: 441036571}
@@ -10496,6 +10500,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7392884024734271612, guid: 01f50637ac566064c83f4f58a478020b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7616545884148965252, guid: 01f50637ac566064c83f4f58a478020b, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7616545884148965252, guid: 01f50637ac566064c83f4f58a478020b, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
@@ -32602,6 +32614,7 @@ MonoBehaviour:
     m_NumColorKeys: 5
     m_NumAlphaKeys: 2
   fill: {fileID: 1828250844}
+  gameStatus: {fileID: 0}
 --- !u!114 &1152405117
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32630,17 +32643,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOver: 0
+  gameWiner: 0
+  gameRound: 0
+  piller1: 0
+  piller2: 0
+  piller3: 0
   player: {fileID: 4213108684462017353, guid: 4de0ca8d7b3e430448faf2b7df49e233, type: 3}
-  healthPowerUp: {fileID: 1348674391393348242, guid: 75fb578edf4e9404aa279b9e426d4bf0, type: 3}
-  healthspawnPoint:
-  - {fileID: 2117878064}
-  - {fileID: 332757577}
-  - {fileID: 1771060854}
-  maxPowerUp: 3
   spawnPointPlayer: {fileID: 1044361995}
+  NameScenes: AA
   keyItemCount: 3
   currentKeyItem: 0
-  NameScenes: AA
+  isEnemyWave: 0
+  waves: []
+  spawnPointsEnemy: []
+  timeBetweenWaves: 5
+  waveCountdown: 0
+  state: 2
+  isEnemyTime: 0
+  enemyType1: {fileID: 0}
+  enemyType2: {fileID: 0}
+  enemyType3: {fileID: 0}
+  maxEnemy: 4
+  powerUpSpawnTime: 3
+  enemySpawnPointX2: []
 --- !u!4 &1181909700 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4140648794230277286, guid: 49a412f1063e0c74fa12fe60824e35bb, type: 3}
@@ -39401,7 +39426,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startHealth: 30
-  timeLastHit: 2
   currentHealth: 0
   isAlive: 0
   damage: 50
@@ -39514,6 +39538,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: -21.88, y: -13.326, z: 18.448}
+--- !u!114 &1749611686 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6036715529334500444, guid: 01f50637ac566064c83f4f58a478020b, type: 3}
+  m_PrefabInstance: {fileID: 237359769}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ca0e5295ae04e04dbf54836762fc0cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1760812115
 PrefabInstance:
   m_ObjectHideFlags: 0

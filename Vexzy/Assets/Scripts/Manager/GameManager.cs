@@ -60,9 +60,9 @@ public class GameManager : MonoBehaviour
 
     // Enemy Up time
     public bool isEnemyTime = false;
-    [SerializeField] GameObject enemyType1;
-    [SerializeField] GameObject enemyType2;
-    [SerializeField] GameObject enemyType3;
+    [SerializeField] public GameObject enemyType1;
+    [SerializeField] public GameObject enemyType2;
+    [SerializeField] public GameObject enemyType3;
     [SerializeField] int maxEnemy = 4;
     [SerializeField] private float powerUpSpawnTime = 3f; 
     [SerializeField] GameObject[] enemySpawnPointX2;  

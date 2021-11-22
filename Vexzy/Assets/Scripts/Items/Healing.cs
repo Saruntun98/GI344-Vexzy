@@ -40,7 +40,7 @@ public class Healing : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             isActive = true;
-            Debug.Log("Explosive");
+            Debug.Log("Get Heal!");
 
             //Explode();
 

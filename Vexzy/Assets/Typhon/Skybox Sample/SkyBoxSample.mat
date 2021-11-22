@@ -1,0 +1,128 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: SkyBoxSample
+  m_Shader: {fileID: 4800000, guid: 197a1038626a55b409671c72daa8847b, type: 3}
+  m_ShaderKeywords: _SCATTERING_ON
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailAlbedoMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailNormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ParallaxMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _BumpScale: 1
+    - _CloudDensity: 0.4
+    - _CloudDirection: 0
+    - _CloudFade: 0.2
+    - _CloudScale: 100
+    - _CloudSoftness: 0.2
+    - _CloudSpeed: 0.1
+    - _CloudThreshold: -0.3
+    - _CloudTransform: 0.1
+    - _Cutoff: 0.5
+    - _DetailNormalMapScale: 1
+    - _DstBlend: 0
+    - _Exposure: 1
+    - _GlossMapScale: 1
+    - _Glossiness: 0.5
+    - _GlossyReflections: 1
+    - _GrainSize: 0.4
+    - _GroundAltitude: -0.1
+    - _GroundAngle: -0.1
+    - _GroundThreshold: -0.001
+    - _HorizonAltitude: 0
+    - _HorizonAngle: 0
+    - _HorizonThreshold: 1
+    - _Metallic: 0
+    - _Mode: 0
+    - _OcclusionStrength: 1
+    - _Parallax: 0.02
+    - _SkyAltitude: 0.75
+    - _SkyAngle: 0.75
+    - _SmoothnessTextureChannel: 0
+    - _SpecularHighlights: 1
+    - _SpeedError: 0.2
+    - _SrcBlend: 1
+    - _StarryAngleFrom: 0
+    - _StarryAngleTo: 0.2
+    - _StarryFadeFrom: 0
+    - _StarryFadeTo: 0.2
+    - _StarryFineness: 200
+    - _StarrySunAngleFrom: 1
+    - _StarrySunAngleTo: 0.2
+    - _SunExpozure: 5
+    - _SunSize: 0.07
+    - _TimeWithColor: 0
+    - _TransisionCoefficient: 4
+    - _UVSec: 0
+    - _ZWrite: 1
+    - _scattering: 1
+    - _scatteringForce: 1
+    - _scatteringNarrow: 2
+    - _scatteringRange: 0.2
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _DayCloudColor: {r: 1, g: 1, b: 1, a: 1}
+    - _DayCloudColor2: {r: 0.7407885, g: 0.75875825, b: 0.8773585, a: 1}
+    - _DayGroundColor: {r: 0.2830189, g: 0.2830189, b: 0.2830189, a: 1}
+    - _DayHorizonColor: {r: 0.075694196, g: 0.15525988, b: 0.254717, a: 1}
+    - _DaySkyColor: {r: 0.085662164, g: 0.12518503, b: 0.23584908, a: 1}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _EveCloudColor: {r: 1, g: 0.7953949, b: 0.5990566, a: 1}
+    - _EveCloudColor2: {r: 1, g: 0.6700414, b: 0.4009434, a: 1}
+    - _EveGroundColor: {r: 0.36899996, g: 0.34899998, b: 0.34099993, a: 1}
+    - _EveHorizonColor: {r: 1, g: 0.67505735, b: 0.61960787, a: 1}
+    - _EveSkyColor: {r: 0.5855948, g: 0.46444464, b: 0.6698113, a: 1}
+    - _NightCloudColor: {r: 0.008232466, g: 0.008232466, b: 0.047169805, a: 1}
+    - _NightCloudColor2: {r: 0.014017448, g: 0.014017448, b: 0.028301895, a: 1}
+    - _NightGroundColor: {r: 0, g: 0, b: 0, a: 1}
+    - _NightHorizonColor: {r: 0.026432894, g: 0.026432894, b: 0.16981131, a: 1}
+    - _NightSkyColor: {r: 0, g: 0.0146074295, b: 0.0754717, a: 1}
+    - _StarryThreshold: {r: 0.96078426, g: 0.96078426, b: 0.92156863, a: 1}
+  m_BuildTextureStacks: []

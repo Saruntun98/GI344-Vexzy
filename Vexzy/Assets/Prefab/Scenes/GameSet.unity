@@ -395,6 +395,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a5ee34c210ec3a489b6eb7336f2b2c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  particleFX: {fileID: 0}
+  explosivePart: []
+  radius: 2
+  force: 10
+  isActive: 0
 --- !u!135 &125090705
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -5734,6 +5739,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a5ee34c210ec3a489b6eb7336f2b2c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  particleFX: {fileID: 0}
+  explosivePart: []
+  radius: 2
+  force: 10
+  isActive: 0
 --- !u!135 &202489340
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -6175,6 +6185,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a5ee34c210ec3a489b6eb7336f2b2c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  particleFX: {fileID: 0}
+  explosivePart: []
+  radius: 2
+  force: 10
+  isActive: 0
 --- !u!135 &245395468
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -7060,6 +7075,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a5ee34c210ec3a489b6eb7336f2b2c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  particleFX: {fileID: 0}
+  explosivePart: []
+  radius: 2
+  force: 10
+  isActive: 0
 --- !u!135 &482423563
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -12372,6 +12392,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a5ee34c210ec3a489b6eb7336f2b2c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  particleFX: {fileID: 0}
+  explosivePart: []
+  radius: 2
+  force: 10
+  isActive: 0
 --- !u!135 &686173438
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -18232,6 +18257,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a5ee34c210ec3a489b6eb7336f2b2c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  particleFX: {fileID: 0}
+  explosivePart: []
+  radius: 2
+  force: 10
+  isActive: 0
 --- !u!135 &931181523
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -19471,6 +19501,7 @@ MonoBehaviour:
     m_NumColorKeys: 5
     m_NumAlphaKeys: 2
   fill: {fileID: 1728987243}
+  gameStatus: {fileID: 0}
 --- !u!114 &1279387909
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19485,6 +19516,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameOver: 0
   gameWiner: 0
+  gameRound: 0
+  piller1: 0
+  piller2: 0
+  piller3: 0
   player: {fileID: 4213108684462017353, guid: 4de0ca8d7b3e430448faf2b7df49e233, type: 3}
   spawnPointPlayer: {fileID: 1501137448}
   NameScenes: Crazy mode 01
@@ -19504,7 +19539,9 @@ MonoBehaviour:
   waveCountdown: 0
   state: 2
   isEnemyTime: 0
-  enemyUp: {fileID: 1348674391393348242, guid: 75fb578edf4e9404aa279b9e426d4bf0, type: 3}
+  enemyType1: {fileID: 0}
+  enemyType2: {fileID: 0}
+  enemyType3: {fileID: 0}
   maxEnemy: 4
   powerUpSpawnTime: 3
   enemySpawnPointX2:
@@ -34469,6 +34506,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a5ee34c210ec3a489b6eb7336f2b2c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  particleFX: {fileID: 0}
+  explosivePart: []
+  radius: 2
+  force: 10
+  isActive: 0
 --- !u!135 &1425879088
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -40629,6 +40671,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a5ee34c210ec3a489b6eb7336f2b2c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  particleFX: {fileID: 0}
+  explosivePart: []
+  radius: 2
+  force: 10
+  isActive: 0
 --- !u!135 &1795728428
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -46196,6 +46243,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a5ee34c210ec3a489b6eb7336f2b2c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  particleFX: {fileID: 0}
+  explosivePart: []
+  radius: 2
+  force: 10
+  isActive: 0
 --- !u!135 &1961060875
 SphereCollider:
   m_ObjectHideFlags: 0

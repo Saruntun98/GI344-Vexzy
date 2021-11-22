@@ -370,19 +370,42 @@ public class Player : MonoBehaviour
 //Animator
    private void Idle()
    {
-      animator.SetFloat("Speed", 0, 0.1f, Time.deltaTime);
+      animator.SetFloat("Speed", 0.01f, 0.1f, Time.deltaTime);
    }
    
    private void Walk()
    {
       _defaultSpeed = _walkSpeed;
-      animator.SetFloat("Speed", 0.2f, 0.1f, Time.deltaTime);
+      animator.SetFloat("Speed", 0.35f, 0.1f, Time.deltaTime);
    }
+
+   private void SoundWalkTap()
+   {
+       //SoundManagerPlayer.instance.PlayerFootstep();
+       /*if(_defaultSpeed == _walkSpeed)
+       {
+           //SoundManagerPlayer.instance.PlayerFootstep();
+       }*/
+        if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
+        {
+           //Walk();
+           SoundManagerPlayer.instance.PlayerFootstep();
+        }
+        else if (moveDirection != Vector3.zero && Input.GetKey(KeyCode.LeftShift))
+        {
+           //Run();
+           SoundManagerPlayer.instance.PlayerFootstep();
+        }
+        else if (moveDirection == Vector3.zero)
+        {
+           SoundManagerPlayer.instance.PlayerFootStopStep();
+        }
+    }
 
    private void Run()
    {
       _defaultSpeed = _runningSpeed;
-      animator.SetFloat("Speed", 1, 0.1f, Time.deltaTime);
+      animator.SetFloat("Speed", 1f, 0.1f, Time.deltaTime);
    }
 
    private void Jump()

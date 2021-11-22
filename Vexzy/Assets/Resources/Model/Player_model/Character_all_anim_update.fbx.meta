@@ -102,7 +102,21 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.5850745
+        functionName: SoundWalkTap
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: c14fbb701a64613439d6d04f7d16445b, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.9938651
+        functionName: SoundWalkTap
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: c14fbb701a64613439d6d04f7d16445b, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}

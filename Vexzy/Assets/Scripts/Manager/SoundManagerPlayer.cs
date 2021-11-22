@@ -7,24 +7,21 @@ public class SoundManagerPlayer : MonoBehaviour
     public static AudioClip attack, jump, speed;
     public static SoundManagerPlayer instance;
     static AudioSource audioSrc;
+
     void Awake() 
     {
        instance = this;
     }
     void Start()
     {
+        audioSrc = GetComponent<AudioSource>();        
         attack = Resources.Load<AudioClip> ("combostep1");
         jump = Resources.Load<AudioClip> ("Jump");
         speed = Resources.Load<AudioClip> ("Speed");
-
-        audioSrc = GetComponent<AudioSource>();
+        audioSrc.playOnAwake = false;
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public static void PlaySound(string clip)
     {
         switch(clip)
@@ -34,9 +31,6 @@ public class SoundManagerPlayer : MonoBehaviour
                 break;
             case "Jump":
                 audioSrc.PlayOneShot(jump);
-                break;
-            case "Speed":
-                audioSrc.PlayOneShot(speed);
                 break;            
         }
     }
@@ -44,5 +38,17 @@ public class SoundManagerPlayer : MonoBehaviour
     public void Run()
     {
         //audioSrc.PlayOneShot(speed);            
+    }
+    public void PlayerFootstep()
+    {
+        //audioSrc.Play();
+        audioSrc.PlayOneShot(speed);
+        Debug.Log("Sound foot on");
+    }
+    public void PlayerFootStopStep()
+    {
+        //audioSrc.Play();
+        audioSrc.Stop();
+        Debug.Log("Sound foot stop");
     }
 }

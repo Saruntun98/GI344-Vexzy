@@ -11,10 +11,11 @@ GameObject:
   - component: {fileID: 2313854887356481502}
   - component: {fileID: 3979908375726180904}
   - component: {fileID: 3465360958907390637}
+  - component: {fileID: 1481800868117922800}
   - component: {fileID: 3355534058139619827}
   - component: {fileID: 3237450708924494456}
-  - component: {fileID: 1481800868117922800}
   - component: {fileID: 8223798543127231567}
+  - component: {fileID: 4056672835839768982}
   m_Layer: 0
   m_Name: EnemyType1
   m_TagString: Enemy
@@ -47,7 +48,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 1
+  m_Radius: 1.2
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: -0.64, z: 0.25}
@@ -73,6 +74,18 @@ NavMeshAgent:
   m_BaseOffset: 1.54
   m_WalkableMask: 7
   m_ObstacleAvoidanceType: 4
+--- !u!114 &1481800868117922800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3495035631721774046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56e150b139816534697b66e9c59fa006, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &3355534058139619827
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -105,18 +118,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lookRadius: 10
   targetEgg: {fileID: 0}
---- !u!114 &1481800868117922800
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3495035631721774046}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56e150b139816534697b66e9c59fa006, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!95 &8223798543127231567
 Animator:
   serializedVersion: 3
@@ -136,6 +137,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!54 &4056672835839768982
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3495035631721774046}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &9930618480265455
 PrefabInstance:
   m_ObjectHideFlags: 0

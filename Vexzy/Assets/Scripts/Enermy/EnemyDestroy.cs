@@ -32,6 +32,10 @@ public class EnemyDestroy : MonoBehaviour
                 Destroy(gameObject);
             }            
         }
+        if(!GameManager.instance.isEnemyTime)
+        {
+            Destroy(gameObject);          
+        }
     }
 
     private void OnTriggerEnter(Collider other)

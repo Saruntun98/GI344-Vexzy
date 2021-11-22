@@ -419,17 +419,17 @@ public class GameManager : MonoBehaviour
                 //newPowerUp = Instantiate(enemyUp) as GameObject;
                 if (randomEnemy==0)
                 {
-                    newPowerUp = Instantiate(enemyType1) as GameObject;
+                    newPowerUp = Instantiate(enemyType1, spawnLocation.transform.position, Quaternion.identity) as GameObject;
                 }
                 if (randomEnemy == 1)
                 {
-                    newPowerUp = Instantiate(enemyType2) as GameObject;
+                    newPowerUp = Instantiate(enemyType2, spawnLocation.transform.position, Quaternion.identity) as GameObject;
                 }
                 if (randomEnemy == 2)
                 {
-                    newPowerUp = Instantiate(enemyType3) as GameObject;
+                    newPowerUp = Instantiate(enemyType3, spawnLocation.transform.position, Quaternion.identity) as GameObject;
                 }
-                newPowerUp.transform.position = spawnLocation.transform.position;
+                //newPowerUp.transform.position = spawnLocation.transform.position;
             }
         }
         yield return null;

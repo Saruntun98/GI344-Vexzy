@@ -14,7 +14,16 @@ public class Pet : MonoBehaviour
     
      void Awake()
     {
-        instance = this;
+        //instance = this;
+         //if we don't have an [_instance] set yet
+         if(!instance)
+             instance = this ;
+         //otherwise, if we do, kill this thing
+         else
+             Destroy(this.gameObject) ;
+ 
+ 
+         DontDestroyOnLoad(this.gameObject) ;
     }
 
 	void Start()

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SoundManagerPlayer : MonoBehaviour
 {
-    public static AudioClip attack, jump, speed;
+    public static AudioClip slash, jump, speed;
     public static SoundManagerPlayer instance;
     static AudioSource audioSrc;
 
@@ -15,7 +15,7 @@ public class SoundManagerPlayer : MonoBehaviour
     void Start()
     {
         audioSrc = GetComponent<AudioSource>();        
-        attack = Resources.Load<AudioClip> ("combostep1");
+        slash = Resources.Load<AudioClip> ("Slash");
         jump = Resources.Load<AudioClip> ("Jump");
         speed = Resources.Load<AudioClip> ("Speed");
         audioSrc.playOnAwake = false;
@@ -26,9 +26,6 @@ public class SoundManagerPlayer : MonoBehaviour
     {
         switch(clip)
         {
-            case "combostep1":
-                audioSrc.PlayOneShot(attack);
-                break;
             case "Jump":
                 audioSrc.PlayOneShot(jump);
                 break;            
@@ -39,16 +36,20 @@ public class SoundManagerPlayer : MonoBehaviour
     {
         //audioSrc.PlayOneShot(speed);            
     }
+    public void SlashTap()
+    {
+        audioSrc.PlayOneShot(slash);           
+    }
     public void PlayerFootstep()
     {
         //audioSrc.Play();
         audioSrc.PlayOneShot(speed);
-        Debug.Log("Sound foot on");
+        //Debug.Log("Sound foot on");
     }
     public void PlayerFootStopStep()
     {
         //audioSrc.Play();
         audioSrc.Stop();
-        Debug.Log("Sound foot stop");
+        //Debug.Log("Sound foot stop");
     }
 }

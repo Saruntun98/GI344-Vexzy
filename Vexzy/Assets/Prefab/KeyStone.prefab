@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c0a90e740f3b484291b4920a48eacf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotationSpeed: 30
 --- !u!135 &555807931947689782
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -58,25 +59,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.75
   m_Center: {x: 0, y: 0, z: 0}
---- !u!95 &1226876546523496133
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8383588645066120599}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c82bfb384af56774bb8d00187cd8a996, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &8689999657979814086
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -150,11 +132,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 552962f2a1580874da185c8ebf0eae1b, type: 3}
---- !u!1 &8383588645066120599 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 552962f2a1580874da185c8ebf0eae1b, type: 3}
-  m_PrefabInstance: {fileID: 8689999657979814086}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &9156853613930891053 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 552962f2a1580874da185c8ebf0eae1b, type: 3}

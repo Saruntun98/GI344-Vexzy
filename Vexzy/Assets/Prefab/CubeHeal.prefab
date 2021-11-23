@@ -9662,6 +9662,7 @@ MonoBehaviour:
   - {fileID: 7490196166966082364}
   radius: 20
   force: 100
+  DelayTime: 20
   isActive: 0
 --- !u!135 &4352456577859673560
 SphereCollider:

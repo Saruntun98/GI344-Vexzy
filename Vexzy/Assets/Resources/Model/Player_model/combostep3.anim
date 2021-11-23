@@ -35977,6 +35977,13 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 0.75
+    functionName: SlashTap
+    data: 
+    objectReferenceParameter: {fileID: 11500000, guid: e3f89db96eafab64ead59df01a0cbdc5, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 1
     functionName: NextAtk
     data: 

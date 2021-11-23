@@ -4868,7 +4868,7 @@ MonoBehaviour:
   startHealth: 30
   currentHealth: 0
   isAlive: 0
-  damage: 50
+  damage: 30
   explosionRadius: 0
   impactEffect: {fileID: 0}
 --- !u!114 &1348674391393348246
@@ -4895,7 +4895,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 1
-  m_Speed: 3
+  m_Speed: 2
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120

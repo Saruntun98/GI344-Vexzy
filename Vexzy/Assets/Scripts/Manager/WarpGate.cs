@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class WarpGate : MonoBehaviour
 {
     private void OnTriggerStay(Collider other)
+    
     {
         if (other.gameObject.tag == "Player")
         {
@@ -15,7 +16,10 @@ public class WarpGate : MonoBehaviour
                 PlayerStatus.instance.isOnGate = true;
                 //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 
-        
+                //Player.instance.player.position = new Vector3(-62.35f, 42.99f, 69.99f);
+                //Debug.Log("Player Positions is " + Player.instance.player.position);
+
+
             /*if (GameManager.instance.currentKeyItem >= GameManager.instance.keyItemCount)
             {
                 //if (player.GetComponentInChildren<PlayerStatus>().isOnGate)

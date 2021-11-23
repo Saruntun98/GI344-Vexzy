@@ -49,16 +49,17 @@ public class EnemyDestroy : MonoBehaviour
         {
             if (EggStatus.Instance != null)
             {
-                EggStatus.Instance.currentHealth -= 100;
+                EggStatus.Instance.currentHealth -= EnemyHealth.instance.damage;
                 //EggStatus._instance.startHealth -= 100;
             }
             Destroy(gameObject);
         }
         if (other.gameObject.tag == "Player")
         {
+            //EnemySounds.instance.EnemyDieTap();
             if (PlayerStatus.instance != null)
             {
-                PlayerStatus.instance.curHealth -= 20;
+                PlayerStatus.instance.curHealth -= EnemyHealth.instance.damageAttackPlayer;
             }
             Destroy(gameObject);
         }

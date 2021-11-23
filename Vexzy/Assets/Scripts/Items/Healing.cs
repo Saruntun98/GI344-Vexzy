@@ -9,6 +9,7 @@ public class Healing : MonoBehaviour
 
     [SerializeField] float radius = 2f;
     [SerializeField] float force = 10f;
+    [SerializeField] float DelayTime = 15f;
 
     public bool isActive = false;
     
@@ -85,7 +86,7 @@ public class Healing : MonoBehaviour
 
     IEnumerator DelaySpawn()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(DelayTime);
         foreach (var part in explosivePart)
         {
             part.SetActive(true);

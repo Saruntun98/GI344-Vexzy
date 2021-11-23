@@ -111,9 +111,18 @@ public class EggStatus : MonoBehaviour
     }
     private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Player"))
+        /*if (other.CompareTag("Player"))
         {
+            //BeginEgg();
             //interactingCanvasUi.transform.LookAt(Camera.main.transform);
+        }*/
+        if(GameManager.instance.gameWiner)
+        {
+            if (other.CompareTag("Player"))
+            {
+            BeginEgg();
+            //interactingCanvasUi.transform.LookAt(Camera.main.transform);
+            }
         }
     }
 

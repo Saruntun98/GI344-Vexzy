@@ -71,7 +71,17 @@ public class Player : MonoBehaviour
 
     void Awake()
     {
-        instance = this;
+        //instance = this;
+
+         if(!instance)
+             instance = this ;
+         //otherwise, if we do, kill this thing
+         else
+             Destroy(this.gameObject) ;
+ 
+ 
+         DontDestroyOnLoad(this.gameObject) ;
+
         _defaultSpeed = _walkSpeed;
         _currentSpeed = _runningSpeed * 2;
     }

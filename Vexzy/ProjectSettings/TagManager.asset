@@ -10,6 +10,7 @@ TagManager:
   - Key
   - Bullet
   - Weapon
+  - Pet
   layers:
   - Default
   - TransparentFX
@@ -20,7 +21,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - Pet
   - Ground
   - Eggs
   - Player

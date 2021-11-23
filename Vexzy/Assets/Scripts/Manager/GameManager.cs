@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] int piller1;
     [SerializeField] int piller2;
     [SerializeField] public int piller3;
+    [SerializeField] public bool canPlayerSpawn = false;    
     [SerializeField] GameObject player;
     [SerializeField] public Transform spawnPointPlayer;  
     public string NameScenes;
@@ -59,14 +60,14 @@ public class GameManager : MonoBehaviour
 
 
     // Enemy Up time
+    [SerializeField] private float powerUpSpawnTime = 3f; 
+    private float currentSpawnTimeEnemy = 0f;
     public bool isEnemyTime = false;
     [SerializeField] public GameObject enemyType1;
     [SerializeField] public GameObject enemyType2;
     [SerializeField] public GameObject enemyType3;
     [SerializeField] int maxEnemy = 4;
-    [SerializeField] private float powerUpSpawnTime = 3f; 
     [SerializeField] GameObject[] enemySpawnPointX2;  
-    private float currentSpawnTimeEnemy = 0f;
     private int enemyCurrent = 0;
     private GameObject newPowerUp;
 
@@ -78,7 +79,11 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        SpawnPlayer(spawnPointPlayer);
+        //SpawnPlayer(spawnPointPlayer);
+        if(canPlayerSpawn)
+        {
+            SpawnPlayer(spawnPointPlayer);
+        }
 
         var keyCout = GameObject.FindGameObjectsWithTag("Key");
         keyItemCount = keyCout.Length;
@@ -153,10 +158,20 @@ public class GameManager : MonoBehaviour
             StartCoroutine(StatusShow("All Waves Completed!"));
             CheckWiner();
         }
+        if (gameWiner)
+        {
+            //EmissionControl.instance.materialPillerType3.EnableKeyword ("_EMISSION");
+            gameWiner = true;
+            state=SpawnState.FINISHED;
+            Debug.Log("Win");
+            StartCoroutine(StatusShow("You Won!!"));
+            //timingWorld.instance.timerIsRunning = false;
+            EggStatus.Instance.BeginEgg();
+        } 
         else
         {
             nextWave++;
-        }
+        }        
             //nextWave++;
     }
 
@@ -182,6 +197,12 @@ public class GameManager : MonoBehaviour
             isPlayerExist = true;
         }
     }
+
+    /*void OnSceneLoaded (Scene scene, LoadSceneMode mode) 
+    {
+        SceneManager.LoadScene(Player.instance.player.position = new Vector3(-62.35f, 42.99f, 69.99f));
+    }*/
+
     void KeyItemCheck()
     {
         if (player != null)
@@ -198,6 +219,7 @@ public class GameManager : MonoBehaviour
                     if(spawnPet.Instance.isSpawned == true)
                     {
                         Debug.Log("true Warpppppppppppppppppppppppppp");
+                        //OnLevelWasLoaded(+1);
                         SceneManager.LoadScene(NameScenes); 
                     }
                     else
@@ -226,6 +248,7 @@ public class GameManager : MonoBehaviour
                 {
                     EmissionControl.instance.materialPillerType3.EnableKeyword ("_EMISSION");
                     gameWiner = true;
+                    //state=SpawnState.FINISHED;
                     //isEnemyTime = false;
                 }                
             }
@@ -297,6 +320,8 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("Win");
             StartCoroutine(StatusShow("You Won!!"));
+            state=SpawnState.FINISHED;
+            //timingWorld.instance.timerIsRunning = false;
             //interactingCanvasUi.gameObject.SetActive(true);
             EggStatus.Instance.BeginEgg(); //Use real is enermy die and win 
         }        
@@ -323,7 +348,8 @@ public class GameManager : MonoBehaviour
         for(int i = 0; i < _wave.count; i++)
         {
             SpawnEnemy(_wave.enemy);
-            yield return new WaitForSeconds(1f/_wave.rate);
+            //yield return new WaitForSeconds(1f/_wave.rate);
+            yield return new WaitForSeconds(powerUpSpawnTime/_wave.rate);
         }
 
         state = SpawnState.WAITING;
@@ -401,6 +427,7 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("Win V2");
             StartCoroutine(StatusShow("Winer!!"));
+            state=SpawnState.FINISHED;
             isEnemyTime = false;
             EggStatus.Instance.BeginEgg();
         }        

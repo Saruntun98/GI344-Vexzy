@@ -17,12 +17,13 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] private bool isAlive;
     private Rigidbody rigidbody;
     private CapsuleCollider capsuleCollider;
-    private ParticleSystem blood;
+    //private ParticleSystem blood;
     //private Transform target;
     
     public static EnemyHealth instance;
     //public bool dead = false;
     public int damage = 50;
+    public int damageAttackPlayer = 20;
     public float explosionRadius = 0f;
     public GameObject impactEffect;
     
@@ -38,7 +39,7 @@ public class EnemyHealth : MonoBehaviour
         anim = GetComponent<Animator>();
         audio = GetComponent<AudioSource>();
         nav = GetComponent<NavMeshAgent>();
-        blood = GetComponentInChildren<ParticleSystem>();
+        //blood = GetComponentInChildren<ParticleSystem>();
         GameManager.instance.RegisterEnemy(this);
         isAlive = true;
     }
@@ -86,7 +87,8 @@ public class EnemyHealth : MonoBehaviour
         {
             currentHealth = currentHealth -= Bullet.instance.aDamage;
             Debug.Log ("Bullet damage: "+Bullet.instance.aDamage);  
-            Debug.Log ("HP Enemy: "+currentHealth);             
+            Debug.Log ("HP Enemy: "+currentHealth);
+            audio.PlayOneShot(audio.clip);
             TakeHit();
         }
 
@@ -94,7 +96,8 @@ public class EnemyHealth : MonoBehaviour
         {
             currentHealth = currentHealth -= PlayerStatus.instance.aDamage;
             Debug.Log ("Player damage: "+PlayerStatus.instance.aDamage);  
-            Debug.Log ("HP Enemy: "+currentHealth);             
+            Debug.Log ("HP Enemy: "+currentHealth);
+            audio.PlayOneShot(audio.clip);             
             TakeHit();
         }                
         /*if (timer>=timeLastHit && !GameManager.instance.GameOver)
@@ -144,8 +147,10 @@ public class EnemyHealth : MonoBehaviour
         //capsuleCollider.enabled = false;
         nav.enabled = false;
         //blood.Play();
+        //EnemySounds.instance.EnemyDieTap();
         //anim.SetTrigger("EnemyDie");
         rigidbody.isKinematic = true;
+        this.gameObject.GetComponent<Animator>().enabled = false;
         StartCoroutine(RemoveEnemy());
     }
 

@@ -43,11 +43,16 @@ public class EggStatus : MonoBehaviour
         {
             if(isFoundEgg)
             {
-                if(spawnPet.Instance.isSpawned == false)
+                if(spawnPet.Instance != null)
                 {
                     spawnPet.Instance.Spawn();
                     OnpenEgg();
                 }
+                /*if(spawnPet.Instance.isSpawned == false)
+                {
+                    spawnPet.Instance.Spawn();
+                    OnpenEgg();
+                }*/
                 else
                 {
                     spawnPet.Instance.Despawned();
@@ -107,7 +112,7 @@ public class EggStatus : MonoBehaviour
     public void OnpenEgg()
     {
         Debug.Log("Pet spawn del egg");
-        Destroy(gameObject);
+        //Destroy(gameObject);
     }
     private void OnTriggerStay(Collider other)
     {

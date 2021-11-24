@@ -25,11 +25,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] public bool gameRound = false;
     [SerializeField] int piller1;
     [SerializeField] int piller2;
-    [SerializeField] public int piller3;
-    [SerializeField] public bool canPlayerSpawn = false;    
+    [SerializeField] public int piller3;   
+    //[SerializeField] public bool spawnPlayer = false;
     [SerializeField] GameObject player;
     [SerializeField] public Transform spawnPointPlayer;  
-    public string NameScenes;
+    public string nextScenes;
+    public string exitName;
     // Key
     public int keyItemCount;
     public int currentKeyItem;
@@ -54,7 +55,7 @@ public class GameManager : MonoBehaviour
     //private float generateSpawnTime = 1;
     private float currentSpawnTime = 0;
     //private GameObject newEnemy;
-    private bool isPlayerExist = false;
+    [SerializeField] public bool isPlayerExist = false;
     private List<EnemyHealth> enemies = new List<EnemyHealth>();
     private List<EnemyHealth> killememies = new List<EnemyHealth>();
 
@@ -79,11 +80,11 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        //SpawnPlayer(spawnPointPlayer);
-        if(canPlayerSpawn)
+        SpawnPlayer(spawnPointPlayer);
+        /*if(spawnPlayer)
         {
             SpawnPlayer(spawnPointPlayer);
-        }
+        }*/
 
         var keyCout = GameObject.FindGameObjectsWithTag("Key");
         keyItemCount = keyCout.Length;
@@ -198,11 +199,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    /*void OnSceneLoaded (Scene scene, LoadSceneMode mode) 
-    {
-        SceneManager.LoadScene(Player.instance.player.position = new Vector3(-62.35f, 42.99f, 69.99f));
-    }*/
-
     void KeyItemCheck()
     {
         if (player != null)
@@ -216,17 +212,53 @@ public class GameManager : MonoBehaviour
                     //SceneManager.LoadScene(NameScenes);
                     //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 
-                    if(spawnPet.Instance.isSpawned == true)
+                    /*if(spawnPet.Instance.isSpawned == true)
                     {
                         Debug.Log("true Warpppppppppppppppppppppppppp");
-                        //OnLevelWasLoaded(+1);
-                        SceneManager.LoadScene(NameScenes); 
+                        PlayerPrefs.SetString("LastExitName", exitName);
+                        SceneManager.LoadScene(nextScenes); 
+                    }*/
+                    if(spawnPet.Instance != null)
+                    {
+                        Debug.Log("true Warpppppppppppppppppppppppppp");
+                        //Player.instance.player.position = new Vector3(-62.35f, 42.99f, 69.99f);
+                        //Debug.Log("true Warpppppppppppppppppppppppppp"+Player.instance.player.position);
+                        PlayerPrefs.SetString("LastExitName", exitName);
+                        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                        SceneManager.LoadScene(nextScenes); 
                     }
                     else
                     {
                         Debug.Log("No Warpppppppppppppppppppppppppp");
                     }
                 }
+
+                /*if (PlayerStatus.instance.isOnGate && currentKeyItem >= keyItemCount)
+                {
+                    //Debug.Log(true);
+                    //SceneManager.LoadScene(NameScenes);
+                    //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+
+                    /*if(spawnPet.Instance.isSpawned == true)
+                    {
+                        Debug.Log("true Warpppppppppppppppppppppppppp");
+                        PlayerPrefs.SetString("LastExitName", exitName);
+                        SceneManager.LoadScene(nextScenes); 
+                    }
+                    if(spawnPet.Instance != null)
+                    {
+                        Debug.Log("true Warpppppppppppppppppppppppppp");
+                        //Player.instance.player.position = new Vector3(-62.35f, 42.99f, 69.99f);
+                        //Debug.Log("true Warpppppppppppppppppppppppppp"+Player.instance.player.position);
+                        PlayerPrefs.SetString("LastExitName", exitName);
+                        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                        SceneManager.LoadScene(nextScenes); 
+                    }
+                    else
+                    {
+                        Debug.Log("No Warpppppppppppppppppppppppppp");
+                    }
+                }*/
                 /*if (player.GetComponentInChildren<PlayerStatus>().isOnGate)
                 {
                     Debug.Log(true);

@@ -14,6 +14,7 @@ public class Combo : MonoBehaviour
     {
         playerAnim = GetComponent<Animator>();
         swordCollider = GetComponentsInChildren<BoxCollider>();
+        EndAttack();
     }
 
     public void ComboPossible()

@@ -654,8 +654,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pet:
   - {fileID: 516180074444915750, guid: e96a900cc4cb6964b9c421a0c37590ff, type: 3}
-  - {fileID: 516180074444915750, guid: e96a900cc4cb6964b9c421a0c37590ff, type: 3}
-  - {fileID: 516180074444915750, guid: e96a900cc4cb6964b9c421a0c37590ff, type: 3}
+  - {fileID: 235205673174464684, guid: 80e290ea76bf30c459a095b9aebca342, type: 3}
+  - {fileID: 6517590190739546917, guid: a3433d76109d939408d1ab1e6994d4e5, type: 3}
   egg: {fileID: 266030480181589705}
   isSpawned: 0
 --- !u!65 &7935069977737133420

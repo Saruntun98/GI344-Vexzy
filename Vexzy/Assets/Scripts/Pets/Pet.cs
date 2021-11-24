@@ -15,28 +15,30 @@ public class Pet : MonoBehaviour
      void Awake()
     {
         //instance = this;
-         //if we don't have an [_instance] set yet
-         if(!instance)
-             instance = this ;
-         //otherwise, if we do, kill this thing
-         else
-             Destroy(this.gameObject) ;
- 
- 
-         DontDestroyOnLoad(this.gameObject) ;
+
     }
 
 	void Start()
 	{
-		targetPlayer = Player.instance.player.transform;
+		//targetPlayer = Player.instance.player.transform;
 		nav = GetComponent<NavMeshAgent>();
+		//nav.SetDestination ( targetPlayer.transform.position);
+
 		//combatManager = GetComponent<CharacterCombat>();
 	}
-
+ 	void OnTriggerEnter (Collider collision) 
+	{
+		nav.SetDestination ( Player.instance.player.transform.position);
+     	/*if (collision.tag == "Player")
+        if(GameObject.FindGameObjectWithTag ("Player"))
+		{
+			targetPlayer = Player.instance.player.transform;
+		}*/
+ 	}
 	void Update ()
 	{
 		// Get the distance to the player
-		float distance = Vector3.Distance(targetPlayer.position, transform.position);
+		float distance = Vector3.Distance(Player.instance.player.transform.position, transform.position);
 
 		// If inside the radius
 		if (distance <= lookRadius)
@@ -44,7 +46,7 @@ public class Pet : MonoBehaviour
 			// Move towards the player
 			if(nav.enabled)
 			{
-				nav.SetDestination(targetPlayer.position);
+				nav.SetDestination(Player.instance.player.transform.position);
 				if (distance <= nav.stoppingDistance)
 				{
 				// Attack
@@ -58,7 +60,7 @@ public class Pet : MonoBehaviour
 	// Point towards the player
 	void FaceTarget ()
 	{
-		Vector3 direction = (targetPlayer.position - transform.position).normalized;
+		Vector3 direction = (Player.instance.player.transform.position - transform.position).normalized;
 		Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
 		transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
 	}

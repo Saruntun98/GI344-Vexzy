@@ -83,14 +83,14 @@ public class EnemyHealth : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         
-        if (other.gameObject.name == "bullet(Clone)")  
+        /*if (other.gameObject.name == "bullet(Clone)")  
         {
             currentHealth = currentHealth -= Bullet.instance.aDamage;
             Debug.Log ("Bullet damage: "+Bullet.instance.aDamage);  
             Debug.Log ("HP Enemy: "+currentHealth);
             audio.PlayOneShot(audio.clip);
             TakeHit();
-        }
+        }*/
 
         if (other.gameObject.name == "weapon")  
         {

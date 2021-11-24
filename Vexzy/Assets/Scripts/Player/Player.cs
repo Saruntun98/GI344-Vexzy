@@ -71,9 +71,9 @@ public class Player : MonoBehaviour
 
     void Awake()
     {
-        //instance = this;
+        instance = this;
 
-         if(!instance)
+         /*if(!instance)
              instance = this ;
          //otherwise, if we do, kill this thing
          else
@@ -81,7 +81,7 @@ public class Player : MonoBehaviour
  
  
          DontDestroyOnLoad(this.gameObject) ;
-
+        */
         _defaultSpeed = _walkSpeed;
         _currentSpeed = _runningSpeed * 2;
     }

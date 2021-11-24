@@ -2068,6 +2068,7 @@ MonoBehaviour:
   aDamage: 100
   timeLastHit: 2
   isOnGate: 0
+  countGate: 1
   IsDead: 0
 --- !u!114 &3942498877176149533
 MonoBehaviour:
@@ -2084,7 +2085,7 @@ MonoBehaviour:
   _movementMode: 1
   _defaultSpeed: 0
   _walkSpeed: 2
-  _runningSpeed: 4
+  _runningSpeed: 8
   _gravity: 9.81
   _gravityPlatformer: -12
   _jumpSpeed: 3.5

@@ -63,7 +63,10 @@ public class EnemyDestroy : MonoBehaviour
             }
             Destroy(gameObject);
         }
-
+        if (other.gameObject.name == "bullet(Clone)") 
+        {
+            Destroy(gameObject);
+        }
         /*if (other.gameObject.name == "Weapon") {
             if (EnemyHealth._instance != null)
             {

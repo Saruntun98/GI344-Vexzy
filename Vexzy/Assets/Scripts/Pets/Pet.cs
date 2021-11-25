@@ -7,7 +7,7 @@ public class Pet : MonoBehaviour
 {
     public static Pet instance;    
     public float lookRadius = 10f;
-    private Transform targetPlayer;
+    //private Transform targetPlayer;
     
     private NavMeshAgent nav;
 	//private EnemyHealth enemyHealth;

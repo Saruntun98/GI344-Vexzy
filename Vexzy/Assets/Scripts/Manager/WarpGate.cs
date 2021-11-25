@@ -14,7 +14,7 @@ public class WarpGate : MonoBehaviour
             if (PlayerStatus.instance != null)
             {
                 PlayerStatus.instance.isOnGate = true;
-                PlayerStatus.instance.countGate = +1;
+                //PlayerStatus.instance.countGate = +1;
                 //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 
                 //Player.instance.player.position = new Vector3(-62.35f, 42.99f, 69.99f);

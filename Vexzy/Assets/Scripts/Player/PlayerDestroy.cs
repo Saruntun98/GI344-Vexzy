@@ -11,10 +11,10 @@ public class PlayerDestroy : MonoBehaviour
             //Destroy(gameObject);
             Debug.Log("Player is Dead Destroy");
         }
-        if (PlayerStatus.instance.countGate <= 3)
+        /*if (PlayerStatus.instance.countGate <= 3)
         {
             Destroy(gameObject);
             Debug.Log("Destroy player main scene");
-        }
+        }*/
     }
 }

@@ -14,11 +14,13 @@ public class GameManager : MonoBehaviour
     public class WaveEnemy
     {
         public string name;
-        public Transform enemy;
+        public Transform[] enemy;
         public int count;
         public float rate;
     }
 
+    //sound
+    public AudioSource _audioSource;
     //Game Over
     [SerializeField] public bool gameOver = false;
     [SerializeField] public bool gameWiner = false;
@@ -47,7 +49,6 @@ public class GameManager : MonoBehaviour
     private float searchCountdown = 1f;
 
     public SpawnState state = SpawnState.COUNTING;
-
 
 
     // Nanager
@@ -218,7 +219,7 @@ public class GameManager : MonoBehaviour
                         PlayerPrefs.SetString("LastExitName", exitName);
                         SceneManager.LoadScene(nextScenes); 
                     }*/
-                    if(spawnPet.Instance != null)
+                    if(spawnPet.Instance.isSpawned == true)
                     {
                         Debug.Log("true Warpppppppppppppppppppppppppp");
                         //Player.instance.player.position = new Vector3(-62.35f, 42.99f, 69.99f);
@@ -379,7 +380,9 @@ public class GameManager : MonoBehaviour
 
         for(int i = 0; i < _wave.count; i++)
         {
-            SpawnEnemy(_wave.enemy);
+            int randomEnemy;
+            randomEnemy = Random.Range(0, _wave.enemy.Length);
+            SpawnEnemy(_wave.enemy[randomEnemy]);
             //yield return new WaitForSeconds(1f/_wave.rate);
             yield return new WaitForSeconds(powerUpSpawnTime/_wave.rate);
         }

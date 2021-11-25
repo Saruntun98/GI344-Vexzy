@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class Key : MonoBehaviour
 {
+    public AudioClip soundFile;
+
     public float rotationSpeed = 10.0f;
-    public static Key Instance;
+    /*public static Key Instance;
 
     void Awake()
     {
         Instance = this;
-    }
+    }*/
 
     private void Update()
     {
@@ -21,11 +23,13 @@ public class Key : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {        
         if (other.gameObject.tag == "Player")
-        {
+        {           
             Debug.Log("You got 1 key");
             if (PlayerStatus.instance != null)
-            {
-                //GameManager.instance._audioSource.PlayOneShot(soundFile);
+            {            
+                //SoundManagerPlayer.instance.s .PlayOneShot(soundFile);
+                //KeySound.Instance._audioSource.PlayOneShot(soundFile);
+                GameManager.instance._audioSource.PlayOneShot(soundFile);
                 GameManager.instance.currentKeyItem += 1;
             }
             Destroy(gameObject);

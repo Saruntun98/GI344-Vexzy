@@ -2068,7 +2068,6 @@ MonoBehaviour:
   aDamage: 100
   timeLastHit: 2
   isOnGate: 0
-  countGate: 1
   IsDead: 0
 --- !u!114 &3942498877176149533
 MonoBehaviour:
@@ -2085,7 +2084,7 @@ MonoBehaviour:
   _movementMode: 1
   _defaultSpeed: 0
   _walkSpeed: 2
-  _runningSpeed: 8
+  _runningSpeed: 4
   _gravity: 9.81
   _gravityPlatformer: -12
   _jumpSpeed: 3.5
@@ -2157,7 +2156,7 @@ AudioSource:
   m_GameObject: {fileID: 4213108684462017353}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 425c37e1bdd01a3469f365186b6532e4, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 0.2

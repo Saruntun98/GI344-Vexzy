@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c0a90e740f3b484291b4920a48eacf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soundFile: {fileID: 8300000, guid: de8189b58ad3fc140b3403f960a0001c, type: 3}
   rotationSpeed: 30
 --- !u!135 &555807931947689782
 SphereCollider:

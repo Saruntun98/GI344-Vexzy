@@ -29,7 +29,7 @@ public class PlayerStatus : MonoBehaviour
     private float timer = 0f;
 
     public bool isOnGate = false;
-    public int countGate = 1;
+    //public int countGate = 1;
     //public bool IsDead{ get{ return curHealth == 0;} }
 
     [SerializeField] 

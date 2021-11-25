@@ -93,10 +93,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 377a6a2d1ad532b4dbb74dfa3de3e31f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawner: {fileID: 4892850317907619890, guid: 40c1a176441ff644f9e9f468f9df2630, type: 3}
+  spawner: {fileID: 1772563014208844755, guid: 0e55d2537e3d27544b69f6d421684c72, type: 3}
   stopSpqwning: 0
   spawnTime: 5
-  spawnDelay: 10
+  spawnDelay: 20
 --- !u!114 &6421777582197729073
 MonoBehaviour:
   m_ObjectHideFlags: 0

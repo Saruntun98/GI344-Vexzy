@@ -6,6 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/UseMap/StartGame.unity
+    guid: 0c655c1c3befd2c45b47181879992996
+  - enabled: 1
+    path: Assets/Scenes/UseMap/MainMenu.unity
+    guid: 5aaa71a726603aa4c9541c5e85edc896
+  - enabled: 1
+    path: Assets/Scenes/UseMap/Tutorial.unity
+    guid: 29dcfa6a1f8c7d643bb82853a1543310
+  - enabled: 1
     path: Assets/Scenes/UseMap/Load01.unity
     guid: 26e683b5083d7fa48a43cfef60085bc3
   - enabled: 1
@@ -15,9 +24,6 @@ EditorBuildSettings:
     path: Assets/Scenes/UseMap/Load03.unity
     guid: 7816a3f00833e14409273e02adca2bf7
   - enabled: 1
-    path: Assets/Scenes/UseMap/StartGame.unity
-    guid: 0c655c1c3befd2c45b47181879992996
-  - enabled: 1
-    path: Assets/Scenes/UseMap/Tutorial.unity
-    guid: 29dcfa6a1f8c7d643bb82853a1543310
+    path: Assets/Scenes/UseMap/EndCredit.unity
+    guid: 2f472528c8f3b074097bead3fd4def32
   m_configObjects: {}

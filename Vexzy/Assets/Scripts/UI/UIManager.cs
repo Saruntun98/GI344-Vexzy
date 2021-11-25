@@ -11,7 +11,7 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] GameObject introMenu;
     [SerializeField] GameObject mainMenu;
-   // [SerializeField] GameObject player;
+    [SerializeField] GameObject optionMenu;
     [SerializeField] Button ModeOneButton;
     [SerializeField] Button ModeTwoButton;
     [SerializeField] Button tutorialButton;  
@@ -25,16 +25,19 @@ public class UIManager : MonoBehaviour
         ModeOneButton.onClick.AddListener(PlayButton);
         ModeTwoButton.onClick.AddListener(LoobButton);
         tutorialButton.onClick.AddListener(TutorialButton);
+        /*if (Input.anyKeyDown)
+        {
+            mainMenu.SetActive(true);
+            introMenu.SetActive(false);
+            optionMenu.SetActive(false);
+        }*/
 
     }
 
     void Update()
     {
-        if (Input.anyKeyDown)
-        {
-            mainMenu.SetActive(true);
-            introMenu.SetActive(false);
-        }
+        //mainMenu.SetActive(true);
+        //optionMenu.SetActive(false);
     }
 
 

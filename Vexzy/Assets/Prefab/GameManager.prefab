@@ -144,13 +144,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b142e7d573b4d740aab9c6a8433829e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _audioSource: {fileID: 5546395521590638140}
   gameOver: 0
   gameWiner: 0
   gameRound: 1
   piller1: 3
   piller2: 6
   piller3: 9
-  spawnPlayer: 0
   player: {fileID: 4213108684462017353, guid: 4de0ca8d7b3e430448faf2b7df49e233, type: 3}
   spawnPointPlayer: {fileID: 0}
   nextScenes: Endmap
@@ -178,6 +178,7 @@ MonoBehaviour:
   timeBetweenWaves: 10
   waveCountdown: 0
   state: 2
+  isPlayerExist: 0
   powerUpSpawnTime: 1
   isEnemyTime: 0
   enemyType1: {fileID: 1348674391393348242, guid: 75fb578edf4e9404aa279b9e426d4bf0, type: 3}

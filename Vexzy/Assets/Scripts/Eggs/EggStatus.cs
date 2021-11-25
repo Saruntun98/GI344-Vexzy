@@ -19,6 +19,7 @@ public class EggStatus : MonoBehaviour
     [SerializeField] 
     public bool isFoundEgg = false;    
     [SerializeField] GameObject showText;
+    public GameObject openEffect;
     
     public bool _isDead = false;
     //private Collider collider;
@@ -85,14 +86,20 @@ public class EggStatus : MonoBehaviour
         //GameManager.instance.RuleCheck();
         _isDead = true;
 		Debug.Log("Egg Die");
-        //GameObject effect = (GameObject)Instantiate(deathEffect, transform.position, Quaternion.identity);
-        //Destroy(effect, 5f);
+        GameObject effect = (GameObject)Instantiate(deathEffect, transform.position, Quaternion.identity);
+        Destroy(effect, 5f);
         //WaveSpawner.EnemiesAlive--;
 
         //Key.Instance.eggChecked();
+        //Destroy(gameObject);
+        StartCoroutine(RemoveEnemy());
+    }
+
+    IEnumerator RemoveEnemy()
+    {
+        yield return new WaitForSeconds(5f);
         Destroy(gameObject);
     }
-	
 	/*private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")
@@ -112,7 +119,7 @@ public class EggStatus : MonoBehaviour
     public void OnpenEgg()
     {
         Debug.Log("Pet spawn del egg");
-        //Destroy(gameObject);
+        Destroy(gameObject);
     }
     private void OnTriggerStay(Collider other)
     {
@@ -152,6 +159,7 @@ public class EggStatus : MonoBehaviour
     }*/
     public void BeginEgg()
     {
+        openEffect.SetActive(true);
         foreach (var egg in onEgg)
         {
             egg.enabled = true;
@@ -162,6 +170,7 @@ public class EggStatus : MonoBehaviour
 
     public void EndEgg()
     {
+        openEffect.SetActive(false);
         foreach (var egg in onEgg)
         {
             egg.enabled = false;

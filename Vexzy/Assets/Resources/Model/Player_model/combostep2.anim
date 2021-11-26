@@ -23330,6 +23330,13 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 0.5
+    functionName: SkilCom2
+    data: 
+    objectReferenceParameter: {fileID: 11500000, guid: c2e5c764d12d7c548a8da7405fc96069, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 0.8333333
     functionName: NextAtk
     data: 

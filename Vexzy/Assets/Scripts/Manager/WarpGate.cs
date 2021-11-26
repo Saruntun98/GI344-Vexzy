@@ -5,6 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class WarpGate : MonoBehaviour
 {
+    public GameObject Warp;
+
+    private void Update()
+    {
+        if(GameManager.instance.currentKeyItem >= GameManager.instance.keyItemCount)
+        {
+            Warp.SetActive(true);
+        }
+    }
     private void OnTriggerStay(Collider other)
     
     {

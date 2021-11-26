@@ -100,6 +100,23 @@ public class EnemyHealth : MonoBehaviour
             audio.PlayOneShot(audio.clip);             
             TakeHit();
         } 
+
+        if (other.gameObject.name == "Com2")
+        {
+                currentHealth -= Combo.instance.damagaCom2;
+                //audio.PlayOneShot(audio.clip);   
+                //Debug.Log ("Skill: "+SkillBoob.instance.aDamageSkill);  
+                Debug.Log ("Com2");   
+                TakeHit();             
+        }
+        if (other.gameObject.name == "Com3")
+        {
+                currentHealth -= Combo.instance.damagaCom3;
+                //audio.PlayOneShot(audio.clip);   
+                //Debug.Log ("Skill: "+SkillBoob.instance.aDamageSkill);  
+                Debug.Log ("Com3");   
+                TakeHit();             
+        }
         /*if (other.gameObject.tag == "SkillsPlayer")  
         {
             currentHealth = currentHealth -= SkillBoob.instance.aDamageSkill;
@@ -132,6 +149,22 @@ public class EnemyHealth : MonoBehaviour
                 //audio.PlayOneShot(audio.clip);   
                 //Debug.Log ("Skill: "+SkillBoob.instance.aDamageSkill);  
                 //Debug.Log ("HP Enemy: "+PlayerStatus.instance.curHealth);   
+                TakeHit();             
+        }
+        if (other.gameObject.name == "Com2")
+        {
+                currentHealth -= Combo.instance.damagaCom2time * Time.deltaTime;
+                //audio.PlayOneShot(audio.clip);   
+                //Debug.Log ("Skill: "+SkillBoob.instance.aDamageSkill);  
+                Debug.Log ("Com2time");   
+                TakeHit();             
+        }
+        if (other.gameObject.name == "Com3")
+        {
+                currentHealth -= Combo.instance.damagaCom3time * Time.deltaTime;
+                //audio.PlayOneShot(audio.clip);   
+                //Debug.Log ("Skill: "+SkillBoob.instance.aDamageSkill);  
+                Debug.Log ("Com3time");   
                 TakeHit();             
         }
     }

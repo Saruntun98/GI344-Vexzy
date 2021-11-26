@@ -9812,7 +9812,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 224}
+  m_AnchoredPosition: {x: 0, y: 170}
   m_SizeDelta: {x: 400, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &527537992
@@ -23597,6 +23597,7 @@ MonoBehaviour:
   resumeButton: {fileID: 940072174}
   quitButton: {fileID: 744871747}
   restartButton: {fileID: 946028744}
+  restartOverButton: {fileID: 0}
   keyItem: {fileID: 2128610073669691920, guid: c6f481d886077aa48a3a0fee7f88b201, type: 3}
   keyItemText: {fileID: 1224100203}
   hpBar: {fileID: 1399001774}
@@ -23754,13 +23755,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b142e7d573b4d740aab9c6a8433829e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _audioSource: {fileID: 0}
   gameOver: 0
   gameWiner: 0
   gameRound: 0
   piller1: 3
   piller2: 6
   piller3: 9
-  spawnPlayer: 0
   player: {fileID: 4213108684462017353, guid: 4de0ca8d7b3e430448faf2b7df49e233, type: 3}
   spawnPointPlayer: {fileID: 1969234765}
   nextScenes: 
@@ -23770,7 +23771,10 @@ MonoBehaviour:
   isEnemyWave: 0
   waves:
   - name: 1
-    enemy: {fileID: 1348674391393348245, guid: 75fb578edf4e9404aa279b9e426d4bf0, type: 3}
+    enemy:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
     count: 1
     rate: 1
   spawnPointsEnemy:
@@ -23780,6 +23784,7 @@ MonoBehaviour:
   timeBetweenWaves: 5
   waveCountdown: 0
   state: 2
+  isPlayerExist: 0
   powerUpSpawnTime: 1
   isEnemyTime: 1
   enemyType1: {fileID: 1348674391393348242, guid: 75fb578edf4e9404aa279b9e426d4bf0, type: 3}
@@ -37692,7 +37697,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &2092333161
 GameObject:

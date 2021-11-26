@@ -9,6 +9,7 @@ public class Miniblock : MonoBehaviour
     public static Miniblock instance;
     public float rotationSpeed = 10.0f;
     public int spawnHeal = 10;
+    public int spawnHealEgg = 20;
     [SerializeField] float DelayTime = 15f;
     private void Awake() 
     {
@@ -28,6 +29,7 @@ public class Miniblock : MonoBehaviour
         {
             SkillBoob.instance.skillboob = true;
             PlayerStatus.instance.curHealth += spawnHeal;
+            EggStatus.Instance.currentHealth += spawnHealEgg;
             AudioSource audioSource = GetComponent<AudioSource>();
             //audioSource.Play();
             Destroy(this.gameObject);

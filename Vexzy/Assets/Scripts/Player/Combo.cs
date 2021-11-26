@@ -5,7 +5,16 @@ using UnityEngine;
 public class Combo : MonoBehaviour
 {
     Animator playerAnim;
-    [SerializeField] private BoxCollider[] swordCollider;
+    public float timeSkill = 2f;
+    public float damagaCom2 = 90f;
+    public float damagaCom2time = 20f;
+    public float damagaCom3 = 100f;
+    public float damagaCom3time = 50f;
+    [SerializeField] public BoxCollider[] swordCollider;
+    [SerializeField] public BoxCollider[] swordCom2;
+    [SerializeField] GameObject skillCom2;
+    [SerializeField] public BoxCollider[] swordCom3;
+    [SerializeField] GameObject skillCom3;
     public bool comboPossible;
     public int comboStep;
     bool inputSmash;
@@ -13,8 +22,12 @@ public class Combo : MonoBehaviour
     void Start()
     {
         playerAnim = GetComponent<Animator>();
-        swordCollider = GetComponentsInChildren<BoxCollider>();
+        //swordCollider = GetComponentsInChildren<BoxCollider>();
+        //swordCom2 = GetComponentsInChildren<BoxCollider>();
+        //swordCom3 = GetComponentsInChildren<BoxCollider>();
         EndAttack();
+        CCom2();
+        CCom3();
     }
 
     public void ComboPossible()
@@ -115,5 +128,58 @@ public class Combo : MonoBehaviour
         {
             weapon.enabled = false;
         }
+    }
+
+    public void Com2()
+    {
+        foreach (var Com2 in swordCom2)
+        {
+            Com2.enabled = true;
+            skillCom2.SetActive(true);
+            StartCoroutine(DelayHideSkills());
+        }
+    }
+    public void CCom2()
+    {
+        foreach (var Com2 in swordCom2)
+        {
+            Com2.enabled = false;
+            skillCom2.SetActive(false);
+        }
+    }
+    void SkilCom2()
+    {
+           Com2();
+    }
+    public void Com3()
+    {
+        foreach (var Com3 in swordCom3)
+        {
+            Com3.enabled = true;
+            skillCom3.SetActive(true);
+            StartCoroutine(DelayHideSkills());
+        }
+    }
+    public void CCom3()
+    {
+        foreach (var Com3 in swordCom3)
+        {
+            Com3.enabled = false;
+            skillCom3.SetActive(false);
+        }
+    }
+    void SkilCom3()
+    {
+           Com3();
+    }
+    IEnumerator DelayHideSkills()
+    {
+        yield return new WaitForSeconds(timeSkill);
+        //EndAttack();
+        CCom2();
+        CCom3();
+        Debug.Log("Hide Com Skill");
+        //Destroy(this.gameObject);
+        //gameObject.GetComponent<SphereCollider>().enabled = true;
     }
 }

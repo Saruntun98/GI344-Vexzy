@@ -99,7 +99,16 @@ public class EnemyHealth : MonoBehaviour
             Debug.Log ("HP Enemy: "+currentHealth);
             audio.PlayOneShot(audio.clip);             
             TakeHit();
-        }                
+        } 
+        /*if (other.gameObject.tag == "SkillsPlayer")  
+        {
+            currentHealth = currentHealth -= SkillBoob.instance.aDamageSkill;
+            Debug.Log ("Skill Boom: "+SkillBoob.instance.aDamageSkill);  
+            Debug.Log ("HP Enemy: "+currentHealth);
+            audio.PlayOneShot(audio.clip);             
+            TakeHit();
+        }        */   
+
         /*if (timer>=timeLastHit && !GameManager.instance.GameOver)
         {
             if (other.gameObject.name=="Weapon")
@@ -113,6 +122,18 @@ public class EnemyHealth : MonoBehaviour
             Debug.Log ("HP: "+startHealth);
             //Health
         }*/
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.tag == "SkillsPlayer")
+        {
+                currentHealth -= SkillBoob.instance.aDamageSkill * Time.deltaTime;
+                //audio.PlayOneShot(audio.clip);   
+                //Debug.Log ("Skill: "+SkillBoob.instance.aDamageSkill);  
+                //Debug.Log ("HP Enemy: "+PlayerStatus.instance.curHealth);   
+                TakeHit();             
+        }
     }
 
     private void TakeHit()

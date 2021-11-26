@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 4082777919595581801}
   - component: {fileID: 1708980796298320420}
   - component: {fileID: 5969215287581633220}
+  - component: {fileID: 3003886424204429106}
   m_Layer: 0
   m_Name: EnemyType1-Boss
   m_TagString: Enemy
@@ -263,6 +264,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lookRadius: 10
+--- !u!114 &3003886424204429106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2980375365439946876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f63fe458d93dff34e837ea54d14bc1be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aDamageSkill: 10
 --- !u!1001 &3131206700314180946
 PrefabInstance:
   m_ObjectHideFlags: 0

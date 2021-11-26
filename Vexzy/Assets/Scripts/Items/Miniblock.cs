@@ -5,15 +5,14 @@ using UnityEngine;
 public class Miniblock : MonoBehaviour
 {
     // Start is called before the first frame update
+
+    public static Miniblock instance;
     public float rotationSpeed = 10.0f;
-    
     public int spawnHeal = 10;
-    public bool skillboob = false;
-    public int timeSkill = 3;
     [SerializeField] float DelayTime = 15f;
-    void Start()
+    private void Awake() 
     {
-        
+        instance = this;
     }
 
     // Update is called once per frame
@@ -27,12 +26,11 @@ public class Miniblock : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            skillboob = true;
-            Debug.Log("Power Boom!!");
+            SkillBoob.instance.skillboob = true;
             PlayerStatus.instance.curHealth += spawnHeal;
             AudioSource audioSource = GetComponent<AudioSource>();
-            audioSource.Play();
-            gameObject.SetActive(false);
+            //audioSource.Play();
+            Destroy(this.gameObject);
             //StartCoroutine(hide());
         }
     }

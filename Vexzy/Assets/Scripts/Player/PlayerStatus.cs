@@ -35,7 +35,6 @@ public class PlayerStatus : MonoBehaviour
     [SerializeField] 
     public bool IsDead;
 
-
     void Awake()
     {
         instance = this;

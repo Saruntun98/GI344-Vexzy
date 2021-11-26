@@ -14459,11 +14459,12 @@ GameObject:
   - component: {fileID: 7620799021856488312}
   - component: {fileID: 3197009590513307021}
   - component: {fileID: 4796808929207624180}
-  - component: {fileID: 5856491777052848122}
   - component: {fileID: 5685790488191974522}
   - component: {fileID: 7592922443329817749}
   - component: {fileID: 4627373414845531658}
   - component: {fileID: -8870508161252561060}
+  - component: {fileID: 7128031440164652768}
+  - component: {fileID: -1770415292873734742}
   m_Layer: 0
   m_Name: EnemyType3-Boss
   m_TagString: Enemy
@@ -14624,18 +14625,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a308a65328992344fb256f9f4ef6ee64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5856491777052848122
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7817455123537307842}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56e150b139816534697b66e9c59fa006, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &5685790488191974522
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14648,7 +14637,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a491308d91a01d41849023c84e49be0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startHealth: 30
+  startHealth: 350
   currentHealth: 0
   isAlive: 0
   damage: 30
@@ -14678,7 +14667,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 2
-  m_Speed: 2
+  m_Speed: 6
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -14709,6 +14698,31 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &7128031440164652768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7817455123537307842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f63fe458d93dff34e837ea54d14bc1be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aDamageSkill: 20
+--- !u!114 &-1770415292873734742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7817455123537307842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0025a9f3c50ae046b346746c0a0c37a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8939406402480378702
 GameObject:
   m_ObjectHideFlags: 0

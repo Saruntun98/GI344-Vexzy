@@ -11,6 +11,8 @@ TagManager:
   - Bullet
   - Weapon
   - Pet
+  - MiniBlock
+  - SkillsPlayer
   layers:
   - Default
   - TransparentFX

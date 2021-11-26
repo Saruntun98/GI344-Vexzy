@@ -45,12 +45,22 @@ public class Turret : MonoBehaviour
 
 		foreach (GameObject enemy in targetList)
 		{
-			distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
+			if(enemy != null)
+			{
+				distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
+				if (distanceToEnemy < shortestDistance)
+				{
+					shortestDistance = distanceToEnemy;
+					nearestEnemy = enemy;
+				}
+			}
+			
+			/*distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
 			if (distanceToEnemy < shortestDistance)
 			{
 				shortestDistance = distanceToEnemy;
 				nearestEnemy = enemy;
-			}
+			}*/
 		}
 
 		if (nearestEnemy != null && shortestDistance >= 0.00f && shortestDistance <= range)
@@ -110,14 +120,16 @@ public class Turret : MonoBehaviour
 		{
 			for (int i = 0; i < targetList.Count; i++)
 			{
+				if(targetList[i] != null)
+				{
 				var dst = Vector3.Distance(turrentTransform.transform.position, targetList[i].transform.position);
 				if (dst > range)
 				{
 					targetList.RemoveAt(i);
 				}
+				}
 			}
-		}
-		
+		}	
 	}
 	
 	void LookAtTarget()
@@ -140,11 +152,14 @@ public class Turret : MonoBehaviour
 
 		foreach (GameObject obj in targetList)
 		{
+			if(obj != null)
+			{
 			float distanceToEnemy = Vector3.Distance(turrentTransform.transform.position, obj.transform.position);
 			if (distanceToEnemy < shortestDistance)
 			{
 				shortestDistance = distanceToEnemy;
 				nearestObject = obj;
+			}
 			}
 		}
 

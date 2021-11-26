@@ -9810,7 +9810,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a491308d91a01d41849023c84e49be0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startHealth: 30
+  startHealth: 150
   currentHealth: 0
   isAlive: 0
   damage: 30
@@ -9827,7 +9827,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 2
-  m_Speed: 2
+  m_Speed: 7
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120

@@ -14,6 +14,7 @@ public class GameplayUIManager : MonoBehaviour
     [SerializeField] Button resumeButton;
     [SerializeField] Button quitButton;
     [SerializeField] Button restartButton;
+    [SerializeField] Button restartOverButton;
 
     //[SerializeField] GameObject medkitItem;
     [SerializeField] GameObject keyItem;
@@ -48,6 +49,7 @@ public class GameplayUIManager : MonoBehaviour
         resumeButton.onClick.AddListener(Resume);
         quitButton.onClick.AddListener(Quit);
         restartButton.onClick.AddListener(Restart);
+        restartOverButton.onClick.AddListener(Restart);
     }
 
     // Update is called once per frame
@@ -138,7 +140,7 @@ public class GameplayUIManager : MonoBehaviour
     {
         if (GameManager.instance.GameOver)
         {
-            //Time.timeScale = 0;
+            Time.timeScale = 0;
             gameOver.SetActive(true);
             Cursor.lockState = CursorLockMode.None;
         }

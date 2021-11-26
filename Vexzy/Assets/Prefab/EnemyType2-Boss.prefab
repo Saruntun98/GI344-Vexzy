@@ -9,7 +9,7 @@ BoxCollider:
   m_GameObject: {fileID: 4246256561545697722}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 0.019, y: 0.019, z: 0.019}
   m_Center: {x: 0, y: -0.005, z: 0}
@@ -31,6 +31,8 @@ GameObject:
   - component: {fileID: 5809559250482181770}
   - component: {fileID: 8957334724234951072}
   - component: {fileID: 225605349919138213}
+  - component: {fileID: 1753401028231461654}
+  - component: {fileID: -5894590616356335886}
   m_Layer: 0
   m_Name: EnemyType2-Boss
   m_TagString: Enemy
@@ -238,7 +240,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 5.5
-  m_Speed: 3
+  m_Speed: 2
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -275,6 +277,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0025a9f3c50ae046b346746c0a0c37a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!135 &1753401028231461654
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7017050687447505118}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 5.5
+  m_Center: {x: 0, y: 2.47, z: 0}
+--- !u!114 &-5894590616356335886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7017050687447505118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f63fe458d93dff34e837ea54d14bc1be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aDamageSkill: 2
 --- !u!1001 &3903725916275565803
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -69,7 +69,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 2.21
-  m_Speed: 4
+  m_Speed: 7
   m_Acceleration: 8
   avoidancePriority: 31
   m_AngularSpeed: 120
@@ -96,7 +96,7 @@ MonoBehaviour:
   spawner: {fileID: 1772563014208844755, guid: 0e55d2537e3d27544b69f6d421684c72, type: 3}
   stopSpqwning: 0
   spawnTime: 5
-  spawnDelay: 20
+  spawnDelay: 30
 --- !u!114 &6421777582197729073
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -109,7 +109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2503367dca45d6846a026adc577c2c57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lookRadius: 30
+  lookRadius: 75
 --- !u!95 &-6634383062037646800
 Animator:
   serializedVersion: 3

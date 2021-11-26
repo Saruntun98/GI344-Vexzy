@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5186205311438683931}
   m_Layer: 0
   m_Name: miniheal
-  m_TagString: Untagged
+  m_TagString: MiniBlock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47,7 +47,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 25
-  DelayTime: 15
+  spawnHeal: 10
+  DelayTime: 20
 --- !u!135 &3624191006315187964
 SphereCollider:
   m_ObjectHideFlags: 0

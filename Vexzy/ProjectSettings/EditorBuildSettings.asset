@@ -24,6 +24,6 @@ EditorBuildSettings:
     path: Assets/Scenes/UseMap/Load03.unity
     guid: 7816a3f00833e14409273e02adca2bf7
   - enabled: 1
-    path: Assets/Scenes/UseMap/EndCredit.unity
-    guid: 2f472528c8f3b074097bead3fd4def32
+    path: Assets/Scenes/UseMap/End.unity
+    guid: 2fc6619bcfc418547982fe2bcaf770d0
   m_configObjects: {}

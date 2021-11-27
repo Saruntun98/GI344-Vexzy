@@ -13,7 +13,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject mainMenu;
     [SerializeField] GameObject optionMenu;
     [SerializeField] Button ModeOneButton;
-    //[SerializeField] Button ModeTwoButton;
+    [SerializeField] Button HomeButton;
     [SerializeField] Button tutorialButton;  
     //[SerializeField] Button settingButton;        
 
@@ -23,7 +23,7 @@ public class UIManager : MonoBehaviour
 
 
         ModeOneButton.onClick.AddListener(PlayButton);
-        //ModeTwoButton.onClick.AddListener(LoobButton);
+        HomeButton.onClick.AddListener(BlackHomeButton);
         tutorialButton.onClick.AddListener(TutorialButton);
         /*if (Input.anyKeyDown)
         {
@@ -53,6 +53,10 @@ public class UIManager : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 3);
     }*/
+    void BlackHomeButton()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 6);
+    }
     public void Quit()
     {
         Application.Quit();

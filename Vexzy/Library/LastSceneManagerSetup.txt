@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Scenes/UseMap/MainMenu.unity
+- path: Assets/Scenes/UseMap/Tutorial.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1169448083}
-  m_IndirectSpecularColor: {r: 0.433693, g: 0.4959604, b: 0.6396139, a: 1}
+  m_IndirectSpecularColor: {r: 0.3049664, g: 0.3186885, b: 0.36213672, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000000, guid: cf4f93c86dd61c4448d87fc479147871, type: 2}
+  m_LightingDataAsset: {fileID: 112000000, guid: 176dcf42ace2f3c47a0970e6faf2a7d0, type: 2}
   m_LightingSettings: {fileID: 4890085278179872738, guid: 61f845d006480d743a697b1f643e3baf, type: 2}
 --- !u!196 &4
 NavMeshSettings:
@@ -30600,7 +30600,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 663705605}
         m_TargetAssemblyTypeName: SettingsMenu, Assembly-CSharp
         m_MethodName: SetFullscreen
         m_Mode: 0
@@ -31394,7 +31394,7 @@ AudioSource:
   m_GameObject: {fileID: 1331873988}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: a8afec88821e7de4e8a2193132598adf, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 0.25
@@ -49961,7 +49961,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 0.25
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

@@ -13,6 +13,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject mainMenu;
     [SerializeField] GameObject optionMenu;
     [SerializeField] Button ModeOneButton;
+    public string nextScenes;
     [SerializeField] Button HomeButton;
     [SerializeField] Button tutorialButton;  
     //[SerializeField] Button settingButton;        
@@ -38,6 +39,7 @@ public class UIManager : MonoBehaviour
     {
         //mainMenu.SetActive(true);
         //optionMenu.SetActive(false);
+        Cursor.lockState = CursorLockMode.None;
     }
 
 
@@ -55,7 +57,7 @@ public class UIManager : MonoBehaviour
     }*/
     void BlackHomeButton()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 6);
+        SceneManager.LoadScene(nextScenes);
     }
     public void Quit()
     {

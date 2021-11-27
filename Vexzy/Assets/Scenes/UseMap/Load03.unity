@@ -3566,7 +3566,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1930514114}
         m_TargetAssemblyTypeName: SettingsMenu, Assembly-CSharp
         m_MethodName: SetQuality
         m_Mode: 0
@@ -32013,6 +32013,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4058916762601449331, guid: 01f50637ac566064c83f4f58a478020b, type: 3}
+      propertyPath: pet.Array.data[0]
+      value: 
+      objectReference: {fileID: 8648762082060158501, guid: 6b238625fb394064981e8395133bb055, type: 3}
     - target: {fileID: 7616545884148965252, guid: 01f50637ac566064c83f4f58a478020b, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

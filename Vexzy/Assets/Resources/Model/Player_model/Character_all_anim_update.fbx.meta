@@ -95,7 +95,7 @@ ModelImporter:
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
+      keepOriginalOrientation: 1
       keepOriginalPositionY: 1
       keepOriginalPositionXZ: 0
       heightFromFeet: 0
@@ -103,14 +103,22 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
+<<<<<<< Updated upstream
       - time: 0.5850745
+=======
+      - time: 0.020179367
+>>>>>>> Stashed changes
         functionName: SoundWalkTap
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: c14fbb701a64613439d6d04f7d16445b, type: 3}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
+<<<<<<< Updated upstream
       - time: 0.9938651
+=======
+      - time: 0.55522376
+>>>>>>> Stashed changes
         functionName: SoundWalkTap
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: c14fbb701a64613439d6d04f7d16445b, type: 3}

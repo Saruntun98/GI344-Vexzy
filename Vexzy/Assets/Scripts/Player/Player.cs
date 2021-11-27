@@ -386,7 +386,11 @@ public class Player : MonoBehaviour
    private void Walk()
    {
       _defaultSpeed = _walkSpeed;
+<<<<<<< Updated upstream
       animator.SetFloat("Speed", 0.35f, 0.1f, Time.deltaTime);
+=======
+      animator.SetFloat("Speed", 0.5f, 0.1f, Time.deltaTime);
+>>>>>>> Stashed changes
    }
 
    private void SoundWalkTap()
@@ -415,7 +419,11 @@ public class Player : MonoBehaviour
    private void Run()
    {
       _defaultSpeed = _runningSpeed;
+<<<<<<< Updated upstream
       animator.SetFloat("Speed", 1f, 0.1f, Time.deltaTime);
+=======
+      animator.SetFloat("Speed", 2f, 0.1f, Time.deltaTime);
+>>>>>>> Stashed changes
    }
 
    private void Jump()

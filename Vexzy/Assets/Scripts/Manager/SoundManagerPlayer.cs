@@ -15,7 +15,11 @@ public class SoundManagerPlayer : MonoBehaviour
     void Start()
     {
         audioSrc = GetComponent<AudioSource>();        
+<<<<<<< Updated upstream
         slash = Resources.Load<AudioClip> ("Slash");
+=======
+        attack = Resources.Load<AudioClip> ("combostep1");
+>>>>>>> Stashed changes
         jump = Resources.Load<AudioClip> ("Jump");
         speed = Resources.Load<AudioClip> ("Speed");
         audioSrc.playOnAwake = false;
@@ -36,20 +40,31 @@ public class SoundManagerPlayer : MonoBehaviour
     {
         //audioSrc.PlayOneShot(speed);            
     }
+<<<<<<< Updated upstream
     public void SlashTap()
     {
         audioSrc.PlayOneShot(slash);           
     }
+=======
+>>>>>>> Stashed changes
     public void PlayerFootstep()
     {
         //audioSrc.Play();
         audioSrc.PlayOneShot(speed);
+<<<<<<< Updated upstream
         //Debug.Log("Sound foot on");
+=======
+        Debug.Log("Sound foot on");
+>>>>>>> Stashed changes
     }
     public void PlayerFootStopStep()
     {
         //audioSrc.Play();
         audioSrc.Stop();
+<<<<<<< Updated upstream
         //Debug.Log("Sound foot stop");
+=======
+        Debug.Log("Sound foot stop");
+>>>>>>> Stashed changes
     }
 }

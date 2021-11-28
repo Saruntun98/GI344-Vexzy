@@ -3865,6 +3865,7 @@ MonoBehaviour:
   audioMixerSound: {fileID: 24100000, guid: 425c37e1bdd01a3469f365186b6532e4, type: 2}
   audioMixerEffect: {fileID: 24100000, guid: a8afec88821e7de4e8a2193132598adf, type: 2}
   resolutionDropdown: {fileID: 1710724993}
+  isCam: {fileID: 0}
 --- !u!1 &460392118 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 861b94a62d17cd1498c7c1d2b2fab6c9, type: 3}
@@ -18489,6 +18490,7 @@ MonoBehaviour:
   mainMenu: {fileID: 1708800894}
   optionMenu: {fileID: 2089569237}
   ModeOneButton: {fileID: 1112293420}
+  nextScenes: 
   HomeButton: {fileID: 1399079005}
   tutorialButton: {fileID: 745062829}
 --- !u!4 &1905291854 stripped
@@ -20611,7 +20613,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 2000, y: 2000}
+  m_SizeDelta: {x: 8000, y: 2000}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2074814558
 MonoBehaviour:

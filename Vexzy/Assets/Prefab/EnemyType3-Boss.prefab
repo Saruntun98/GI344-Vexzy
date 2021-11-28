@@ -14699,6 +14699,7 @@ GameObject:
   - component: {fileID: -8870508161252561060}
   - component: {fileID: 7128031440164652768}
   - component: {fileID: -1770415292873734742}
+  - component: {fileID: 1753738214377113288}
   m_Layer: 0
   m_Name: EnemyType3-Boss
   m_TagString: Enemy
@@ -14878,7 +14879,6 @@ MonoBehaviour:
   damage: 35
   damageAttackPlayer: 20
   explosionRadius: 0
-  impactEffect: {fileID: 0}
 --- !u!114 &7592922443329817749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14956,6 +14956,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e0025a9f3c50ae046b346746c0a0c37a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1753738214377113288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7817455123537307842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 066fda687c067f44089a52afc5058da5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &8939406402480378702

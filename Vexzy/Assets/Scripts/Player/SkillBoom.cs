@@ -14,8 +14,23 @@ public class SkillBoom : MonoBehaviour
             {
                 PlayerStatus.instance.curHealth -= aDamageSkill * Time.deltaTime;
                 //Debug.Log ("Skill: "+SkillBoob.instance.aDamageSkill);  
-                //Debug.Log ("HP Enemy: "+PlayerStatus.instance.curHealth);                
+                //Debug.Log ("HP Enemy: "+PlayerStatus.instance.curHealth);       
+                //PlayerStatus.instance.TakeHit();     
             }
         }
     }
+    /*private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            //Debug.Log("ThornTrap");
+            if (PlayerStatus.instance != null)
+            {
+                PlayerStatus.instance.curHealth -= aDamageSkill * Time.deltaTime;
+                //Debug.Log ("Skill: "+SkillBoob.instance.aDamageSkill);  
+                //Debug.Log ("HP Enemy: "+PlayerStatus.instance.curHealth);       
+                PlayerStatus.instance.TakeHit();     
+            }
+        }
+    }*/
 }

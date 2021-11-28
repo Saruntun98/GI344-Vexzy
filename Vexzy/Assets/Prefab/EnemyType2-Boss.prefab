@@ -33,6 +33,7 @@ GameObject:
   - component: {fileID: 225605349919138213}
   - component: {fileID: 1753401028231461654}
   - component: {fileID: -5894590616356335886}
+  - component: {fileID: 3141075631110590039}
   m_Layer: 0
   m_Name: EnemyType2-Boss
   m_TagString: Enemy
@@ -217,7 +218,6 @@ MonoBehaviour:
   damage: 100
   damageAttackPlayer: 20
   explosionRadius: 0
-  impactEffect: {fileID: 0}
 --- !u!114 &3643909582422568895
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -304,6 +304,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   aDamageSkill: 2
+--- !u!114 &3141075631110590039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7017050687447505118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 066fda687c067f44089a52afc5058da5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7968441007831248796
 GameObject:
   m_ObjectHideFlags: 0

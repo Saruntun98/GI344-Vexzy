@@ -109,7 +109,7 @@ public class Player : MonoBehaviour
 		}
 
         //NodeSprintCheck();
-        CameraIsPressingKey = Input.GetKey(KeyCode.T);
+        //CameraIsPressingKey = Input.GetKey(KeyCode.T);
 
 
         if(!isDead)

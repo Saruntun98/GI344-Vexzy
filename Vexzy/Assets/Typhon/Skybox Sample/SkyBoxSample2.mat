@@ -68,16 +68,16 @@ Material:
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _Exposure: 5
+    - _Exposure: 2.88
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _GrainSize: 0.4
     - _GroundAltitude: -0.1
-    - _GroundAngle: -0.1
+    - _GroundAngle: -0.394
     - _GroundThreshold: -0.001
     - _HorizonAltitude: 0
-    - _HorizonAngle: 0
+    - _HorizonAngle: 0.236
     - _HorizonThreshold: 1
     - _Metallic: 0
     - _Mode: 0
@@ -96,6 +96,7 @@ Material:
     - _StarryFineness: 200
     - _StarrySunAngleFrom: 1
     - _StarrySunAngleTo: 0.2
+    - _SunExpozure: 1
     - _SunSize: 0.07
     - _TimeWithColor: 0
     - _TransisionCoefficient: 4
@@ -107,11 +108,11 @@ Material:
     - _scatteringRange: 0.2
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _DayCloudColor: {r: 0.2924528, g: 0.19921657, b: 0.13381097, a: 1}
-    - _DayCloudColor2: {r: 0.110270575, g: 0.12117303, b: 0.13207549, a: 1}
-    - _DayGroundColor: {r: 0, g: 0, b: 0, a: 1}
-    - _DayHorizonColor: {r: 0.6792453, g: 0.41972235, b: 0.41972235, a: 1}
-    - _DaySkyColor: {r: 1, g: 0.7817019, b: 0, a: 1}
+    - _DayCloudColor: {r: 0.31132078, g: 0.31132078, b: 0.31132078, a: 1}
+    - _DayCloudColor2: {r: 0.11013707, g: 0.17299305, b: 0.23584908, a: 1}
+    - _DayGroundColor: {r: 0.21698111, g: 0.21698111, b: 0.21698111, a: 1}
+    - _DayHorizonColor: {r: 0.4245283, g: 0.4245283, b: 0.4245283, a: 1}
+    - _DaySkyColor: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _EveCloudColor: {r: 1, g: 0.7953949, b: 0.5990566, a: 1}
     - _EveCloudColor2: {r: 1, g: 0.6700414, b: 0.4009434, a: 1}
@@ -124,3 +125,4 @@ Material:
     - _NightHorizonColor: {r: 0.027990391, g: 0.027990391, b: 0.16037738, a: 1}
     - _NightSkyColor: {r: 0, g: 0, b: 0, a: 1}
     - _StarryThreshold: {r: 0.96078426, g: 0.96078426, b: 0.92156863, a: 1}
+  m_BuildTextureStacks: []

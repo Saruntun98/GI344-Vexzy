@@ -40,7 +40,7 @@ public class EggStatus : MonoBehaviour
         {
             Die();
         }
-        if(Input.GetKeyDown(KeyCode.F))
+        if(isReadyForInstantiate  && Input.GetKeyDown(KeyCode.F))
         {
             if(isFoundEgg)
             {
@@ -62,8 +62,10 @@ public class EggStatus : MonoBehaviour
         }
     }
     
+    bool isReadyForInstantiate = false;
     private void Start()
     {
+        isReadyForInstantiate = true;
         currentHealth = startHealth;
         healthBar.SetMaxHealth(startHealth);
         //HealthBar.Instance.SetMaxHealth(startHealth);
@@ -92,6 +94,8 @@ public class EggStatus : MonoBehaviour
 
         //Key.Instance.eggChecked();
         //Destroy(gameObject);
+            AudioSource audioSource = GetComponent<AudioSource>();
+            audioSource.Play();
         StartCoroutine(RemoveEnemy());
     }
 
@@ -116,11 +120,23 @@ public class EggStatus : MonoBehaviour
         }
     }*/
     
+    [SerializeField] AudioClip EggF;
     public void OnpenEgg()
     {
         Debug.Log("Pet spawn del egg");
-        Destroy(gameObject);
+        GetComponent<AudioSource>().PlayOneShot(EggF);
+        //Destroy(gameObject);
+        StartCoroutine(DelayHideEgg());
     }
+
+    IEnumerator DelayHideEgg()
+    {
+        isReadyForInstantiate = false;
+        yield return new WaitForSeconds(1);
+        Destroy(gameObject);
+        isReadyForInstantiate = true;
+    }
+
     private void OnTriggerStay(Collider other)
     {
         /*if (other.CompareTag("Player"))

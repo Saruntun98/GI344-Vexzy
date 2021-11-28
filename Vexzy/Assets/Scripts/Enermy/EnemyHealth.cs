@@ -25,7 +25,7 @@ public class EnemyHealth : MonoBehaviour
     public int damage = 50;
     public int damageAttackPlayer = 20;
     public float explosionRadius = 0f;
-    public GameObject impactEffect;
+    //public GameObject impactEffect;
     
     void Awake()
     {

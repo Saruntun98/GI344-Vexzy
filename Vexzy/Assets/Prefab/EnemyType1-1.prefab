@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 4056672835839768982}
   - component: {fileID: -5213139952541768658}
   - component: {fileID: 1162662868224860191}
+  - component: {fileID: -190552381395912709}
   m_Layer: 0
   m_Name: EnemyType1-1
   m_TagString: Enemy
@@ -106,7 +107,6 @@ MonoBehaviour:
   damage: 50
   damageAttackPlayer: 10
   explosionRadius: 0
-  impactEffect: {fileID: 0}
 --- !u!114 &3237450708924494456
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,7 +168,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 24300002, guid: a8afec88821e7de4e8a2193132598adf, type: 2}
   m_audioClip: {fileID: 8300000, guid: f55fc306a05177247a246e74df3b76a9, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -262,6 +262,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a308a65328992344fb256f9f4ef6ee64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-190552381395912709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3495035631721774046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c97e0f84b352d5040a1bdd1d38e5fcfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &9930618480265455

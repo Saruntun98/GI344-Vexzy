@@ -33,7 +33,7 @@ public class Player : MonoBehaviour
     [SerializeField]
     private GameObject _cameraRig;
     [SerializeField] 
-    private bool isCamera;
+    public bool isCamera;
     [SerializeField] 
     private bool isRunning;
 

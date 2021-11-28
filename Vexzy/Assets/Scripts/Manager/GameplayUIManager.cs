@@ -138,9 +138,9 @@ public class GameplayUIManager : MonoBehaviour
     }
     public void GameOver()
     {
-        if (GameManager.instance.GameOver)
+        if (GameManager.instance.gameOver)
         {
-            Time.timeScale = 0;
+            Time.timeScale = 1;
             gameOver.SetActive(true);
             Cursor.lockState = CursorLockMode.None;
         }

@@ -19,7 +19,7 @@ public class PlayerStatus : MonoBehaviour
     [SerializeField]
     public float aDamage = 30;
     [SerializeField] 
-    public float timeLastHit = 2f;
+    //public float timeLastHit = 2f;
 
     public static PlayerStatus instance;
     public static int Rounds;
@@ -44,22 +44,25 @@ public class PlayerStatus : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timer += Time.deltaTime;
+        //timer += Time.deltaTime;
         //healthBar.SetHealth(curHealth);
         //staminaBar.fillAmount = stamina;
         HealthCheck();
         //SprintCheck();
         SprintUsingStamina();
 
-        if (curHealth <= 0) {
+        /*if (curHealth <= 0) 
+        {
             IsDead = true;
         } 
-        else {
+        else 
+        {
             IsDead = false;
         }
-        if (IsDead == true) {
+        if (IsDead == true) 
+        {
             Die();
-        }
+        }*/
     }
 
     public bool CheckIsDead
@@ -142,13 +145,21 @@ public class PlayerStatus : MonoBehaviour
     
     private void OnTriggerEnter(Collider other)
     {
-        if (!GameManager.instance.GameOver && timer>=timeLastHit)
+        if (!GameManager.instance.GameOver) //&& timer>=timeLastHit)
         {
             if (other.gameObject.name == "weaponA")
             {
                 Debug.Log("hit");
                 TakeHit();
-                timer = 0;
+                //timer = 0;
+            }
+        }
+        {
+            if (other.gameObject.name == "Enemy")
+            {
+                Debug.Log("Sound");
+                GetComponent<AudioSource>().PlayOneShot(hit);
+                //timer = 0;
             }
         }
         /*if(other.gameObject.name == "Checker")
@@ -159,8 +170,11 @@ public class PlayerStatus : MonoBehaviour
         }*/  
     }
 
-    private void TakeHit()
+    [SerializeField] AudioClip hit;
+    [SerializeField] AudioClip Lost;
+    public void TakeHit()
     {
+        GetComponent<AudioSource>().PlayOneShot(hit);
         if (curHealth > 0)
         {
             Debug.Log("hit in Take hit");
@@ -173,7 +187,10 @@ public class PlayerStatus : MonoBehaviour
         if (curHealth <= 0)
         {
             IsDead = true; 
-             Die();
+            GetComponent<AudioSource>().PlayOneShot(Lost);
+            Debug.Log("AA");
+            Die();
+            
         }        
     }
 

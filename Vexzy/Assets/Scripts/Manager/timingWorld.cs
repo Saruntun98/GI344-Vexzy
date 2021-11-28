@@ -35,6 +35,7 @@ public class timingWorld : MonoBehaviour
                 //GameManager.instance.RuleCheck();
                 Debug.Log("Time has run out!");
                 timeRemaining = 0;
+                GameManager.instance.GameLost();
                 timerIsRunning = false;
             }
         }

@@ -25,8 +25,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] public bool gameOver = false;
     [SerializeField] public bool gameWiner = false;
     [SerializeField] public bool gameRound = false;
-    [SerializeField] int piller1;
-    [SerializeField] int piller2;
+    [SerializeField] public int piller1;
+    [SerializeField] public int piller2;
     [SerializeField] public int piller3;   
     //[SerializeField] public bool spawnPlayer = false;
     [SerializeField] GameObject player;
@@ -108,7 +108,6 @@ public class GameManager : MonoBehaviour
         RuleCheck();
         KeyItemCheck();
         Cheat();
-
         //enemyv1
         if(isEnemyWave)
         {
@@ -142,7 +141,7 @@ public class GameManager : MonoBehaviour
     {
         get
         {
-            return gameOver;
+            return gameWiner;
         }
     }
     void WeveCompleted()
@@ -167,6 +166,7 @@ public class GameManager : MonoBehaviour
             state=SpawnState.FINISHED;
             Debug.Log("Win");
             StartCoroutine(StatusShow("You Won!!"));
+            SoundLostWon.instance.Won();
             //timingWorld.instance.timerIsRunning = false;
             EggStatus.Instance.BeginEgg();
         } 
@@ -231,6 +231,7 @@ public class GameManager : MonoBehaviour
                     else
                     {
                         Debug.Log("No Warpppppppppppppppppppppppppp");
+                        StartCoroutine(StatusShow("Open the egg!! for to go next map."));
                     }
                 }
 
@@ -271,7 +272,7 @@ public class GameManager : MonoBehaviour
             {
                 if (currentKeyItem == piller1)
                 {
-                    EmissionControl.instance.materialPillerType1.EnableKeyword ("_EMISSION");              
+                    EmissionControl.instance.materialPillerType1.EnableKeyword ("_EMISSION");       
                 }
                 if (currentKeyItem == piller2)
                 {
@@ -437,7 +438,7 @@ public class GameManager : MonoBehaviour
         else
         {
             waveCountdown -= Time.deltaTime;
-        }    
+        }  
     }
     private void EnemyV2()
     {
@@ -496,5 +497,14 @@ public class GameManager : MonoBehaviour
         }
         yield return null;
         StartCoroutine(EnemyUpSpawnX2());
+    }
+    public void GameLost()
+    {
+        if(GameOver)
+        {
+            gameOver = true;
+            Debug.Log("Lost game On sound");
+            SoundLostWon.instance.Lost();
+        }  
     }
 }

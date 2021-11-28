@@ -47,6 +47,9 @@ TextureImporter:
   - first:
       213: -3615137394920676860
     second: Loga
+  - first:
+      213: -4090243814070749986
+    second: Interface_UI_Display_15
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -470,6 +473,27 @@ TextureImporter:
       bones: []
       spriteID: 402a58171b374ddc0800000000000000
       internalID: -3615137394920676860
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interface_UI_Display_15
+      rect:
+        serializedVersion: 2
+        x: 2115
+        y: 107
+        width: 325
+        height: 401
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed4f2911ce88c37c0800000000000000
+      internalID: -4090243814070749986
       vertices: []
       indices: 
       edges: []

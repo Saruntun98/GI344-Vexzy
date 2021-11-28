@@ -60,6 +60,8 @@ public class EnemyDestroy : MonoBehaviour
             if (PlayerStatus.instance != null)
             {
                 PlayerStatus.instance.curHealth -= EnemyHealth.instance.damageAttackPlayer;
+                Debug.Log("hit by Enemy");
+                PlayerStatus.instance.TakeHit();
             }
             Destroy(gameObject);
         }

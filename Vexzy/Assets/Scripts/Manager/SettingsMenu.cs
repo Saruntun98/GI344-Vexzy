@@ -11,6 +11,8 @@ public class SettingsMenu : MonoBehaviour
     public AudioMixer audioMixerEffect;
     public TMPro.TMP_Dropdown resolutionDropdown;
     Resolution[] resolutions;
+
+    public Toggle isCam;
     void Start()
     {
         resolutions = Screen.resolutions;
@@ -45,7 +47,19 @@ public class SettingsMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
+    }
+
+    public void CamLock()
+    {
+         if(isCam.isOn)
+        {
+            Player.instance.isCamera = true;
+        }
+        if(!isCam.isOn)
+        {
+            Player.instance.isCamera = false;
+        }       
     }
 
     public void SetVolumeSound(float volume)
